@@ -1,6 +1,7 @@
 import { SiteNav } from "@/components/site-nav"
 import { HeroSpec } from "@/components/hero-spec"
 import { FeaturedWork } from "@/components/featured-work"
+import { WhatIDo } from "@/components/what-i-do"
 
 export default function Home() {
   return (
@@ -8,7 +9,8 @@ export default function Home() {
       <SiteNav />
       <HeroSpec />
       <FeaturedWork />
-      {/* Next sections (What I do, About + contact) come next. */}
+      <WhatIDo />
+      {/* Next section (About + contact) comes next. */}
     </>
   )
 }

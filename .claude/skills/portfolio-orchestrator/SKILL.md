@@ -28,6 +28,8 @@ Invoke the specialist skill via the Skill tool. Give it the project context it n
 
 If a request is ambiguous about whether it's content or design, ask Marcel one short clarifying question rather than guessing — a wrong route wastes a full pass.
 
+**Pace content work section by section.** When content for a page or case is being written, it happens **one section (content block) at a time**, validated with Marcel before moving on — never a whole page dumped at once. Preserve this pacing when you coordinate: don't ask the content skill to produce everything in one go, and don't run the quality checklist on a half-built page as if it were final. Let each section land with Marcel first.
+
 ## Quality checklist: run before calling anything "done"
 
 Portfolios fail for predictable reasons. Before you tell Marcel a page or case is finished, run it against [references/quality-checklist.md](references/quality-checklist.md). This is derived from the "7 mistakes" of the IxDF portfolio course and from what recruiters actually look for. Don't skip it — the whole point of the skills-first approach is that quality is enforced systematically, not left to chance.

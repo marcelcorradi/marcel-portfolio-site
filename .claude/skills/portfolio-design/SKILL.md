@@ -59,7 +59,19 @@ Resolve the tension between "distinctive look" and "reads like a clean article" 
 - **Case pages** — optimize for reading, not showing off. Single column, generous line length and spacing, clean type hierarchy, images that support the narrative. The case content and the work shown are the stars; the chrome stays quiet. (Also what the portfolio course prescribes.)
 - **Case list** — Medium-style feed: scannable cards (title, summary, cover, tags), hover feedback, whole card clickable.
 
+### Constraint 4: Componentize reusable custom pieces
+
+When you build something custom (i.e. beyond what shadcn provides) that shows up more than once — a case card, a stat/metric block, a section header, a tag row — **extract it into a reusable component** instead of copy-pasting markup. This is exactly the design-systems discipline Marcel practices professionally, and the site should model it: one source of truth per pattern, styled with tokens. Put shadcn primitives in `src/components/ui/` (managed by the CLI) and custom composed components in `src/components/` so the two don't get confused. Don't over-abstract — componentize when a pattern actually repeats or is clearly about to, not speculatively.
+
+### Icons: Lucide is already installed
+
+The shadcn setup installed **Lucide** (`lucide-react`) as the icon library (see `components.json`). Use it for all icons — don't add another icon dependency. Import per-icon (`import { ArrowRight } from "lucide-react"`) so the bundle stays lean.
+
 ---
+
+## Drawing on outside inspiration (adapt, never paste)
+
+It's worth pulling creative references — hero layouts, card treatments, timelines, section transitions — from good sources (shadcn blocks/registries, well-known component galleries, design-forward sites) when you want a fresh idea. **But never paste a snippet or template as-is.** The portfolio course is explicit that using a popular template unmodified kills the "wow" — recruiters have seen it. So: take the *idea*, then rebuild it on shadcn with Marcel's indigo tokens and his identity, changing enough that it reads as his, not as a recognizable template. Inspiration informs the plan; the plan still has to survive the "does this look generic?" critique below. When a reference involves a specific library's API, verify current usage via Context7.
 
 ## Process: plan → critique → build → critique
 

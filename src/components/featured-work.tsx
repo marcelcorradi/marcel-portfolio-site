@@ -1,9 +1,12 @@
 import { CaseCard, type CaseCardData } from "@/components/case-card"
+import { OnflyLogo, WhirlpoolLogo, EsferaLogo } from "@/components/brand-logos"
 
 const designSystems: CaseCardData[] = [
   {
     name: "Onfly",
     role: "Senior Product Designer",
+    logo: OnflyLogo,
+    logoClassName: "h-6",
     description:
       "A design system built end to end and adopted by 5 designers and around 40 developers. 611 tokens, 143 components, and AI agents that keep design and code in sync.",
     tags: ["Design Tokens", "Design Ops", "Accessibility", "AI", "B2B"],
@@ -12,6 +15,8 @@ const designSystems: CaseCardData[] = [
   {
     name: "Whirlpool",
     role: "via Môre",
+    logo: WhirlpoolLogo,
+    logoClassName: "h-7",
     description:
       "Technical and operational architecture for the design system of a global appliance brand. 653 tokens and a 397-component library across multiple platforms.",
     tags: ["Design Tokens", "Governance", "Multi-platform", "Enterprise"],
@@ -20,6 +25,8 @@ const designSystems: CaseCardData[] = [
   {
     name: "Esfera",
     role: "via Rethink",
+    logo: EsferaLogo,
+    logoClassName: "h-6",
     description:
       "A new design system built from component design to adoption, in a highly regulated loyalty and e-commerce context. 59 components, 443 variants, 224 tokens.",
     tags: ["Design System", "E-commerce", "Regulated"],

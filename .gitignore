@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Source material uploads (originals kept locally, not shipped by the build)
+/assets/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

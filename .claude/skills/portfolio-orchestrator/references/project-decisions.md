@@ -27,8 +27,16 @@ Living record of the portfolio project's locked decisions. Keep this updated whe
 
 ## Two types of case study
 
-1. **Design System cases** (big-brand, metric-rich): Onfly, Whirlpool (via Môre), Esfera/Smiles (via Rethink).
+1. **Design System cases** (big-brand, metric-rich): Onfly, Whirlpool (via Môre), Esfera — Santander loyalty program (via Rethink).
 2. **Authorial product/AI cases** (rare, high-signal): Design Audit (Chrome extension), Atomic Colors (web app), Spec Forge (Figma plugin).
+
+**Brand logos on cards (decided 2026-07-24):** the three Design System cards show real client
+logos, rendered **monochrome** (inline SVG tinted via `currentColor`, so they match the muted
+foreground and flip in dark mode). Onfly + Whirlpool (full wordmark lockup) use their own marks;
+the **Esfera** card shows the **Santander** logo (Esfera is Santander's loyalty program and has
+no clean vector mark online — Santander is the recognizable parent brand). The authorial AI cards
+stay as text wordmarks (they're Marcel's own projects). Logo components live in
+`src/components/brand-logos.tsx`.
 
 ## Primary color
 

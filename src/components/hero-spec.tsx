@@ -1,4 +1,4 @@
-import { AvatarPlaceholder } from "@/components/avatar-placeholder"
+import { ProfileAvatar } from "@/components/profile-avatar"
 
 /**
  * Hero — "spec ring" over a section-wide dot grid.
@@ -57,7 +57,7 @@ export function HeroSpec() {
             </div>
 
             <div className="rounded-full bg-background/40 p-1.5 ring-1 ring-border backdrop-blur-sm">
-              <AvatarPlaceholder className="size-56" />
+              <ProfileAvatar className="size-56" />
             </div>
 
             {/* token marker, bottom-right */}

@@ -1,3 +1,4 @@
+import type { ComponentType, SVGProps } from "react"
 import { Link } from "react-router"
 import { ArrowRight } from "lucide-react"
 import { ProjectLogo } from "@/components/project-logo"
@@ -9,8 +10,10 @@ export interface CaseCardData {
   description: string
   tags: string[]
   slug: string
-  /** Real logo path once available; falls back to a text wordmark. */
-  logo?: string
+  /** Monochrome SVG logo component; falls back to a text wordmark. */
+  logo?: ComponentType<SVGProps<SVGSVGElement>>
+  /** Per-logo optical height (e.g. "h-6") to harmonize logos of different shapes. */
+  logoClassName?: string
 }
 
 export function CaseCard({
@@ -20,6 +23,7 @@ export function CaseCard({
   tags,
   slug,
   logo,
+  logoClassName,
 }: CaseCardData) {
   return (
     <Link
@@ -28,7 +32,7 @@ export function CaseCard({
     >
       {/* Logo on top, on its own — works for wide wordmarks and square marks.
           Name + role read as one tight group. */}
-      <ProjectLogo name={name} src={logo} />
+      <ProjectLogo name={name} logo={logo} logoClassName={logoClassName} />
       <p className="mt-0.5 text-sm text-muted-foreground">{role}</p>
 
       <p className="mt-4 text-sm leading-relaxed text-muted-foreground">

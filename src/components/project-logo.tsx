@@ -1,33 +1,40 @@
+import type { ComponentType, SVGProps } from "react"
 import { cn } from "@/lib/utils"
 
 /**
  * Project/brand logo lockup. Real logos vary in aspect ratio (wide wordmarks
- * vs. square marks), so we fix the HEIGHT and let width flow, with the image
- * using object-contain so nothing distorts or crops.
+ * vs. square marks), so we fix the HEIGHT and let width flow, with the SVG
+ * using its own viewBox so nothing distorts or crops.
  *
- * Until Marcel provides real logos, we render the project name as a text
- * wordmark in the same fixed-height slot, so swapping in an <img> later won't
- * shift the layout. When a real logo exists, pass `src`.
+ * When a monochrome SVG logo component exists, pass it as `logo` — it renders
+ * in a fixed-height slot, tinted via `currentColor` so it matches the muted
+ * foreground and flips correctly in dark mode. Without one, we fall back to a
+ * text wordmark in the same slot, so swapping a real logo in later won't shift
+ * the layout.
  */
 export function ProjectLogo({
   name,
-  src,
+  logo: Logo,
+  logoClassName,
   className,
 }: {
   name: string
-  src?: string
+  logo?: ComponentType<SVGProps<SVGSVGElement>>
+  /** Per-logo optical sizing (e.g. "h-6", "h-9") so different aspect ratios
+   *  and one- vs. two-line lockups read at a harmonious visual weight. */
+  logoClassName?: string
   className?: string
 }) {
-  // Real logos get a fixed-height slot for visual consistency across cards.
-  // The text fallback uses its natural line height so it sits tight to the
-  // role line below it (a fixed height would leave an awkward gap).
-  if (src) {
+  // Each logo sits in a fixed-height row so cards align, but the logo itself is
+  // sized per-brand (logoClassName) to normalize optical weight rather than raw
+  // SVG height — a wide wordmark and a two-line lockup need different heights to
+  // look the same size. Width is capped so nothing sprawls across the card.
+  if (Logo) {
     return (
-      <div className={cn("flex h-7 items-center", className)}>
-        <img
-          src={src}
-          alt={`${name} logo`}
-          className="h-full w-auto max-w-[160px] object-contain"
+      <div className={cn("flex h-10 items-center text-foreground", className)}>
+        <Logo
+          className={cn("w-auto max-w-[200px]", logoClassName ?? "h-6")}
+          aria-label={`${name} logo`}
         />
       </div>
     )

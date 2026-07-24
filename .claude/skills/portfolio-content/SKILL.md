@@ -54,7 +54,11 @@ Lead with the result, then earn the details. Adapt depth per project — not eve
 
 ## Voice
 
-Write in Marcel's professional register: clear, specific, confident without hype. Prefer concrete evidence over adjectives ("611 tokens adopted by ~40 developers" beats "extensive design system experience"). Match the site's language to what Marcel wants (PT/EN) — ask if unspecified. Being specific always beats being clever.
+Write in Marcel's professional register: clear, specific, confident without hype. Prefer concrete evidence over adjectives ("611 tokens adopted by ~40 developers" beats "extensive design system experience"). Being specific always beats being clever.
+
+**Site language: English** (even for Brazilian roles). **Positioning: lead with Design Systems, show he also operates as a full Product Designer;** the CS + builds-with-AI angle tempers it, it isn't the headline.
+
+**Never use a dash to join clauses.** No em dash (—), en dash (–), or hyphen used as a sentence connector anywhere in portfolio copy. It reads as AI-written and breaks the rhythm. Rewrite instead: use a period, a comma, a colon, or split into two sentences. (Hyphens inside real compound words like "design-to-code" or "end-to-end" are fine; the rule is about dashes gluing clauses together.)
 
 ## A note on library/tooling facts
 

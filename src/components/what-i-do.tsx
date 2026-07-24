@@ -35,7 +35,7 @@ const areas: Area[] = [
 
 export function WhatIDo() {
   return (
-    <section id="what-i-do" className="mx-auto max-w-5xl scroll-mt-24 px-6 py-12 sm:py-16">
+    <section id="what-i-do" className="mx-auto max-w-5xl scroll-mt-24 px-6 pt-12 sm:pt-20">
       <h2 className="text-2xl font-semibold tracking-tight text-foreground">
         What I do
       </h2>

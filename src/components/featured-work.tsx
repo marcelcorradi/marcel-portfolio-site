@@ -71,7 +71,7 @@ function Group({ label, cases }: { label: string; cases: CaseCardData[] }) {
 
 export function FeaturedWork() {
   return (
-    <section id="work" className="mx-auto max-w-5xl scroll-mt-24 px-6 py-12 sm:py-16">
+    <section id="work" className="mx-auto max-w-5xl scroll-mt-24 px-6 pt-12 sm:pt-20">
       <h2 className="text-2xl font-semibold tracking-tight text-foreground">
         Selected work
       </h2>

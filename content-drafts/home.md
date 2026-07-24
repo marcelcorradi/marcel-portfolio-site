@@ -87,8 +87,12 @@ Let's talk.
 
 ---
 
-## Home content: ALL SECTIONS APPROVED ✅ (2026-07-24)
+## Home content: ALL SECTIONS APPROVED ✅ and BUILT ✅ (2026-07-24)
 
-Next: **design the Home** with this approved content (portfolio-design skill).
+The Home is designed and live at https://marcelcorradi.github.io/marcel-portfolio-site/ .
+Components in `src/components/`: site-nav, hero-spec, featured-work (+ case-card, project-logo),
+what-i-do, contact-section, site-footer.
 
 Deferred: the full **/about** page content will be written later, when we build the About page itself (not part of the Home).
+
+Still needed to finish the portfolio: real case content (Markdown), real project logos, Marcel's hero photo, the /about page, and the individual case-page design.

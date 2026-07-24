@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "skills": {
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/find-skills/SKILL.md",
+      "computedHash": "b146008599c31057cef1c145774cea5d5afb30e8f43fa802e47a4b461419aaaf"
+    },
+    "skill-creator": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/skill-creator/SKILL.md",
+      "computedHash": "7e3c9cd74e9e2b4828527a857170e86310f2dab5ea8030a9043df2c7e6c88857"
+    },
+    "portfolio-orchestrator": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": ".claude/skills/portfolio-orchestrator/SKILL.md",
+      "computedHash": "77b1e8ebc2f69e67d035588989d52e4019afe14e91b576710c56188484780fec"
+    },
+    "portfolio-design": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": ".claude/skills/portfolio-design/SKILL.md",
+      "computedHash": "4b76bc9df6040a138487006644a2aba992a4153795bb37df264f6116e56f1c67"
+    },
+    "portfolio-content": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": ".claude/skills/portfolio-content/SKILL.md",
+      "computedHash": "73b0c4c6b0d82c5ce52ac141899b907de5395e2a3cffb1923a5b9bd0f2e77354"
+    }
+  }
+}

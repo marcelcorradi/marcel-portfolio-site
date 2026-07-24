@@ -17,8 +17,8 @@ export function HeroSpec() {
       />
 
       <div className="relative mx-auto grid max-w-5xl items-center gap-10 px-6 py-16 sm:py-28 md:grid-cols-[1.3fr_1fr]">
-        {/* Copy */}
-        <div>
+        {/* Copy — second on mobile (photo leads), first on desktop */}
+        <div className="order-2 md:order-none">
           <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-5xl">
             Marcel Corradi
           </h1>
@@ -46,8 +46,8 @@ export function HeroSpec() {
           </div>
         </div>
 
-        {/* Photo with spec annotations */}
-        <div className="justify-self-center md:justify-self-end">
+        {/* Photo with spec annotations — first on mobile, right side on desktop */}
+        <div className="order-1 justify-self-center md:order-none md:justify-self-end">
           <div className="relative">
             {/* diameter spec, top */}
             <div className="absolute -top-6 left-1/2 flex -translate-x-1/2 items-center gap-2 font-mono text-xs text-muted-foreground">

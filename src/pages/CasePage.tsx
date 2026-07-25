@@ -5,6 +5,7 @@ import { SiteNav } from "@/components/site-nav"
 import { SiteFooter } from "@/components/site-footer"
 import { CaseHeader } from "@/components/case-header"
 import { CaseContents } from "@/components/case-contents"
+import { CaseMetrics, type Metric } from "@/components/case-metrics"
 import { caseProse } from "@/components/case-prose"
 import { OnflyLogo } from "@/components/brand-logos"
 import { getCaseBySlug, getCaseSections } from "@/lib/cases"
@@ -13,6 +14,19 @@ import { getCaseBySlug, getCaseSections } from "@/lib/cases"
 const logos = {
   "onfly-design-system": { logo: OnflyLogo, className: "h-6" },
 } as const
+
+/**
+ * The figures worth reading before the prose. Kept here rather than in the
+ * Markdown so the writing stays prose and the numbers stay structured.
+ */
+const metrics: Record<string, Metric[]> = {
+  "onfly-design-system": [
+    { value: "611", label: "Design tokens", note: "primitive, semantic, component" },
+    { value: "143", label: "Components", note: "Figma library rebuilt from scratch" },
+    { value: "~40", label: "Developers", note: "plus 5 designers" },
+    { value: "44% → 98%", label: "Design system conformance", note: "AI-generated screens" },
+  ],
+}
 
 export default function CasePage() {
   const { slug } = useParams<{ slug: string }>()
@@ -45,10 +59,11 @@ export default function CasePage() {
     study.role && { label: "Role", value: study.role },
     study.timeframe && { label: "When", value: study.timeframe },
     { label: "Scope", value: study.tags.join(", ") },
-    { label: "Outcome", value: study.summary },
+    study.outcome && { label: "Outcome", value: study.outcome },
   ].filter(Boolean) as { label: string; value: string }[]
 
   const sections = getCaseSections(study.body)
+  const caseMetrics = slug ? metrics[slug] : undefined
 
   return (
     <>
@@ -65,7 +80,9 @@ export default function CasePage() {
           facts={facts}
         />
 
-        <article className="mt-12">
+        {caseMetrics && <CaseMetrics metrics={caseMetrics} />}
+
+        <article className={caseMetrics ? undefined : "mt-12"}>
           <ReactMarkdown remarkPlugins={[remarkGfm]} components={caseProse}>
             {study.body}
           </ReactMarkdown>

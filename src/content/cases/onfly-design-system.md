@@ -8,7 +8,10 @@ tags: ["Design Systems", "Design Tokens", "Design Ops", "Accessibility", "AI", "
 role: "Senior Product Designer, Design System"
 timeframe: "Sep 2025 to Jul 2026"
 company: "Onfly"
+outcome: "611 tokens and 143 components, adopted by 5 designers and around 40 developers"
 ---
+
+## In short
 
 Onfly is a Brazilian B2B platform for corporate travel management. When I joined as Senior Product Designer in September 2025, the design system was not missing. It was orphaned.
 

@@ -14,7 +14,7 @@ export interface Metric {
  */
 export function CaseMetrics({ metrics }: { metrics: Metric[] }) {
   return (
-    <div className="my-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="my-12 grid gap-3 sm:grid-cols-2">
       {metrics.map((metric) => (
         <Card key={metric.label} size="sm">
           <CardContent>

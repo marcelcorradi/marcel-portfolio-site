@@ -12,6 +12,11 @@ export interface CaseFrontmatter {
   timeframe?: string
   /** Client or employer the work was done for. Drives the header's brand logo. */
   company?: string
+  /**
+   * One-line result for the header's scope block. Shorter and harder than
+   * `summary`, which is the narrative line the cards and the feed use.
+   */
+  outcome?: string
 }
 
 export interface CaseStudy extends CaseFrontmatter {

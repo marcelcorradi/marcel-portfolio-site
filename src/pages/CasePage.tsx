@@ -4,9 +4,10 @@ import remarkGfm from "remark-gfm"
 import { SiteNav } from "@/components/site-nav"
 import { SiteFooter } from "@/components/site-footer"
 import { CaseHeader } from "@/components/case-header"
+import { CaseContents } from "@/components/case-contents"
 import { caseProse } from "@/components/case-prose"
 import { OnflyLogo } from "@/components/brand-logos"
-import { getCaseBySlug } from "@/lib/cases"
+import { getCaseBySlug, getCaseSections } from "@/lib/cases"
 
 /** Brand logos by slug, so the header matches the card the reader clicked. */
 const logos = {
@@ -47,9 +48,12 @@ export default function CasePage() {
     { label: "Outcome", value: study.summary },
   ].filter(Boolean) as { label: string; value: string }[]
 
+  const sections = getCaseSections(study.body)
+
   return (
     <>
       <SiteNav />
+      <CaseContents sections={sections} />
 
       {/* pt clears the fixed nav pill */}
       <main className="mx-auto max-w-2xl px-6 pb-24 pt-28 sm:pt-32">

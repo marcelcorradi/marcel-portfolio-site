@@ -88,3 +88,67 @@ export function getAllCases(): CaseStudy[] {
 export function getCaseBySlug(slug: string): CaseStudy | undefined {
   return allCases.find((c) => c.slug === slug)
 }
+
+export interface CaseSection {
+  /** Heading text as written in the markdown. */
+  title: string
+  /** Anchor id, matching what react-markdown/rehype generates. */
+  id: string
+  /**
+   * Share of the case's body this section takes up, 0 to 1, relative to the
+   * longest section. Lets the contents render as a map of the document rather
+   * than a flat list.
+   */
+  weight: number
+}
+
+/**
+ * Slugify a heading into an anchor id.
+ * Shared by the contents list and the rendered headings so the two always agree.
+ */
+export function slugifyHeading(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-")
+}
+
+/**
+ * The `## ` headings of a case body, for the on-page table of contents.
+ * Read from the Markdown itself so the contents stay in sync with the writing.
+ * Fenced code blocks are skipped so a `#` comment inside one is never a heading.
+ */
+export function getCaseSections(body: string): CaseSection[] {
+  const found: { title: string; id: string; words: number }[] = []
+  let inFence = false
+
+  for (const line of body.split(/\r?\n/)) {
+    if (/^\s*(```|~~~)/.test(line)) {
+      inFence = !inFence
+      continue
+    }
+    if (inFence) continue
+
+    const match = /^##\s+(.+?)\s*$/.exec(line)
+    if (match) {
+      const title = match[1].replace(/\s*#+\s*$/, "")
+      found.push({ title, id: slugifyHeading(title), words: 0 })
+      continue
+    }
+
+    // Everything before the first heading belongs to the hook, which has no
+    // heading of its own, so it is not counted against any section.
+    if (found.length > 0 && line.trim()) {
+      found[found.length - 1].words += line.trim().split(/\s+/).length
+    }
+  }
+
+  const longest = Math.max(...found.map((s) => s.words), 1)
+
+  return found.map(({ title, id, words }) => ({
+    title,
+    id,
+    weight: words / longest,
+  }))
+}

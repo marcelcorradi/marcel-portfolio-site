@@ -1,4 +1,13 @@
+import type { ReactNode } from "react"
 import type { Components } from "react-markdown"
+import { slugifyHeading } from "@/lib/cases"
+
+/** Flatten a heading's children back to text, to derive its anchor id. */
+function headingText(children: ReactNode): string {
+  if (typeof children === "string") return children
+  if (Array.isArray(children)) return children.map(headingText).join("")
+  return ""
+}
 
 /**
  * How markdown renders inside a case.
@@ -8,8 +17,11 @@ import type { Components } from "react-markdown"
  * utilities the Home uses. One source of truth, reused by every case.
  */
 export const caseProse: Components = {
+  // The id is what the table of contents links to, derived from the heading
+  // text with the same slug rule the contents list uses.
   h2: ({ children, ...props }) => (
     <h2
+      id={slugifyHeading(headingText(children))}
       className="mt-16 scroll-mt-28 text-2xl font-semibold tracking-tight text-foreground"
       {...props}
     >

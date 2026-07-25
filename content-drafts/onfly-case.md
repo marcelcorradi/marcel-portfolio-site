@@ -450,7 +450,7 @@ Two decisions in the foundation are worth naming. Desktop and mobile are modes o
 
 The scale is mostly built on multiples of four, with exceptions. There are values like 38 and 108 in it because specific parts of the product needed them. I could have forced those cases onto the nearest step and had a cleaner system that people worked around. A foundation nobody adopts is not a foundation.
 
-Altogether it came to 611 tokens, and on top of them a Figma library rebuilt from scratch: 143 components and 2,490 variants, with named layers, auto layout, and slot-based structure. The variant count is high by design. A variant is a combination the system anticipates, a state crossed with a size crossed with a type, which is the opposite of the 102 typographic variants the audit found: those were combinations nobody had decided. The old library was not restructured. Its crafting could not carry a token architecture, and rebuilding cost less than repairing.
+Altogether it came to 611 tokens, and on top of them a Figma library rebuilt from scratch: 143 components with named layers, auto layout, and slot-based structure. The old library was not restructured. Its crafting could not carry a token architecture, and rebuilding cost less than repairing.
 
 **Images this section needs (collect in Phase 2):**
 1. Figma Variables panel showing the collections and the semantic → primitive reference — *this is
@@ -462,6 +462,10 @@ Altogether it came to 611 tokens, and on top of them a Figma library rebuilt fro
 
 ## Writing rules in force
 
+- **Do NOT cite the variant count (2,490).** Marcel's decision, 2026-07-25: the case mentions the
+  **143 components** only. This applies to every section, including results. Note the Home page card
+  in `src/components/featured-work.tsx` does not cite variants either, so they stay consistent. (The
+  CV does cite 2,490; that is fine, it is a different document.)
 - **No dashes joining clauses.** No em dash, en dash, or hyphen as a sentence connector. Hyphens
   inside real compounds ("design-to-code", "slot-based") are fine.
 - English copy, even though Marcel and Claude discuss it in Portuguese.

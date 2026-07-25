@@ -128,5 +128,10 @@
     }
   html {
     @apply font-sans;
+    /* Tells the browser to render scrollbars and form controls to match. */
+    color-scheme: light;
+    }
+  html.dark {
+    color-scheme: dark;
     }
 }

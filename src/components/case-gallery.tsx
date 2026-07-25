@@ -30,7 +30,7 @@ export function CaseGallery({ items }: { items: GalleryItem[] }) {
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
   const [height, setHeight] = useState<number>()
-  const slideRefs = useRef<(HTMLDivElement | null)[]>([])
+  const slideRefs = useRef<(HTMLElement | null)[]>([])
 
   // The screenshots differ in height, so the frame follows the active slide
   // instead of every slide stretching to the tallest one.

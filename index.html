@@ -29,6 +29,18 @@
         }
       })();
     </script>
+    <script type="text/javascript">
+      // Applies the theme before first paint, so the page never flashes light
+      // before React mounts. Dark is the default; a stored choice wins.
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          if (stored !== "light") document.documentElement.classList.add("dark");
+        } catch (e) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

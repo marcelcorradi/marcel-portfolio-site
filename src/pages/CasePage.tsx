@@ -21,6 +21,7 @@ import colorsImg from "@/assets/cases/onfly/audit-colors.webp"
 import spacingImg from "@/assets/cases/onfly/audit-spacing.webp"
 import inventoryImg from "@/assets/cases/onfly/component-inventory.webp"
 import { CaseGallery } from "@/components/case-gallery"
+import { CaseFooterNav } from "@/components/case-footer-nav"
 import tokensBrandImg from "@/assets/cases/onfly/tokens-1.webp"
 import tokensThemeImg from "@/assets/cases/onfly/tokens-2.webp"
 import buttonImg from "@/assets/cases/onfly/Button.webp"
@@ -333,6 +334,8 @@ export default function CasePage() {
             </div>
           ))}
         </article>
+
+        <CaseFooterNav />
       </main>
 
       <SiteFooter />

@@ -3,13 +3,15 @@ import { Moon, Sun } from "lucide-react"
 
 type Theme = "light" | "dark"
 
+/**
+ * Dark is the site's default. A visitor's own choice is remembered, but the
+ * system preference does not decide: the work is presented on dark.
+ */
 function getInitialTheme(): Theme {
-  if (typeof window === "undefined") return "light"
+  if (typeof window === "undefined") return "dark"
   const stored = localStorage.getItem("theme")
   if (stored === "light" || stored === "dark") return stored
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light"
+  return "dark"
 }
 
 export function ThemeToggle() {

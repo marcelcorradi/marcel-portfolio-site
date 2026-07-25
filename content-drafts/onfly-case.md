@@ -364,9 +364,25 @@ stops and calls a person. That is judgment about autonomy, not just automation.*
 `components-catalog.md`, `framework-overview.md`, `patterns.md`, plus `scripts/new_screen.py`,
 `update_framework.py`, `setup_sandbox.sh` and a Quasar sandbox template) and `design-discovery`.
 
-⚠️ Still to confirm with Marcel: **what "paperclip" is** (internal agent platform at Onfly?), and
-whether the JSON→SCSS token conversion lives in this repo or elsewhere. Do not describe that
-mechanism until confirmed.
+**What Paperclip is (confirmed by web search + Marcel):** an open-source multi-agent orchestration
+platform, launched March 2026, that organizes AI agents into a company structure: org chart,
+reporting lines, budgets, approval workflows, and audit trails. It supports Claude Code, OpenClaw,
+Codex, Cursor, and any HTTP-reachable agent. Agents wake on a schedule, check a work queue, and act
+asynchronously.
+Source: https://github.com/paperclipai/paperclip
+
+*This reframes section 5 and it is worth stating plainly: Onfly ran agents from several teams on
+Paperclip, and **Marcel was the one responsible for building the design agent**. He represented
+design in an autonomous multi-agent ecosystem alongside product and engineering agents. It also
+explains architectural choices that looked like personal preference: the message envelope, the
+version-controlled run folder as audit trail, and the human approval gates are Paperclip's model.*
+
+**JSON→SCSS conversion — do NOT describe the implementation.** Marcel confirmed it lived in a
+separate project that was later merged into the framework's codebase, updated through a skill inside
+that framework repo. **He no longer has that repo**, so it cannot be verified. The agent repo only
+*consumes* the framework, which already carries the tokens. Write the mechanism at the level he
+confirmed (Figma Variables → JSON export → agent conversion → SCSS consumed by the Quasar framework)
+and claim nothing about how the script worked internally.
 
 ## Organizational context — HOW TO HANDLE (Marcel's decision: "condition yes, criticism no")
 
@@ -405,9 +421,10 @@ where that argument gets won, and a recruiter only ever hears one side.
 | 2 | **Starting with people, not screens** | Stakeholder interviews, insight categorization, the dashboard. Also carries the framework-vs-Figma decision moved out of the hook. |
 | 3 | **Audit and inventory** | The audit (Design Audit born here), component inventory, screen-flow map in Figma, the 23% WCAG baseline. |
 | 4 | **The token architecture** | 611 tokens, primitive → semantic → component, the new Figma library. |
-| 5 | **Building the bridge** | Figma Variables → JSON → agents → SCSS in Quasar, plus the other AI agents. |
-| 6 | **Adoption without a dedicated team** | Negotiating with product/dev/engineering, Design Ops, governance. *This is where his seniority shows.* |
-| 7 | **Results & reflection** | Adoption numbers, what he learned, what he would do differently. |
+| 5 | **Closing the loop between Figma and code** | Figma Variables → JSON → SCSS in Quasar. Fecha o arco do hook. **APPROVED** |
+| 6 | **The design agent** | The Paperclip multi-agent pipeline and the 44% → 98% benchmark. *Split from section 5 by Marcel's decision, 2026-07-25, so each subject gets room.* |
+| 7 | **Adoption without a dedicated team** | Negotiating with product/dev/engineering, Design Ops, governance. *This is where his seniority shows.* |
+| 8 | **Results & reflection** | Adoption numbers, what he learned, what he would do differently. |
 
 ---
 
@@ -512,6 +529,32 @@ Altogether it came to 611 tokens, and on top of them a Figma library rebuilt fro
    the visual that proves the architecture*
 2. Optionally a code snippet rendering `spacing.stack.md = {scale.16}` from the exported JSON
 3. A shot of the component library itself (the 143 components) would help the closing paragraph land
+
+---
+
+## Section 5 — Closing the loop between Figma and code (APPROVED)
+
+## Closing the loop between Figma and code
+
+A token architecture in Figma is a document. It becomes a system when the code is reading from it.
+
+That was the gap I had been hired into. The framework and the library had never been connected, so every change in one was a manual promise to update the other, and promises like that hold for about a sprint.
+
+The tokens live as Figma Variables, which means they export as structured JSON rather than as a screenshot of a decision. From there they pass through a conversion step that turns them into the SCSS the Quasar components consume. A designer changes a semantic token in Figma, and the value reaches the components without anyone retyping it.
+
+What that removes is not typing. It is drift. Before, a color changed in Figma and stayed changed in Figma, while the product kept shipping the old value until someone noticed, filed it, and a developer found time. The gap between the two was never a decision anyone made. It was just the cost of them being separate files.
+
+This is the part of the project I am most satisfied with, and it is also the part that most depended on my background. I built the conversion as a skill with a script, then took it to a developer, who improved it and organized it properly inside the framework's codebase before it shipped there. I could not have merged it alone, and I did not need to. What mattered is that the conversation started from something that already ran, instead of from a request for someone else to build it. That is the kind of task that otherwise waits for a developer to have capacity, which in practice means it waits.
+
+**Images this section needs (collect in Phase 2):**
+1. A flow diagram: Figma Variables → JSON → conversion → SCSS → Quasar components. Likely does not
+   exist yet and is a strong candidate to design in Phase 2, since it is the case's central concept.
+
+**Note on attribution (Marcel confirmed):** he wrote the skill and the script, aligned with a
+developer who improved the script and its organization, and that developer shipped it into the
+framework. The case says this plainly. It reads better than a lone-designer story: it shows someone
+who operates inside an engineering team rather than around it, which is what "constant alignment with
+engineering" in the CV actually looked like.
 
 ---
 

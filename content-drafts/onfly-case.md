@@ -9,6 +9,10 @@ Final output goes to `src/content/cases/onfly-design-system.md`.
 **Phase 2**, when the page is actually built, not now. Each section below records which visual it
 calls for so nothing is lost.
 
+➡️ **The export checklist lives at [`src/assets/cases/onfly/README.md`](../src/assets/cases/onfly/README.md)** —
+exact filenames, priority order, sizes, and the privacy warning about the component-inventory slide.
+Drop the files in that folder.
+
 ---
 
 ## Facts Marcel confirmed (not in the CV — do not lose these)

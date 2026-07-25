@@ -192,6 +192,71 @@ source, in his own specialty, is the worst possible thing to be asked about in a
 origin, consider correcting it there too. The CV is what passes recruiter screening, so an
 indefensible number carries more risk there than on the site.
 
+## Component inventory — verified from the deck slide "Componentes encontrados"
+
+- **40 component types on web**, **14 component types on app**
+- **"Types", not instances.** Marcel was explicit: a button counts as one type even though it had
+  many variations scattered across the product. He did not measure the variation count per type, so
+  **do not claim a number of variants found**. Write "types".
+- Marcel's own methodological caveat, stated on the slide and worth keeping in the case: only the
+  **main screens** of web and app were analyzed, so the real total is likely higher.
+
+**The slide's right-hand image is the strongest visual evidence in the whole case.** It shows the
+buttons found in the product side by side: blue, green, purple, yellow, red, grey, each with a
+different corner radius, height, and type treatment, some uppercase and some not. It needs no
+caption. Anyone opening the case understands the inconsistency in two seconds. **Mandatory figure
+for Phase 2.**
+
+⚠️ **PRIVACY — this slide contains real names.** The approval-timeline component in the lower middle
+shows real people's names (approvers in the flow). **Blur or crop them before publishing.**
+
+## Foundations audit — verified numbers from the deck (THE strongest evidence in the case)
+
+Benchmark set: **Travelperk, Navan, TripBiz, Expensify**. Marcel's summary: all of them were better
+than Onfly on several fronts. The benchmark is not presentation context, it is **a yardstick**. It
+turns "it was messy" into "it was messy against a verifiable market standard".
+
+**Typography** (slide "ANÁLISE FOUNDATIONS — Tipografia"):
+- Onfly had **102 typographic variants**. Travelperk had **17**. Expensify had **39**.
+- Onfly used **2 main families (Poppins and Rubik) with no clear hierarchy**.
+- Better-structured competitors used **1 family with a consistent modular system**.
+- *102 vs 17 is the single most damning comparison in the deck: six times the complexity to solve the
+  same product problem.*
+
+**Color** (slide "ANÁLISE FOUNDATIONS — Cores"):
+- **60 colors with no clear organization**
+- **16 greys** (Travelperk uses 7)
+- **13 blues with no defined purpose**
+- Near-identical colors coexisting (the slide shows e.g. #007DC7, #007BD4, #009EFB, #1E88E5, #2196F3)
+
+**Spacing** (slide "ANÁLISE FOUNDATIONS — Espaçamentos"):
+- **101 unique spacing values** (Travelperk has 44)
+- No standard across margins, paddings and gaps (41 margin values, 52 padding values shown)
+- **Arbitrary values like 4.8px, 6.4px, 14.69px, 13.86px, 44.06px** with no discernible scale
+
+⚠️ **Do NOT claim the decimal values were set by hand.** Marcel flagged this himself: they may well
+come from unit conversion (rem to px with a non-integer root font size) or from computed layout in
+the generated HTML, not from someone nudging pixels. The slide's padding values (2.28px = 0.142rem,
+3.42px = 0.214rem) support the conversion theory. **Write the dispersion as the finding and the cause
+as a possibility.** A developer reading a confident wrong diagnosis here would discount the whole
+case, and developers are exactly the audience this section needs to convince.
+
+**These three slides are excellent figures for Phase 2** and contain no private data (unlike the
+component inventory slide, which has real names in the timeline component).
+
+## Why Design Audit was born here (Marcel's own words, worth preserving)
+
+He needed to audit colors, typography, icons, spacing, grids, and accessibility **in an automated
+way, and no tool did that.** The manual alternative was picking every color one by one and saving
+them into a Figma file just to have an inventory — days of work for data a tool could collect in
+minutes.
+
+So he built it. **That tool became Design Audit, which he now sells as a product** (published on the
+Chrome Web Store). The Onfly audit is literally its origin story.
+
+*This is the single best proof of the case's thesis: he hits a wall, builds the instrument, and the
+instrument becomes a product. Give it room in section 3.*
+
 ## Organizational context — HOW TO HANDLE (Marcel's decision: "condition yes, criticism no")
 
 Marcel chose to describe **the condition** but not to criticize people or narrate his exit.
@@ -272,6 +337,42 @@ The dashboard closed with the part I cared about most: each recommendation tied 
 2. Deck slide "O que o time sente?" (482 insights, type distribution, the 36% / 54% figures) — *highest value if only one*
 3. Screenshot of the dashboard's "Panorama final" screen (recommendations tied to evidence). Run it
    locally: `ruby scripts/extract_data.rb`, then open `index.html`.
+
+---
+
+## Section 3 — What the audit found (APPROVED, pending Marcel's final read)
+
+## What the audit found
+
+The interviews told me what the team felt. The next step was measuring what was actually there.
+
+I audited the foundations of the product against four competitors: Travelperk, Navan, TripBiz, and Expensify. That comparison mattered more than an internal count would have. It is easy to dismiss a designer saying the product is inconsistent. It is harder to dismiss a number sitting next to the same number from a company solving the same problem.
+
+The typography came back at 102 distinct variants. Travelperk was running 17. Onfly was carrying two type families, Poppins and Rubik, with no hierarchy deciding when to use which, while the better-structured competitors used one family on a modular scale.
+
+Color told the same story: 60 colors with no organization, among them 16 greys where Travelperk used 7, and 13 blues with no defined purpose. Several were nearly identical to each other, different enough to be separate values and not different enough for anyone to see why.
+
+Spacing was the clearest signal. 101 unique values against Travelperk's 44, spread across margins, paddings, and gaps with no standard between them. Some were values no one would type on purpose, like 4.8px or 14.69px, which most likely came out of unit conversion or computed layout rather than someone's hand. That distinction mattered less than the dispersion itself. Whatever produced them, there was no scale underneath for anything to land on.
+
+I also inventoried the components on the main screens of web and app, and found 40 component types on web and 14 on app. Types, not instances: a button counted once, however many versions of it existed. Side by side, those versions did not agree on color, on corner radius, on height, or on whether labels were uppercase.
+
+Then I ran an automated accessibility audit. The home page returned 26% compliance with WCAG 2.1 A and AA: 49 violations against 17 passing criteria.
+
+None of this was anyone's fault. It is what accumulates when a product ships for years without a system underneath, and every one of those 102 type variants was once a reasonable local decision.
+
+Auditing at this level is normally where a designer's time disappears. Collecting every color in a product means opening screen after screen, sampling values by hand, and pasting them into a Figma file until you have something resembling an inventory. It takes days, and it is out of date the moment you finish.
+
+I did not have days, so I built a tool that could do it in minutes: colors, typography, icons, spacing, grids, and accessibility, collected automatically from any interface. It started as a way to survive the Onfly audit. It is now Design Audit, published on the Chrome Web Store.
+
+One caveat I kept in the report and keep here: I audited the main screens, not every screen. The real numbers were larger than the ones I measured.
+
+**Images this section needs (collect in Phase 2):**
+1. Deck slide "Tipografia" (102 variants vs Travelperk 17 / Expensify 39)
+2. Deck slide "Cores" (the 60-color grid) — *visually the most immediate*
+3. Deck slide "Espaçamentos" (101 values, the decimal ones visible)
+4. Deck slide "Componentes encontrados" — **the button row is the best single image in the case**,
+   but ⚠️ blur the real names in the approval-timeline component first
+5. Deck slide "Página inicial" accessibility (26%, 49 violations, 17 passing)
 
 ---
 

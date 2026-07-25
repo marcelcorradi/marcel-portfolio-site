@@ -244,6 +244,57 @@ case, and developers are exactly the audience this section needs to convince.
 **These three slides are excellent figures for Phase 2** and contain no private data (unlike the
 component inventory slide, which has real names in the timeline component).
 
+## Token architecture — VERIFIED from the real exported files
+
+Source: `assets/tokens-onfly/` in this repo (exported from Figma Variables). Counted directly.
+
+**The 611 figure in the CV is correct and now provable:**
+- Raw leaf tokens across all files: **718**
+- Minus Figma *styles* (not variables): text.styles 25, effect.styles 12, grid.styles 3 = **40**
+- Minus mode duplication: Layout and Grid each ship Desktop + Mobile files with **identical token
+  names** (confirmed programmatically, and the manifest declares them as modes of one collection),
+  so Mobile repeats 43 + 24 = **67**
+- **718 − 40 − 67 = 611.** Exactly the CV number.
+- *If anyone asks where 611 comes from, this is the answer.*
+
+**The three-tier architecture, with the real file names:**
+
+| Tier | Files | Count | What's in it |
+|---|---|---|---|
+| **Primitive** | `Brand.Value` | 136 | 105 colors + 31 typography |
+| **Primitive** | `Foundation.Value` | 37 | all under `scale.*` — the base scale |
+| **Semantic** | `Theme.Light` | 118 | all color |
+| **Semantic** | `Layout` (Desktop/Mobile modes) | 43 | spacing 27, border 12, size 4 |
+| **Semantic** | `Grid` (Desktop/Mobile modes) | 24 | grid |
+| **Semantic** | `Typography.Value` | 101 | label 36, heading 25, body 24, display 12, caption 4 |
+| **Semantic** | `Effects.Mode 1` | 80 | drop-shadow |
+| **Component** | `Components.Value` | 72 | avatar 11, chip-close-button 10, bottom-bar 10, icon-shape 7, button 5, chip 5, metrics-card 5, switch 4, skeleton 4, step-indicator 3, carousel-indicator 2, focus-ring 1 |
+
+**By value type:** dimension 348, color 300, string 26, typography 25, shadow 12, boolean 4, grid 3.
+
+**The primitive→semantic reference is real and visible in the files:**
+`spacing.stack.md = {scale.16}` — the semantic token does not hold a value, it points at the
+primitive. Same for every spacing token. This is the pattern Marcel builds professionally and the
+site's own indigo tokens model. Worth showing as a code snippet in the case.
+
+**The before/after that closes the arc opened in section 3:**
+- Audit found **101 arbitrary spacing values**.
+- The architecture delivers **7 semantic steps** (none, 2xs, xs, sm, md, lg, xl) across **3
+  directional axes**: `spacing.stack.*` (vertical), `spacing.inline.*` (horizontal),
+  `spacing.inset.*` (padding, which goes further: none → 4xl). Plus contextual tokens like
+  `spacing.context.screen.horizontal-padding`.
+- All integers, all anchored to `Foundation.scale.*`.
+
+**Details worth naming in the case (systems designers notice these):**
+- `spacing.stack` vs `spacing.inline` vs `spacing.inset` = directional semantics, not a flat scale
+- `focus-ring` exists as its own component token = accessibility treated as system, not afterthought
+- Desktop/Mobile as **modes** of one collection = responsive handled by the token layer, not by
+  duplicated components
+
+⚠️ **Open question for Marcel:** the base scale is mostly 4-based but includes `scale.38`,
+`scale.108`, `scale.112`, `scale.999` and negatives (`scale.-1` to `scale.-12`). Was that to
+accommodate legacy product cases, or is there another reason? Do not guess in the copy.
+
 ## Why Design Audit was born here (Marcel's own words, worth preserving)
 
 He needed to audit colors, typography, icons, spacing, grids, and accessibility **in an automated

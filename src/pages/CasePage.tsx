@@ -11,15 +11,23 @@ import { caseProse } from "@/components/case-prose"
 import { OnflyLogo } from "@/components/brand-logos"
 import { getCaseBySlug, getCaseSections } from "@/lib/cases"
 import { CaseFigure } from "@/components/case-figure"
-import contrastImg from "@/assets/cases/onfly/acessibilidade1-imageonly.png"
-import carouselImg from "@/assets/cases/onfly/acessibilidade3-imageonly.png"
-import altTextImg from "@/assets/cases/onfly/acessibilidade4-imageonly.png"
-import insightsImg from "@/assets/cases/onfly/research-insights.png"
-import panoramaImg from "@/assets/cases/onfly/interview-panorama.png"
-import typographyImg from "@/assets/cases/onfly/audit-typography.png"
-import colorsImg from "@/assets/cases/onfly/audit-colors.png"
-import spacingImg from "@/assets/cases/onfly/audit-spacing.png"
-import inventoryImg from "@/assets/cases/onfly/component-inventory.png"
+import contrastImg from "@/assets/cases/onfly/acessibilidade1-imageonly.webp"
+import carouselImg from "@/assets/cases/onfly/acessibilidade3-imageonly.webp"
+import altTextImg from "@/assets/cases/onfly/acessibilidade4-imageonly.webp"
+import insightsImg from "@/assets/cases/onfly/research-insights.webp"
+import panoramaImg from "@/assets/cases/onfly/interview-panorama.webp"
+import typographyImg from "@/assets/cases/onfly/audit-typography.webp"
+import colorsImg from "@/assets/cases/onfly/audit-colors.webp"
+import spacingImg from "@/assets/cases/onfly/audit-spacing.webp"
+import inventoryImg from "@/assets/cases/onfly/component-inventory.webp"
+import { CaseGallery } from "@/components/case-gallery"
+import tokensBrandImg from "@/assets/cases/onfly/tokens-1.webp"
+import tokensThemeImg from "@/assets/cases/onfly/tokens-2.webp"
+import buttonImg from "@/assets/cases/onfly/Button.webp"
+import textInputImg from "@/assets/cases/onfly/Text-input.webp"
+import metricsCardImg from "@/assets/cases/onfly/Metrics-card.webp"
+import chipImg from "@/assets/cases/onfly/Chip.webp"
+import avatarImg from "@/assets/cases/onfly/Avatar.webp"
 
 /** Brand logos by slug, so the header matches the card the reader clicked. */
 const logos = {
@@ -217,6 +225,70 @@ export default function CasePage() {
                   />
                 ))}
               </>
+            ),
+          },
+          {
+            anchor: "for cases where a specific part needs its own decision.",
+            node: (
+              <CaseFigure
+                src={tokensBrandImg}
+                alt="The Figma Variables panel showing the collections: Brand 136, Foundation 37, Theme 118, Layout 43, Typography 101, Effects 80 and Grid 24, with the brand colour scale from 50 to 950."
+                caption="The primitive layer. Each collection holds raw values, with the brand colour running 50 to 950."
+              />
+            ),
+          },
+          {
+            anchor: "everyone after had copied.",
+            node: (
+              <CaseFigure
+                src={tokensThemeImg}
+                alt="The Theme collection in Figma, where semantic tokens like brand-solid, error-subtle-1 and disabled-subtle resolve to primitive values such as color/brand/500 and color/danger/50."
+                caption="The semantic layer, pointing back at the primitives. `brand-solid` is not a hex, it is a reference to `color/brand/500`."
+              />
+            ),
+          },
+          {
+            anchor: "rebuilding cost less than repairing.",
+            node: (
+              <CaseGallery
+                items={[
+                  {
+                    src: buttonImg,
+                    title: "Button.",
+                    caption:
+                      "Four styles across five intents, five states and three sizes, in both orientations. This is the same component the audit found scattered in eight unrelated versions.",
+                    alt: "The button component in Figma: a large matrix of solid, light, outlined and text styles crossed with primary, success, warning, danger and info intents, each in enabled, focused, hovered, pressed and disabled states, at three sizes.",
+                  },
+                  {
+                    src: textInputImg,
+                    title: "Text input.",
+                    caption:
+                      "Seven states at three sizes. The focus ring is its own token, so every field in the product treats focus the same way.",
+                    alt: "The text input component showing empty, active, filled, error, success, disabled and read-only states at large, medium and small sizes.",
+                  },
+                  {
+                    src: metricsCardImg,
+                    title: "Metrics card.",
+                    caption:
+                      "The semantic intents applied to a composite component: brand, info, success, warning and danger, each across three states.",
+                    alt: "The metrics card component in brand, info, success, warning and danger variants, each shown enabled, hovered and selected.",
+                  },
+                  {
+                    src: chipImg,
+                    title: "Chip.",
+                    caption:
+                      "Composition in practice. The close button inside it carries its own component tokens rather than inheriting the chip's.",
+                    alt: "The chip component and its variants, including the version with a close button.",
+                  },
+                  {
+                    src: avatarImg,
+                    title: "Avatar.",
+                    caption:
+                      "The component with the most dedicated tokens in the system, covering sizes, fallbacks and grouping.",
+                    alt: "The avatar component across its sizes and fallback treatments.",
+                  },
+                ]}
+              />
             ),
           },
         ]

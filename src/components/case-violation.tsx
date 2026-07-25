@@ -1,4 +1,5 @@
 import { Check, X } from "lucide-react"
+import { CaseImage } from "@/components/case-image"
 
 export interface Violation {
   /** WCAG success criterion, e.g. "1.4.3 AA". */
@@ -38,12 +39,14 @@ export function CaseViolation({
       </p>
       <p className="mt-1 text-foreground">{requirement}</p>
 
-      <img
-        src={image}
-        alt={alt}
-        loading="lazy"
-        className="mt-5 w-full rounded-xl border border-border bg-white p-4"
-      />
+      <div className="mt-5">
+        <CaseImage
+          src={image}
+          alt={alt}
+          title={`WCAG ${criterion}: ${requirement}`}
+          className="p-4"
+        />
+      </div>
 
       <dl className="mt-5 space-y-3 text-sm">
         <div className="flex gap-3">

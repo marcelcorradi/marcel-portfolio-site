@@ -7,6 +7,7 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel"
+import { CaseImage } from "@/components/case-image"
 import { cn } from "@/lib/utils"
 
 export interface GalleryItem {
@@ -75,13 +76,13 @@ export function CaseGallery({ items }: { items: GalleryItem[] }) {
                   slideRefs.current[index] = node
                 }}
               >
-                <img
+                <CaseImage
                   src={item.src}
                   alt={item.alt}
+                  title={item.title}
                   // The first slide is measured on mount, so it must not wait.
-                  loading={index === 0 ? "eager" : "lazy"}
+                  eager={index === 0}
                   onLoad={() => index === current && measure(index)}
-                  className="w-full rounded-xl border border-border bg-white"
                 />
                 <figcaption className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   <span className="font-medium text-foreground">{item.title}</span>{" "}

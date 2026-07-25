@@ -1,3 +1,5 @@
+import { CaseImage } from "@/components/case-image"
+
 interface CaseFigureProps {
   src: string
   /** Describes the image for screen readers. Required: the figures carry evidence. */
@@ -16,12 +18,7 @@ interface CaseFigureProps {
 export function CaseFigure({ src, alt, caption }: CaseFigureProps) {
   return (
     <figure className="my-10">
-      <img
-        src={src}
-        alt={alt}
-        loading="lazy"
-        className="w-full rounded-xl border border-border"
-      />
+      <CaseImage src={src} alt={alt} title={caption} />
       {caption && (
         <figcaption className="mt-3 text-sm leading-relaxed text-muted-foreground">
           {caption}

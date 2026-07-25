@@ -165,6 +165,33 @@ in September 2025).
 internal interviews. **Only aggregates go in the portfolio.** No names, no quotes, no titles tied to
 individuals. Do not copy the data files into the portfolio repo.
 
+## Accessibility numbers — IMPORTANT, do not get this wrong
+
+**The audit was run with Marcel's own Design Audit plugin** (he confirmed this; the deck also lists
+Silktide under the audit scope, but the WCAG figure came from Design Audit).
+
+**Verified from the deck slide "ACESSIBILIDADE — Página inicial":**
+- **26% compliance with WCAG 2.1 A and AA** on the **home page**
+- **49 violations** against **17 passing criteria** (17/66 = 25.8%, rounds to 26%, internally consistent)
+- Only the home page was presented in the deck, for time reasons
+
+**The CV claims a "23% WCAG compliance baseline" for the product. That number is NOT verifiable right
+now** — Marcel does not remember its origin, and the only evidence available says 26% for the home
+alone. Those are different scopes.
+
+**DECISION (2026-07-25): use the 26% home-page figure with its scope stated explicitly.** Write that
+the automated audit of the home page returned 26% compliance with WCAG 2.1 A and AA, 49 violations
+against 17 passing criteria. It is specific, verifiable, and Marcel can defend it in an interview.
+The reader infers the rest of the product was no better. Do NOT write the unverifiable 23%, and do
+NOT claim a product-wide baseline.
+
+*Why this matters more than usual: accessibility is Marcel's declared specialty. A number he cannot
+source, in his own specialty, is the worst possible thing to be asked about in an interview.*
+
+**Follow-up for Marcel (not urgent, outside this case):** if the 23% in the CV has no traceable
+origin, consider correcting it there too. The CV is what passes recruiter screening, so an
+indefensible number carries more risk there than on the site.
+
 ## Organizational context — HOW TO HANDLE (Marcel's decision: "condition yes, criticism no")
 
 Marcel chose to describe **the condition** but not to criticize people or narrate his exit.
@@ -188,8 +215,7 @@ where that argument gets won, and a recruiter only ever hears one side.
    used the old one? How was that handled? (Material for the adoption section.)
 4. **Cover image:** does he have a screenshot of the new Figma component library, or of the Figma ↔
    code sync? Needed for the hook/cover.
-5. **The 23% WCAG baseline:** the deck mentions Silktide for automated accessibility testing. Confirm
-   whether the 23% figure came from Silktide, from Design Audit, or from both combined.
+5. ~~The 23% WCAG baseline: Silktide or Design Audit?~~ **RESOLVED — see accessibility note below.**
 6. **Dashboard link:** it is back online. Decide whether to link it publicly from the case (it would be
    strong evidence) or only screenshot it.
 

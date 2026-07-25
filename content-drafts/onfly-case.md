@@ -291,9 +291,14 @@ site's own indigo tokens model. Worth showing as a code snippet in the case.
 - Desktop/Mobile as **modes** of one collection = responsive handled by the token layer, not by
   duplicated components
 
-⚠️ **Open question for Marcel:** the base scale is mostly 4-based but includes `scale.38`,
-`scale.108`, `scale.112`, `scale.999` and negatives (`scale.-1` to `scale.-12`). Was that to
-accommodate legacy product cases, or is there another reason? Do not guess in the copy.
+**The scale's exceptions are deliberate.** It is mostly 4-based, but carries `scale.38`, `scale.108`,
+`scale.112`, `scale.999` and negatives (`scale.-1` to `scale.-12`). Marcel confirmed: those exist for
+**specific product contexts that needed those numbers**.
+
+**DECIDED by Marcel (2026-07-25): keep the paragraph in section 4.** He questioned it, Claude
+recommended moving it to section 7, and he chose to keep it as written: "fica legal ser específico
+assim". Being specific is consistent with the rest of the case, which is anchored in concrete numbers
+and decisions throughout.
 
 ## Why Design Audit was born here (Marcel's own words, worth preserving)
 
@@ -424,6 +429,34 @@ One caveat I kept in the report and keep here: I audited the main screens, not e
 4. Deck slide "Componentes encontrados" — **the button row is the best single image in the case**,
    but ⚠️ blur the real names in the approval-timeline component first
 5. Deck slide "Página inicial" accessibility (26%, 49 violations, 17 passing)
+
+---
+
+## Section 4 — Rebuilding the foundation (APPROVED)
+
+## Rebuilding the foundation
+
+The audit gave me a problem I could state precisely: the product had values, but no system deciding them. So the foundation had to come before any component.
+
+I built it in three layers. Primitives hold the raw values, a base scale for dimensions and six color families with ordered steps: brand, gray, neutral, success, warning, and danger. Semantic tokens sit above them and carry meaning rather than value, pointing back at the primitives. Component tokens sit at the top for cases where a specific part needs its own decision.
+
+The difference shows in a single line. `spacing.stack.md` does not store 16px. It points at `scale.16`. Change the scale and every stacked layout in the product follows, because nothing downstream owns a number.
+
+That is what replaced the 101 spacing values. The system exposes seven semantic steps, from none to xl, across three directional axes: stack for vertical rhythm, inline for horizontal, inset for padding. A designer no longer picks a number. They pick an intent, and the intent resolves to a value the system controls.
+
+Color went the same way. The 60 unorganized colors became six primitive families, and above them 118 semantic tokens grouped by what they do: 46 for backgrounds, 36 for content, 34 for borders. `color.background.disabled-subtle` says what it is for and resolves to `gray.100`. The old palette had a hex that someone had once picked and everyone after had copied.
+
+Two decisions in the foundation are worth naming. Desktop and mobile are modes of the same collection rather than separate token sets, so responsive behavior lives in the token layer instead of in duplicated components. And `focus-ring` exists as its own token, because after auditing a product at 26% WCAG compliance, I was not going to leave focus states to whoever built the next component.
+
+The scale is mostly built on multiples of four, with exceptions. There are values like 38 and 108 in it because specific parts of the product needed them. I could have forced those cases onto the nearest step and had a cleaner system that people worked around. A foundation nobody adopts is not a foundation.
+
+Altogether it came to 611 tokens, and on top of them a Figma library rebuilt from scratch: 143 components and 2,490 variants, with named layers, auto layout, and slot-based structure. The variant count is high by design. A variant is a combination the system anticipates, a state crossed with a size crossed with a type, which is the opposite of the 102 typographic variants the audit found: those were combinations nobody had decided. The old library was not restructured. Its crafting could not carry a token architecture, and rebuilding cost less than repairing.
+
+**Images this section needs (collect in Phase 2):**
+1. Figma Variables panel showing the collections and the semantic → primitive reference — *this is
+   the visual that proves the architecture*
+2. Optionally a code snippet rendering `spacing.stack.md = {scale.16}` from the exported JSON
+3. A shot of the component library itself (the 143 components) would help the closing paragraph land
 
 ---
 

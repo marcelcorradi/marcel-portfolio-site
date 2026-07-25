@@ -5,10 +5,10 @@
     <title>Marcel Corradi</title>
     <script type="text/javascript">
       // SPA fallback for GitHub Pages (rafgraph/spa-github-pages technique).
-      // Rewrites /marcel-portfolio-site/cases/foo into a query the app decodes,
-      // so deep links and refreshes don't 404. pathSegmentsToKeep = 1 keeps the
-      // repo base segment (/marcel-portfolio-site/).
-      var pathSegmentsToKeep = 1;
+      // Rewrites /cases/foo into a query the app decodes, so deep links and
+      // refreshes don't 404. Zero segments kept: the custom domain serves the
+      // site from the root, not from a repo subpath.
+      var pathSegmentsToKeep = 0;
       var l = window.location;
       l.replace(
         l.protocol +

@@ -5,8 +5,8 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // Served from https://marcelcorradi.github.io/marcel-portfolio-site/
-  base: '/marcel-portfolio-site/',
+  // Served from https://marcelcorradi.com (custom domain, see public/CNAME)
+  base: '/',
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {

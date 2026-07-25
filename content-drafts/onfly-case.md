@@ -558,6 +558,33 @@ engineering" in the CV actually looked like.
 
 ---
 
+## Section 6 — The design agent (APPROVED)
+
+## The design agent
+
+Onfly was running its agents on Paperclip, a platform where autonomous agents from different teams hold positions, take work, and talk to each other. Product had one. Engineering had one. Design did not, and I was the one who built it.
+
+The obvious version of a design agent generates a screen from a prompt. That version is also the one that recreates the problem I had just spent months fixing, because a model asked for a form will happily produce a raw Quasar input and a hex color it invented. Speed that reintroduces inconsistency is not speed.
+
+So the agent I built runs a pipeline instead. A user story arrives from the product agent and passes through five stages: clarification, discovery, UX writing, PRD, and only then frontend. Each stage is a separate skill that writes its output to a run folder named after the Jira issue, and each one refuses to start until the previous stage's gate says it is complete. The folder is committed, so any run can be paused, resumed, audited, or picked apart by a person later.
+
+Three points in that flow deliberately leave the machine. The agent asks the product agent when the story is missing something it needs. It escalates to a human designer when it cannot make a call. And it requests approval on the preview before anything is treated as delivered. Deciding where an autonomous system should stop and ask was more of the design work than the prompts were.
+
+The part that mattered most was whether it actually respected the system. So I measured it: three real screens from the product, a new expense form, an approval list, and a manager dashboard, each generated three times with the design system skill and three times without it, graded against assertions like uses the framework's input component, uses semantic color props, and contains no hardcoded hex.
+
+Without the skill, 44% of the assertions passed. With the first version, 78%. I used the failures to revise it, and the second version reached 98%.
+
+**Decision (2026-07-25): the token/time cost paragraph was cut.** A draft closed with the trade-off
+(with-skill runs use ~3x tokens and ~3x time). Marcel misread it as "hardcoding was cheaper", which
+showed the point lands badly, and it is agent-operations detail that does not interest a reader
+evaluating him as a designer. The section is stronger ending on 44 → 78 → 98.
+
+**Images this section needs (collect in Phase 2):**
+1. A diagram of the five gated stages, or the benchmark comparison as a chart. Neither exists yet;
+   both are Phase 2 design candidates. The benchmark table is the higher-value visual.
+
+---
+
 ## Writing rules in force
 
 - **Do NOT cite the variant count (2,490).** Marcel's decision, 2026-07-25: the case mentions the

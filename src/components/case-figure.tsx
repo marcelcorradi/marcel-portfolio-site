@@ -6,6 +6,8 @@ interface CaseFigureProps {
   alt: string
   /** Visible caption. Optional, but most case figures need the context. */
   caption?: string
+  /** Frame exports that would otherwise bleed into the page background. */
+  framed?: boolean
 }
 
 /**
@@ -15,10 +17,10 @@ interface CaseFigureProps {
  * built for reading, a figure that starts left of the text unsettles the line
  * the eye is following.
  */
-export function CaseFigure({ src, alt, caption }: CaseFigureProps) {
+export function CaseFigure({ src, alt, caption, framed }: CaseFigureProps) {
   return (
     <figure className="my-10">
-      <CaseImage src={src} alt={alt} title={caption} />
+      <CaseImage src={src} alt={alt} title={caption} framed={framed} />
       {caption && (
         <figcaption className="mt-3 text-sm leading-relaxed text-muted-foreground">
           {caption}

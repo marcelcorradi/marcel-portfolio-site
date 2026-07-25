@@ -45,6 +45,7 @@ export function CaseViolation({
           alt={alt}
           title={`WCAG ${criterion}: ${requirement}`}
           className="p-4"
+          framed
         />
       </div>
 

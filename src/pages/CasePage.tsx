@@ -161,6 +161,7 @@ export default function CasePage() {
                 src={insightsImg}
                 alt="Diagnosis slide: 482 insights collected, 36% of them pains, 54% of those pains related to the absence of a design system, with the distribution by insight type."
                 caption="482 insights, categorised by type. Pains were 36% of everything raised, and over half of them traced to the missing design system."
+                framed
               />
             ),
           },
@@ -181,6 +182,7 @@ export default function CasePage() {
                 src={typographyImg}
                 alt="Audit slide showing Onfly's 102 typographic variants against Travelperk's 17 and Expensify's 39."
                 caption="102 type variants against Travelperk's 17."
+                framed
               />
             ),
           },
@@ -191,6 +193,7 @@ export default function CasePage() {
                 src={colorsImg}
                 alt="Audit slide showing the 60 colours found in the product, including 16 greys and 13 blues, several of them nearly identical."
                 caption="60 colours with no organisation. The blues at the bottom are separate values that look the same."
+                framed
               />
             ),
           },
@@ -201,6 +204,7 @@ export default function CasePage() {
                 src={spacingImg}
                 alt="Audit slide listing 101 unique spacing values, including decimals like 4.8px, 6.4px and 14.69px."
                 caption="101 spacing values against Travelperk's 44, decimals included."
+                framed
               />
             ),
           },
@@ -211,6 +215,7 @@ export default function CasePage() {
                 src={inventoryImg}
                 alt="Inventory slide showing the buttons found across the product side by side: different colours, corner radii, heights and label casing."
                 caption="A single component type, as found in the product. Nobody decided this; it accumulated."
+                framed
               />
             ),
           },

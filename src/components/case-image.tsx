@@ -17,6 +17,12 @@ interface CaseImageProps {
   /** Skip lazy loading when the image is measured on mount. */
   eager?: boolean
   onLoad?: () => void
+  /**
+   * Frame the image with a border and a light backing. Needed for exports that
+   * sit on transparent or white backgrounds, so they do not bleed into a dark
+   * page. Screenshots that already carry their own frame should leave it off.
+   */
+  framed?: boolean
 }
 
 /**
@@ -37,6 +43,7 @@ export function CaseImage({
   className,
   eager = false,
   onLoad,
+  framed = false,
 }: CaseImageProps) {
   return (
     <Dialog>
@@ -52,7 +59,11 @@ export function CaseImage({
           alt={alt}
           loading={eager ? "eager" : "lazy"}
           onLoad={onLoad}
-          className={cn("w-full border border-border bg-white", className)}
+          className={cn(
+            "w-full",
+            framed && "rounded-xl border border-border bg-white",
+            className
+          )}
         />
 
         {/* Signifier: without it a plain image reads as decoration, not control. */}

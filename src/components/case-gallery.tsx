@@ -83,6 +83,7 @@ export function CaseGallery({ items }: { items: GalleryItem[] }) {
                   // The first slide is measured on mount, so it must not wait.
                   eager={index === 0}
                   onLoad={() => index === current && measure(index)}
+                  framed
                 />
                 <figcaption className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   <span className="font-medium text-foreground">{item.title}</span>{" "}

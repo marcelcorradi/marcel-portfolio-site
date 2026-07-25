@@ -615,6 +615,54 @@ The result was that adoption did not depend on authority I did not have. It ran 
 
 ---
 
+## Section 8 — Results and what I would do differently (APPROVED)
+
+## Results and what I would do differently
+
+The system ended up adopted by 5 designers and around 40 developers: 611 tokens, 143 components, a Figma library connected to the framework it describes, and an agent that generates screens the system recognizes as its own.
+
+The part I did not get right was the beginning.
+
+After the interviews I proposed the approach this case describes: work through the existing framework, grow it incrementally, keep the product moving. That direction was not the one chosen. The design lead wanted to start from new visual concepts and redesigned screens, and for a while that is what we did.
+
+I disagreed, and I could not make the case land. I had the interviews, the audit, and the benchmark, and none of it was enough. That is the thing I actually learned here, and it took longer than it should have: evidence does not decide anything on its own. Being right early is worth very little if you cannot move the people who choose the direction, and I have stopped treating that as someone else's job.
+
+What I did instead was build for being wrong. While the new concepts were being explored, and new colors and a different brand color were being requested, I structured the tokens so that reversing any of it would be cheap. Semantic tokens pointing at primitives meant a brand color was one reference to change, not a search through screens and code.
+
+The concept was eventually dropped, and the direction came back to the incremental approach. Because of how the tokens were built, restoring the previous colors took very little time. It cost the project two to three months, which is real, and it is the clearest argument I have for why the foundation goes first: the foundation is what made an expensive detour survivable.
+
+Two things surprised me. The first is that the strategic read I formed in week three, from listening to 24 people, turned out to be the right one. I trust that instinct more now. The second is that the hardest part of building a design system was never the tokens or the components. It was the negotiating: convincing squads under delivery pressure, working without a dedicated team, and getting a system adopted by people who did not report to me. I got substantially better at that here, because the situation left no other option.
+
+The other lesson is about the tooling. Over these months I built an audit extension, an interview dashboard, an intake form, and an agent pipeline. Three of the tools I publish today came out of the same period: Design Audit, built to get through the audit itself; Spec Forge, to keep token context intact when design work moves to code; and Atomic Colors, which came out of the detour. Building the new palettes meant working out techniques for generating color scales, and when the concept was dropped and the colors went back to the brand's existing palette, the techniques were still worth something. I built all of them because I needed them, and I could not have built any of them without AI. It did not do the work on its own. Every one needed someone who knew what the output was supposed to look like and could tell when it was wrong. That combination is what I want to keep doing.
+
+### How the sensitive material was handled (do not undo this)
+
+Marcel shared the full context, including his read that ego and credit-seeking played a part. He
+explicitly said: *"não precisa falar isso ou de forma soando crítica, tô só te explicando pra gente
+elaborar."* The section follows that.
+
+- **Nobody is criticized.** "That direction was not the one chosen" and "the design lead wanted to
+  start from new visual concepts" are neutral facts. No adjective about the person, no account of how
+  the proposal was received (it was dismissed as "ridiculous"; that is not in the copy).
+- **The self-criticism is Marcel's own.** "I could not make the case land" puts the weight on him,
+  which is both honest (he said he did not know how to convince the lead) and what makes the section
+  publishable.
+- **The resolution is not framed as vindication.** The product director rejecting the visual concept
+  is implied by "the concept was eventually dropped", without naming who dropped it. Avoids "I won".
+- **The 2 to 3 months lost are stated plainly** and turned into the argument for foundation-first.
+
+**The strongest idea in this section is "build for being wrong":** Marcel disagreed, lost the call,
+and still architected the tokens so the decision could be reversed cheaply. Then it was reversed, and
+it was cheap. That is defensive engineering applied to a design system, and it beats "I was right all
+along" by a wide margin.
+
+**Atomic Colors' real origin (Marcel corrected Claude's inference):** it did NOT come from building
+the Onfly token scales. He built the new palettes his lead requested, realized the techniques could
+become a tool, and built it. The concept was then dropped and colors reverted to the brand palette.
+So **Atomic Colors is what survived the failed detour** — a better story than the one Claude assumed.
+
+---
+
 ## Writing rules in force
 
 - **Do NOT cite the variant count (2,490).** Marcel's decision, 2026-07-25: the case mentions the

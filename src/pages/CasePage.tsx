@@ -6,14 +6,68 @@ import { SiteFooter } from "@/components/site-footer"
 import { CaseHeader } from "@/components/case-header"
 import { CaseContents } from "@/components/case-contents"
 import { CaseMetrics, type Metric } from "@/components/case-metrics"
+import { CaseViolation, type Violation } from "@/components/case-violation"
 import { caseProse } from "@/components/case-prose"
 import { OnflyLogo } from "@/components/brand-logos"
 import { getCaseBySlug, getCaseSections } from "@/lib/cases"
+import contrastImg from "@/assets/cases/onfly/acessibilidade1-imageonly.png"
+import carouselImg from "@/assets/cases/onfly/acessibilidade3-imageonly.png"
+import altTextImg from "@/assets/cases/onfly/acessibilidade4-imageonly.png"
 
 /** Brand logos by slug, so the header matches the card the reader clicked. */
 const logos = {
   "onfly-design-system": { logo: OnflyLogo, className: "h-6" },
 } as const
+
+/** The sentence the accessibility findings follow. */
+const VIOLATIONS_ANCHOR = "Three of them show the range of what was failing."
+
+/** Split a body just after `marker`, so a component can sit mid-article. */
+function splitAt(body: string, marker: string): [string, string] {
+  const index = body.indexOf(marker)
+  if (index === -1) return [body, ""]
+  const cut = index + marker.length
+  return [body.slice(0, cut), body.slice(cut)]
+}
+
+/**
+ * Accessibility findings, shown as evidence plus text rather than as exported
+ * slides. A section about accessibility should not ship its argument as a
+ * picture of words.
+ */
+const violations: Record<string, Violation[]> = {
+  "onfly-design-system": [
+    {
+      criterion: "1.4.3 AA",
+      requirement: "Text must meet a minimum contrast ratio.",
+      image: contrastImg,
+      alt: "Three shortcut buttons labelled Relatórios, Reservar and Despesas, with a contrast checker showing #007DC7 on white at a ratio of 4.41 to 1, failing AA for normal text.",
+      problem:
+        "The primary blue on white measured 4.41:1. It passes for large text and fails for the size these labels actually used, on the shortcuts sitting at the top of the home screen.",
+      fix: "Darken the blue used for text until it clears 4.5:1, and keep the original tone for large text and graphics, where it already passed.",
+    },
+    {
+      criterion: "4.1.2 A",
+      requirement: "Controls must expose an accessible name.",
+      image: carouselImg,
+      alt: "A promotional carousel with its two pagination dots highlighted, the controls that announce no name to a screen reader.",
+      problem:
+        'The carousel dots announced as "button" and nothing else. A screen reader user could tell something was focusable but not what it would do.',
+      fix: 'aria-label="Previous slide" / aria-label="Next slide"',
+      fixIsCode: true,
+    },
+    {
+      criterion: "1.1.1 A",
+      requirement: "Non-text content must have a text alternative.",
+      image: altTextImg,
+      alt: "A greeting banner with an aeroplane illustration highlighted, marking an image with no text alternative.",
+      problem:
+        "The banner illustration carried no alternative text, so a screen reader skipped it entirely. The same was true of the product logo, which announced its element id.",
+      fix: 'alt="An aeroplane in flight"',
+      fixIsCode: true,
+    },
+  ],
+}
 
 /**
  * The figures worth reading before the prose. Kept here rather than in the
@@ -64,6 +118,11 @@ export default function CasePage() {
 
   const sections = getCaseSections(study.body)
   const caseMetrics = slug ? metrics[slug] : undefined
+  const caseViolations = slug ? violations[slug] : undefined
+
+  // The violations belong inside the audit section, so the body is split at the
+  // paragraph that introduces them rather than appended after everything.
+  const [before, after] = splitAt(study.body, VIOLATIONS_ANCHOR)
 
   return (
     <>
@@ -84,8 +143,18 @@ export default function CasePage() {
 
         <article className={caseMetrics ? undefined : "mt-12"}>
           <ReactMarkdown remarkPlugins={[remarkGfm]} components={caseProse}>
-            {study.body}
+            {before}
           </ReactMarkdown>
+
+          {caseViolations?.map((violation) => (
+            <CaseViolation key={violation.criterion + violation.image} {...violation} />
+          ))}
+
+          {after && (
+            <ReactMarkdown remarkPlugins={[remarkGfm]} components={caseProse}>
+              {after}
+            </ReactMarkdown>
+          )}
         </article>
       </main>
 

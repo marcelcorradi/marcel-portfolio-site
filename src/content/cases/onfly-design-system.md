@@ -53,6 +53,8 @@ I also inventoried the components on the main screens of web and app, and found 
 
 Then I ran an automated accessibility audit. The home page returned 26% compliance with WCAG 2.1 A and AA: 49 violations against 17 passing criteria.
 
+A number like that is easy to nod at and hard to act on, so I did not stop there. I took the violations apart one by one, tied each to the criterion it broke, and wrote the fix next to it. Three of them show the range of what was failing.
+
 None of this was anyone's fault. It is what accumulates when a product ships for years without a system underneath, and every one of those 102 type variants was once a reasonable local decision.
 
 Auditing at this level is normally where a designer's time disappears. Collecting every color in a product means opening screen after screen, sampling values by hand, and pasting them into a Figma file until you have something resembling an inventory. It takes days, and it is out of date the moment you finish.

@@ -10,24 +10,45 @@ import { CaseViolation, type Violation } from "@/components/case-violation"
 import { caseProse } from "@/components/case-prose"
 import { OnflyLogo } from "@/components/brand-logos"
 import { getCaseBySlug, getCaseSections } from "@/lib/cases"
+import { CaseFigure } from "@/components/case-figure"
 import contrastImg from "@/assets/cases/onfly/acessibilidade1-imageonly.png"
 import carouselImg from "@/assets/cases/onfly/acessibilidade3-imageonly.png"
 import altTextImg from "@/assets/cases/onfly/acessibilidade4-imageonly.png"
+import insightsImg from "@/assets/cases/onfly/research-insights.png"
+import panoramaImg from "@/assets/cases/onfly/interview-panorama.png"
+import typographyImg from "@/assets/cases/onfly/audit-typography.png"
+import colorsImg from "@/assets/cases/onfly/audit-colors.png"
+import spacingImg from "@/assets/cases/onfly/audit-spacing.png"
+import inventoryImg from "@/assets/cases/onfly/component-inventory.png"
 
 /** Brand logos by slug, so the header matches the card the reader clicked. */
 const logos = {
   "onfly-design-system": { logo: OnflyLogo, className: "h-6" },
 } as const
 
-/** The sentence the accessibility findings follow. */
-const VIOLATIONS_ANCHOR = "Three of them show the range of what was failing."
+/**
+ * Split a body into segments at each anchor sentence, so components can sit
+ * between paragraphs. Anchors are matched in order and each one ends the
+ * segment it appears in, which keeps the Markdown the source of the writing
+ * while the page owns the visuals.
+ */
+function splitByAnchors(body: string, anchors: string[]): string[] {
+  const segments: string[] = []
+  let rest = body
 
-/** Split a body just after `marker`, so a component can sit mid-article. */
-function splitAt(body: string, marker: string): [string, string] {
-  const index = body.indexOf(marker)
-  if (index === -1) return [body, ""]
-  const cut = index + marker.length
-  return [body.slice(0, cut), body.slice(cut)]
+  for (const anchor of anchors) {
+    const index = rest.indexOf(anchor)
+    if (index === -1) {
+      segments.push("")
+      continue
+    }
+    const cut = index + anchor.length
+    segments.push(rest.slice(0, cut))
+    rest = rest.slice(cut)
+  }
+
+  segments.push(rest)
+  return segments
 }
 
 /**
@@ -120,9 +141,91 @@ export default function CasePage() {
   const caseMetrics = slug ? metrics[slug] : undefined
   const caseViolations = slug ? violations[slug] : undefined
 
-  // The violations belong inside the audit section, so the body is split at the
-  // paragraph that introduces them rather than appended after everything.
-  const [before, after] = splitAt(study.body, VIOLATIONS_ANCHOR)
+  // Visuals sit inside the sections they belong to, anchored to the sentence
+  // they follow, so the Markdown stays the source of the writing.
+  const inserts =
+    slug === "onfly-design-system"
+      ? [
+          {
+            anchor: "filtered by team, by type, and by theme.",
+            node: (
+              <CaseFigure
+                src={insightsImg}
+                alt="Diagnosis slide: 482 insights collected, 36% of them pains, 54% of those pains related to the absence of a design system, with the distribution by insight type."
+                caption="482 insights, categorised by type. Pains were 36% of everything raised, and over half of them traced to the missing design system."
+              />
+            ),
+          },
+          {
+            anchor: "take into any room in the company and point at.",
+            node: (
+              <CaseFigure
+                src={panoramaImg}
+                alt="The dashboard's final overview: total stakeholders and insights, most-cited themes by type, and a table pairing each recommendation with the evidence behind it."
+                caption="Every recommendation carried the evidence that produced it. Prioritise standardisation, because the tag came up 101 times."
+              />
+            ),
+          },
+          {
+            anchor: "used one family on a modular scale.",
+            node: (
+              <CaseFigure
+                src={typographyImg}
+                alt="Audit slide showing Onfly's 102 typographic variants against Travelperk's 17 and Expensify's 39."
+                caption="102 type variants against Travelperk's 17."
+              />
+            ),
+          },
+          {
+            anchor: "not different enough for anyone to see why.",
+            node: (
+              <CaseFigure
+                src={colorsImg}
+                alt="Audit slide showing the 60 colours found in the product, including 16 greys and 13 blues, several of them nearly identical."
+                caption="60 colours with no organisation. The blues at the bottom are separate values that look the same."
+              />
+            ),
+          },
+          {
+            anchor: "no scale underneath for anything to land on.",
+            node: (
+              <CaseFigure
+                src={spacingImg}
+                alt="Audit slide listing 101 unique spacing values, including decimals like 4.8px, 6.4px and 14.69px."
+                caption="101 spacing values against Travelperk's 44, decimals included."
+              />
+            ),
+          },
+          {
+            anchor: "or on whether labels were uppercase.",
+            node: (
+              <CaseFigure
+                src={inventoryImg}
+                alt="Inventory slide showing the buttons found across the product side by side: different colours, corner radii, heights and label casing."
+                caption="A single component type, as found in the product. Nobody decided this; it accumulated."
+              />
+            ),
+          },
+          {
+            anchor: "Three of them show the range of what was failing.",
+            node: (
+              <>
+                {caseViolations?.map((violation) => (
+                  <CaseViolation
+                    key={violation.criterion + violation.image}
+                    {...violation}
+                  />
+                ))}
+              </>
+            ),
+          },
+        ]
+      : []
+
+  const segments = splitByAnchors(
+    study.body,
+    inserts.map((insert) => insert.anchor)
+  )
 
   return (
     <>
@@ -142,19 +245,16 @@ export default function CasePage() {
         {caseMetrics && <CaseMetrics metrics={caseMetrics} />}
 
         <article className={caseMetrics ? undefined : "mt-12"}>
-          <ReactMarkdown remarkPlugins={[remarkGfm]} components={caseProse}>
-            {before}
-          </ReactMarkdown>
-
-          {caseViolations?.map((violation) => (
-            <CaseViolation key={violation.criterion + violation.image} {...violation} />
+          {segments.map((segment, index) => (
+            <div key={index}>
+              {segment && (
+                <ReactMarkdown remarkPlugins={[remarkGfm]} components={caseProse}>
+                  {segment}
+                </ReactMarkdown>
+              )}
+              {inserts[index]?.node}
+            </div>
           ))}
-
-          {after && (
-            <ReactMarkdown remarkPlugins={[remarkGfm]} components={caseProse}>
-              {after}
-            </ReactMarkdown>
-          )}
         </article>
       </main>
 

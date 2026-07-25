@@ -4,20 +4,18 @@ interface CaseFigureProps {
   alt: string
   /** Visible caption. Optional, but most case figures need the context. */
   caption?: string
-  /** Let a wide figure break out of the reading column on large screens. */
-  wide?: boolean
 }
 
 /**
- * An image with a caption, sized for the reading column.
+ * An image with a caption, sized to the reading column.
  *
- * `wide` pulls the figure past the prose measure on large screens — useful for
- * dense evidence like the audit slides, where shrinking to text width would
- * make the detail unreadable.
+ * Figures stay inside the measure rather than breaking out of it: on a page
+ * built for reading, a figure that starts left of the text unsettles the line
+ * the eye is following.
  */
-export function CaseFigure({ src, alt, caption, wide = false }: CaseFigureProps) {
+export function CaseFigure({ src, alt, caption }: CaseFigureProps) {
   return (
-    <figure className={wide ? "my-10 lg:-mx-24" : "my-10"}>
+    <figure className="my-10">
       <img
         src={src}
         alt={alt}

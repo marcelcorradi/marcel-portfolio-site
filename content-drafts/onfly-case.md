@@ -313,6 +313,61 @@ Chrome Web Store). The Onfly audit is literally its origin story.
 *This is the single best proof of the case's thesis: he hits a wall, builds the instrument, and the
 instrument becomes a product. Give it room in section 3.*
 
+## The design agent — VERIFIED from the real repo (section 5 material)
+
+Source: `C:\Users\marce\Downloads\agente-design-onfly-main`. Marcel undersold this as "um projetinho,
+só um agente que construí pra eles usarem no paperclip". It is a **multi-agent system with a formal
+contract**. Do not undersell it in the case.
+
+**The benchmark — the strongest single number in the entire case.**
+He measured the skill's effect on generated-screen quality, 3 evals × 3 runs per configuration:
+
+| Iteration | With skill | Without skill | Delta |
+|---|---|---|---|
+| 1 | **78% ± 6%** | 44% ± 11% | +0.34 |
+| 2 | **98% ± 4%** | 44% ± 11% | +0.53 |
+
+He did not just build the agent. He **measured it, then iterated on the measurement** (44 → 78 → 98).
+That is engineering method applied to a design tool, and almost no product designer does this.
+Cost side, worth being honest about: with-skill runs are slower and heavier (215s vs 76s, 63k vs 19k
+tokens). Trading time and tokens for correctness is a defensible engineering call.
+
+**What the evals actually asserted** — conformance to the design system, automatically:
+`Uses OnfInput (framework input wrapper)`, `Uses OnfTable (not raw q-table)`, `Uses OnfButton (not
+raw q-btn)`, `Uses semantic color props`, `Uses onf-text-*` typography classes, and
+**`No hard-coded hex colors in style`**.
+*That last assertion closes the loop with section 3: hardcoded hex is exactly what produced the 60
+unorganized colors. The agent is the mechanism that stops the mess from coming back.*
+
+**The eval cases were real product screens:** Nova Despesa (expense form), Aprovação de Despesas
+(manager approval list), Visão Geral (manager KPI dashboard).
+
+**The architecture (from `design-agent/SKILL.md` and `references/pipeline-contract.md`):**
+- **Five sequential stages**, each a self-contained skill: `task-clarification` → `design-discovery`
+  → `ux-writing` → `prd-author` → `frontend-design`
+- **Boolean gates between stages** (`ready_for_discovery`, `ready_for_writing`, `ready_for_prd`,
+  `ready_for_frontend`, `checklist_passed`). A stage refuses to start if the upstream gate is false.
+- **One run folder per Jira issue** (`pipeline/DES-512/`), committed to version control as the
+  agent's audit trail
+- **Agent-to-agent message protocol** with numbered outbound/inbound envelopes
+- **Resumable**: on restart it reads the run folder and resumes at the first stage whose output is
+  missing, instead of recomputing finished work
+- **Isolation rule**: each stage reads only the run folder, never conversation history, so every
+  stage's output must be self-explanatory to the next
+- **Three human/agent touchpoints by design**: clarification with the product agent, **escalation to
+  a human designer** when it cannot decide, and **preview approval before delivery**
+
+*The escalation and approval points are the detail worth highlighting: he designed where the machine
+stops and calls a person. That is judgment about autonomy, not just automation.*
+
+**Other skills in the repo:** `frontend-design` (with `references/design-tokens.md`,
+`components-catalog.md`, `framework-overview.md`, `patterns.md`, plus `scripts/new_screen.py`,
+`update_framework.py`, `setup_sandbox.sh` and a Quasar sandbox template) and `design-discovery`.
+
+⚠️ Still to confirm with Marcel: **what "paperclip" is** (internal agent platform at Onfly?), and
+whether the JSON→SCSS token conversion lives in this repo or elsewhere. Do not describe that
+mechanism until confirmed.
+
 ## Organizational context — HOW TO HANDLE (Marcel's decision: "condition yes, criticism no")
 
 Marcel chose to describe **the condition** but not to criticize people or narrate his exit.

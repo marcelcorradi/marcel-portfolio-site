@@ -4,6 +4,7 @@ import remarkGfm from "remark-gfm"
 import { SiteNav } from "@/components/site-nav"
 import { SiteFooter } from "@/components/site-footer"
 import { CaseHeader } from "@/components/case-header"
+import { caseProse } from "@/components/case-prose"
 import { OnflyLogo } from "@/components/brand-logos"
 import { getCaseBySlug } from "@/lib/cases"
 
@@ -61,7 +62,9 @@ export default function CasePage() {
         />
 
         <article className="mt-12">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{study.body}</ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[remarkGfm]} components={caseProse}>
+            {study.body}
+          </ReactMarkdown>
         </article>
       </main>
 

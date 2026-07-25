@@ -1,0 +1,88 @@
+import type { Components } from "react-markdown"
+
+/**
+ * How markdown renders inside a case.
+ *
+ * Deliberately not @tailwindcss/typography: the case body needs the same
+ * vocabulary the rest of the site already speaks, so these map onto the
+ * utilities the Home uses. One source of truth, reused by every case.
+ */
+export const caseProse: Components = {
+  h2: ({ children, ...props }) => (
+    <h2
+      className="mt-16 scroll-mt-28 text-2xl font-semibold tracking-tight text-foreground"
+      {...props}
+    >
+      {children}
+    </h2>
+  ),
+
+  h3: ({ children, ...props }) => (
+    <h3 className="mt-10 text-lg font-medium text-foreground" {...props}>
+      {children}
+    </h3>
+  ),
+
+  p: ({ children, ...props }) => (
+    <p className="mt-5 leading-relaxed text-muted-foreground" {...props}>
+      {children}
+    </p>
+  ),
+
+  ul: ({ children, ...props }) => (
+    <ul className="mt-5 space-y-2 pl-5" {...props}>
+      {children}
+    </ul>
+  ),
+
+  ol: ({ children, ...props }) => (
+    <ol className="mt-5 list-decimal space-y-2 pl-5" {...props}>
+      {children}
+    </ol>
+  ),
+
+  li: ({ children, ...props }) => (
+    <li className="leading-relaxed text-muted-foreground marker:text-border" {...props}>
+      {children}
+    </li>
+  ),
+
+  // Emphasis lands on the foreground colour: the body sits on muted, so bold
+  // text stepping up in contrast is what makes a number catch the eye.
+  strong: ({ children, ...props }) => (
+    <strong className="font-medium text-foreground" {...props}>
+      {children}
+    </strong>
+  ),
+
+  a: ({ children, ...props }) => (
+    <a
+      className="text-primary underline underline-offset-4 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      {...props}
+    >
+      {children}
+    </a>
+  ),
+
+  // Token names (spacing.stack.md, onf-ds-button) carry real weight in these
+  // cases, so inline code is styled to read as a value, not as decoration.
+  code: ({ children, ...props }) => (
+    <code
+      className="rounded bg-secondary px-1.5 py-0.5 font-mono text-[0.85em] text-secondary-foreground"
+      {...props}
+    >
+      {children}
+    </code>
+  ),
+
+  blockquote: ({ children, ...props }) => (
+    <blockquote
+      className="mt-6 border-l-2 border-primary pl-5 text-muted-foreground italic"
+      {...props}
+    >
+      {children}
+    </blockquote>
+  ),
+
+  hr: (props) => <hr className="my-12 border-border" {...props} />,
+}

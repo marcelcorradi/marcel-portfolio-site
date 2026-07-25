@@ -585,6 +585,36 @@ evaluating him as a designer. The section is stronger ending on 44 → 78 → 98
 
 ---
 
+## Section 7 — Adoption without a dedicated team (APPROVED)
+
+## Adoption without a dedicated team
+
+The design system did not have a team. It had me, and a company that had decided the work would be decentralized, absorbed by the product squads rather than owned by a group.
+
+That constraint set the strategy. A system with no team cannot ask anyone to stop and migrate. It has to grow inside work that was already going to happen.
+
+So the agreement was this: whenever a designer delivered a screen using the new components and tokens, the product team would fit a step in before development, updating those components in the framework. Not the whole flow. Not every component. My only ask was that each delivery update at least one component that had not been touched yet.
+
+That last part is the whole mechanism. One component per delivery is small enough that no squad has to defend it in planning, and it compounds. Every screen that shipped left the framework slightly more complete than it found it, and the components updated early were the ones being used most, so the benefit arrived before the work was finished.
+
+Old and new coexisted deliberately. An updated button shipped as `onf-ds-button` alongside the original rather than replacing it, so nothing broke and no team was forced to migrate on someone else's schedule. The old Figma library was retired the same way. Nobody migrated their files. Designers simply used the new library for new work, and the old one stopped being where anything happened.
+
+Product pushed back at first, and they were right to. They were working under delivery pressure and being asked to absorb work that was not theirs. That conversation is what produced the one-component rule: I did not need the flow migrated, I needed it to move. Asking for less was what made it possible to ask at all.
+
+Being the only entry point for design system requests created its own problem, so I built a form for the design team to submit them. It fed the requests straight into my Trello as cards. With a dedicated team that would have been a person's job. Without one, it had to be automated, or it would have been me copying requests by hand instead of building the system.
+
+The result was that adoption did not depend on authority I did not have. It ran on 5 designers and around 40 developers making small, individually reasonable decisions inside their own roadmaps.
+
+**Notes:**
+- The strategy is effectively the **strangler fig pattern** (new system grows around the old until it
+  replaces it). Deliberately NOT named in the copy: Marcel arrived at it from a real political
+  constraint, and naming the pattern would read as applying theory after the fact.
+- **Still open:** how many components actually got updated through this process, or how long a
+  component took to land. If Marcel ever recalls a number, it belongs in the closing paragraph as
+  proof the mechanism worked. Currently the close is qualitative.
+
+---
+
 ## Writing rules in force
 
 - **Do NOT cite the variant count (2,490).** Marcel's decision, 2026-07-25: the case mentions the

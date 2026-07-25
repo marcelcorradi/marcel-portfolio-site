@@ -36,7 +36,8 @@ export work.
 **The actual work sequence** (this is the case's spine):
 1. Stakeholder interviews on arrival. Collected insights, categorized them, and built a **dynamic
    dashboard** of pains and insights so the team had that data strategically.
-   *Marcel no longer has access to this dashboard, so no screenshot exists.*
+   *The dashboard is still online and Marcel recovered access. He also has the full diagnosis
+   presentation deck (slides), which is a rich source for figures.*
 2. Audit and inventory. He used his own **Design Audit** extension to help. It was under construction
    at the time, and **this audit is what made him start building it.** Now published on the Chrome
    Web Store.
@@ -57,15 +58,82 @@ through **AI agents Marcel built** → become **SCSS** consumed by the Quasar fr
 
 ---
 
+## Research data (extracted from Marcel's diagnosis slides — verified numbers)
+
+Taken from screenshots of the internal diagnosis deck Marcel presented at Onfly. These are real
+measured numbers, safe to publish (Marcel confirmed no confidentiality restrictions).
+
+**The interviews ("O quê foi analisado?" / "Quantidade de pessoas entrevistadas"):**
+- **24 people interviewed**
+- **21 months** average tenure at the company among interviewees
+- **482 insights** collected
+- Breakdown by area: **9 Technology, 5 Design, 4 Product, 3 Executive leadership (Diretoria), 3 Marketing**
+
+**Insight categorization ("O que o time sente?") — distribution by type:**
+| Type | Count |
+|---|---|
+| Dor (Pain) | 175 |
+| Observação (Observation) | 141 |
+| Impacto Esperado (Expected impact) | 44 |
+| Sugestão (Suggestion) | 39 |
+| Necessidade (Need) | 37 |
+| Engajamento (Engagement) | 28 |
+| Métrica (Metric) | 10 |
+| Desafio Técnico (Technical challenge) | 6 |
+| Dúvida (Question) | 2 |
+
+**The two headline research findings:**
+- **36% of all insights were pains.**
+- **54% of those pains traced back to the absence of a design system.** *This is the number that
+  justifies the entire project. It turns "I did research" into "I proved the problem existed."*
+
+**Top expectations the team voiced ("Maiores expectativas"):**
+1. **Padronização** — visual coherence across products and teams
+2. **Velocidade** — faster delivery and decisions
+3. **Componentes** — easier interface creation and maintenance
+4. **Menos retrabalho** — avoiding unnecessary rework
+5. **Mais eficiência** — higher productivity and better use of resources
+
+**The audit scope ("Design Audit" card in the deck):**
+- Analysis of base elements (Foundations)
+- Initial component inventory (Web and App)
+- **Automated accessibility testing (Silktide)** ← note: Silktide, alongside his own Design Audit tool
+- Benchmark against main market players
+
+**How the research was actually processed (Marcel's method, worth telling):**
+Meet call transcripts → AI-assisted categorization of insight types → Excel database with categories
+and subcategories (e.g. pains related to design system, to lack of standards, to lack of time) →
+a **web dashboard built with Shoelace** consuming that data and consolidating it for strategic
+presentation. He automated qualitative analysis. Same instinct as Design Audit: found tedious manual
+work and built the tool.
+
+## Organizational context — HOW TO HANDLE (Marcel's decision: "condition yes, criticism no")
+
+Marcel chose to describe **the condition** but not to criticize people or narrate his exit.
+
+**Safe to write:** the model was decentralized with no dedicated design system team, so every
+component update had to be negotiated into the product squads' roadmaps. Design system maturity in
+the organization was still forming, which shaped how the system had to be introduced and adopted.
+
+**Do NOT write:** that a specific technology director opposed a dedicated team; that leadership did
+not know what a design system was; that Marcel was let go because leadership bet on AI generating
+screens directly (Lovable). This context explains everything and is true, but a portfolio is not
+where that argument gets won, and a recruiter only ever hears one side.
+
+---
+
 ## Still open — questions for Marcel
 
-1. **Interviews:** who did he talk to (devs, PMs, designers, leadership) and roughly how many people?
-   What surprised him most in what he heard?
-2. **Dashboard:** what were the main categories that emerged from the insights? What was it built with?
+1. ~~Interviews: who and how many?~~ **ANSWERED** — 24 people, see research data above.
+2. ~~Dashboard: categories and tooling?~~ **ANSWERED** — Shoelace web app, see research data above.
 3. **Migration:** when the new Figma library was published, did designers have to migrate files that
    used the old one? How was that handled? (Material for the adoption section.)
 4. **Cover image:** does he have a screenshot of the new Figma component library, or of the Figma ↔
    code sync? Needed for the hook/cover.
+5. **The 23% WCAG baseline:** the deck mentions Silktide for automated accessibility testing. Confirm
+   whether the 23% figure came from Silktide, from Design Audit, or from both combined.
+6. **Dashboard link:** it is back online. Decide whether to link it publicly from the case (it would be
+   strong evidence) or only screenshot it.
 
 ---
 

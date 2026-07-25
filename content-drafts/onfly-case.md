@@ -100,12 +100,66 @@ measured numbers, safe to publish (Marcel confirmed no confidentiality restricti
 - **Automated accessibility testing (Silktide)** ← note: Silktide, alongside his own Design Audit tool
 - Benchmark against main market players
 
+**The dashboard is live:** https://marcelcorradi-netizen.github.io/interview-dashboard/
+Its numbers load via JavaScript, so WebFetch cannot read them (they render as `--`). Screenshots are
+the way to pull data from it. Structure confirmed from the live page:
+- Five sections: **Visão geral, Dimensão, Expectativas & Engajamento, Panorama final, Mais**
+- Cross-filtering by team and by insight type, plus tag filtering and data export
+- Tracked metrics: stakeholders interviewed, total insights, average tenure, stakeholders with
+  expectations, registered expectations, engaged stakeholders, engagement mentions
+- **"Panorama final" ties most-cited themes to next-step recommendations with their supporting basis,
+  plus an influence map of stakeholders.** This is the detail worth writing about: it is not a
+  reporting dashboard, it is a decision instrument. The influence mapping shows he thought about who
+  had to be convinced, not only what was said.
+
 **How the research was actually processed (Marcel's method, worth telling):**
-Meet call transcripts → AI-assisted categorization of insight types → Excel database with categories
-and subcategories (e.g. pains related to design system, to lack of standards, to lack of time) →
-a **web dashboard built with Shoelace** consuming that data and consolidating it for strategic
-presentation. He automated qualitative analysis. Same instinct as Design Audit: found tedious manual
-work and built the tool.
+Meet call transcripts → AI-assisted categorization of insight types → Excel database
+(`Base_Stakeholders_DS_v4.xlsx`) with types, categories and tags → a **Ruby extraction script**
+(`scripts/extract_data.rb`) generating `stakeholders.json` and `insights.json` → a **static web
+dashboard** consuming that data. He automated qualitative analysis. Same instinct as Design Audit:
+found tedious manual work and built the tool.
+
+**CORRECTION — the dashboard stack is NOT Shoelace.** An earlier note said Shoelace; that was wrong.
+Verified from the repo's own `docs/contexto.md`: **plain HTML, custom CSS, Tailwind via CDN, and
+vanilla JavaScript** (modularized in `app.js`), with the Ruby script for data extraction. Getting a
+technical detail wrong in a technical case would cost credibility, so use the verified stack.
+
+### Verified aggregates (read directly from the dashboard repo's data files)
+
+Source: `interview-dashboard-main/data/insights.json` + `stakeholders.json`. These match the deck
+exactly, which confirms deck and dashboard share one source of truth.
+
+- **482 insights** from **24 stakeholders**, average tenure **20.6 months** (range 0 to 76)
+- **36.3% of all insights were pains** (175 of 482)
+- **53.7% of those pains fell in the Design_System category** (94 of 175) — the deck rounds this to 54%
+
+**Insights by category (all types):** Design_System 222, Colaboracao 72, Processo 56, Tecnologia 35,
+Estrategia 31, Produto 25, Metricas 8, Documentacao 8, Experiencia_Usuario 7, Interface 7,
+Eficiencia 6, Arquitetura_Informacao 3, Alinhamento 2.
+*Design_System alone is 222 of 482, nearly half of everything said.*
+
+**Pains by category:** Design_System 94 (53.7%), Processo 25 (14.3%), Tecnologia 13 (7.4%),
+Colaboracao 13 (7.4%), Produto 10 (5.7%), Experiencia_Usuario 7 (4.0%), Interface 4, Documentacao 4,
+Eficiencia 3, Alinhamento 1, Arquitetura_Informacao 1.
+
+**Top tags — the actual words people used, by frequency:**
+padronizacao **101**, comunicacao 42, documentacao 40, componentes 38, retrabalho 33, velocidade 30,
+engajamento 25, versao 24, organizacao 21, planejamento 21, usabilidade 21, biblioteca_componentes 17,
+acessibilidade 16, evolucao 16, participacao 15, figma 15, tokens 15, expense 14, adocao 14,
+qualidade 13, prioridade 13, framework 13, validacao 12, frontend 12, cores 12, handoff 11,
+governanca 11, eficiencia 10, metricas 10, arquitetura 9.
+*`padronizacao` at 101 is more than double the next tag. Standardization was the demand.*
+
+**Who was interviewed — by team:** Tecnologia 9, Time Design 5, Produto 4, Marketing 3, Diretoria 3.
+**Seniority reached:** the roster includes the **CEO, the CTO, and the Diretor de Produtos**. Worth
+stating: he took the diagnosis to the top of the company, not just to his peers.
+
+**Interview period:** 18 Sep to 1 Oct 2025, concentrated in the first weeks after joining (he started
+in September 2025).
+
+**PRIVACY:** the repo contains stakeholder names, job titles, and verbatim insight descriptions from
+internal interviews. **Only aggregates go in the portfolio.** No names, no quotes, no titles tied to
+individuals. Do not copy the data files into the portfolio repo.
 
 ## Organizational context — HOW TO HANDLE (Marcel's decision: "condition yes, criticism no")
 

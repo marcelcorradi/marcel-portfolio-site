@@ -3,7 +3,11 @@
 Draft in progress. Written section by section with Marcel's validation (portfolio-content skill).
 Final output goes to `src/content/cases/onfly-design-system.md`.
 
-**Status:** Hook approved. Section 2 pending Marcel's input.
+**Status:** Sections 1 and 2 approved. Section 3 (audit and inventory) is next.
+
+**Images:** Marcel can export whatever is needed. Decision (2026-07-25): images get collected during
+**Phase 2**, when the page is actually built, not now. Each section below records which visual it
+calls for so nothing is lost.
 
 ---
 
@@ -218,6 +222,30 @@ I did not start by drawing components. I started by interviewing stakeholders an
 On that foundation I built a 611-token architecture across primitive, semantic, and component levels, and then the piece that had never existed. Tokens live as Figma Variables, export as JSON, and pass through AI agents I built to become the SCSS that the Quasar framework consumes. Design and code finally read from the same source.
 
 The system covers 143 components and 2,490 variants, and it is used by 5 designers and around 40 developers. I built it without a dedicated design system team, by negotiating its adoption into the roadmaps of the product squads.
+
+---
+
+## Section 2 — Starting with people, not screens (APPROVED)
+
+## Starting with people, not screens
+
+Before touching a component, I needed to know whether the problem I had been hired to solve was the problem the company actually had. So I spent my first weeks interviewing the people who would have to live with the result.
+
+I talked to 24 people across technology, design, product, marketing, and executive leadership, including the CEO, the CTO, and the product director. Between them they averaged nearly two years at the company. That range was deliberate. A design system fails when it is built for designers alone, and the people who would fund it, prioritize it, and maintain it all sat in different rooms.
+
+The conversations produced 482 insights, which was more than I could hold in my head or in a document. So I built a pipeline instead. Meeting transcripts went through AI-assisted categorization, into a structured database where every insight carried a type, a category, and tags. A Ruby script turned that into JSON, and I built a dashboard on top of it so the pattern could be filtered by team, by type, and by theme.
+
+The picture that came back was specific. 36% of everything I heard was a pain, and 54% of those pains sat in one category: the design system. One tag appeared 101 times, more than double any other, and it was standardization. After it came communication, documentation, components, rework, and speed.
+
+That mattered more than the volume. Five departments that did not plan their answers together were describing the same problem in the same words. The team was not asking for a component library because component libraries are good practice. They were describing rework they could measure and decisions that took too long.
+
+The dashboard closed with the part I cared about most: each recommendation tied back to the evidence that supported it, and a map of which stakeholders were raising which concerns. That gave me something more useful than a mandate. It gave me a quantified account of the problem that I could take into any room in the company and point at.
+
+**Images this section needs (collect in Phase 2):**
+1. Deck slide "Quantidade de pessoas entrevistadas" (breakdown by area)
+2. Deck slide "O que o time sente?" (482 insights, type distribution, the 36% / 54% figures) — *highest value if only one*
+3. Screenshot of the dashboard's "Panorama final" screen (recommendations tied to evidence). Run it
+   locally: `ruby scripts/extract_data.rb`, then open `index.html`.
 
 ---
 

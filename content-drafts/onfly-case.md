@@ -544,7 +544,7 @@ The tokens live as Figma Variables, which means they export as structured JSON r
 
 What that removes is not typing. It is drift. Before, a color changed in Figma and stayed changed in Figma, while the product kept shipping the old value until someone noticed, filed it, and a developer found time. The gap between the two was never a decision anyone made. It was just the cost of them being separate files.
 
-This is the part of the project I am most satisfied with, and it is also the part that most depended on my background. I built the conversion as a skill with a script, then took it to a developer, who improved it and organized it properly inside the framework's codebase before it shipped there. I could not have merged it alone, and I did not need to. What mattered is that the conversation started from something that already ran, instead of from a request for someone else to build it. That is the kind of task that otherwise waits for a developer to have capacity, which in practice means it waits.
+This is the part of the project I am most satisfied with, and it is also the part that most depended on my background. I built the conversion as a skill with a script, then took it to a developer, who improved it and organized it properly inside the framework's codebase before it shipped there. I could not have merged it alone, and I did not need to. What mattered is that the conversation started from something that already ran, instead of from a request for someone else to build it. That kind of task normally sits in a backlog until a developer has time for it, and it rarely gets to the top.
 
 **Images this section needs (collect in Phase 2):**
 1. A flow diagram: Figma Variables → JSON → conversion → SCSS → Quasar components. Likely does not

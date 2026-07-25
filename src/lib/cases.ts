@@ -8,6 +8,10 @@ export interface CaseFrontmatter {
   type: CaseType
   tags: string[]
   role?: string
+  /** Human-readable period, e.g. "Sep 2025 to Jul 2026". Shown in the case header. */
+  timeframe?: string
+  /** Client or employer the work was done for. Drives the header's brand logo. */
+  company?: string
 }
 
 export interface CaseStudy extends CaseFrontmatter {

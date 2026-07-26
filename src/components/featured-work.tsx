@@ -18,8 +18,8 @@ const designSystems: CaseCardData[] = [
     logo: WhirlpoolLogo,
     logoClassName: "h-7",
     description:
-      "Technical and operational architecture for the design system of a global appliance brand. 653 tokens and a 397-component library across multiple platforms.",
-    tags: ["Design Tokens", "Governance", "Multi-platform", "Enterprise"],
+      "A global token foundation built under design libraries already in use. 1,139 tokens across 7 brands on web and 4 on mobile, with every brand carrying the same tokens under the same names.",
+    tags: ["Design Tokens", "Governance", "Multi-brand", "Multi-platform", "Enterprise"],
     slug: "whirlpool-design-system",
   },
   {

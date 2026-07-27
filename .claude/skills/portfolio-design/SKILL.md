@@ -73,6 +73,13 @@ src/assets/cases/<slug>`. Before debugging any figure that has a stubborn hard e
 file's corner pixel. Full workflow, the failure modes, and when to crop flush vs. keep a margin:
 [references/case-images.md](references/case-images.md).
 
+Reaching Figma at all goes through its MCP server, which **requires loading its own skill before
+`use_figma` or `get_design_context`** — read `skill://index.json` for the roster, then
+`skill://figma/<name>/SKILL.md`. Which tool to use for reading vs. writing, how to resolve a
+variable to its per-mode value, and the measured limits (the REST export ignores a pinned mode;
+`figma.io.write` can't reach the filesystem) are in
+[references/figma-mcp.md](references/figma-mcp.md).
+
 ### Icons: Lucide is already installed
 
 The shadcn setup installed **Lucide** (`lucide-react`) as the icon library (see `components.json`). Use it for all icons — don't add another icon dependency. Import per-icon (`import { ArrowRight } from "lucide-react"`) so the bundle stays lean.

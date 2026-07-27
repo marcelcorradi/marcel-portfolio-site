@@ -20,8 +20,8 @@ Living record of the portfolio project's locked decisions. Keep this updated whe
 
 ## Page structure
 
-- **Home** — landing page. Personality lives here (the "signature"). Hook headline + who Marcel is + featured work + contact. Think "movie trailer".
-- **Case list** — Medium-style feed of cases (cards: title, summary, cover image, tags).
+- **Home** — landing page. Personality lives here (the "signature"). Hook headline + who Marcel is + featured work + contact. Think "movie trailer". **All cases are surfaced here** — decided there is no separate page just for cases.
+- **Case list (`/cases`)** — route exists but is an unstyled dev stub and nothing links to it. Not part of the intended navigation.
 - **Individual case page** — article/reading layout. Single column, clean typography, max readability.
 - **About page (`/about`)** — dedicated full About (added 2026-07-24). Home carries a short inviting About; the long story (trajectory, brands, differentiator, personal touch) lives here. Needs a new route.
 
@@ -44,13 +44,45 @@ stay as text wordmarks (they're Marcel's own projects). Logo components live in
 
 **Token strategy (approach A):** use Tailwind's ready-made `indigo` scale as the primitive values, and map shadcn's semantic tokens (`--primary`, `--primary-foreground`, `--ring`) onto it — semantic → primitive, the standard DS pattern. Do NOT hardcode `bg-indigo-600` on components; components stay on `bg-primary` so theming/dark-mode/color swaps live in one place. Full mapping recipe lives in the `portfolio-design` skill's references.
 
-## Deploy — DONE & LIVE (2026-07-24)
+## Deploy — DONE & LIVE
 
-Site is live at **https://marcelcorradi.github.io/marcel-portfolio-site/**. Repo `marcelcorradi/marcel-portfolio-site` is public; GitHub Pages Source = GitHub Actions. Vite `base` = `/marcel-portfolio-site/`; React Router `basename` = `import.meta.env.BASE_URL`. Every push to `main` auto-deploys via `.github/workflows/deploy.yml`. SPA deep links handled by `public/404.html`.
+Site is live at **https://marcelcorradi.com** — custom domain (updated 2026-07-27; previously the
+default `marcelcorradi.github.io/marcel-portfolio-site/` path). Repo
+`marcelcorradi/marcel-portfolio-site` is public; GitHub Pages Source = GitHub Actions, custom domain
+set via `public/CNAME`. Because the site is now at a domain root, Vite `base` = `/`; React Router
+`basename` = `import.meta.env.BASE_URL`. Every push to `main` auto-deploys via
+`.github/workflows/deploy.yml`. SPA deep links handled by `public/404.html`.
 
-## Build status
+## Build status (updated 2026-07-27)
 
-Base is fully set up: Vite + React + TS at repo root, Tailwind v4 + shadcn/ui (radix-nova, Geist font, Lucide icons), indigo tokens applied in `src/index.css`. Routes live: `/` Home, `/cases` list, `/cases/:slug` case. Cases load from `src/content/cases/*.md`. Pages are currently **minimal/functional placeholders** — real content + distinctive design still to come.
+Base: Vite + React + TS at repo root, Tailwind v4 + shadcn/ui (radix-nova, Geist font, Lucide icons),
+indigo tokens in `src/index.css`. Routing via react-router v7. Cases load from
+`src/content/cases/*.md` via `import.meta.glob(...?raw)` + a dependency-free frontmatter parser in
+`src/lib/cases.ts`. **Dark is the default theme**, applied before first paint so there's no flash.
+
+**DONE:**
+- **Home** — built and content-approved section by section. Nav (floating glass pill / mobile Sheet),
+  hero "spec ring" (annotated avatar over a dot-grid vignette), featured work (two groups, 6 cards),
+  "What I do" (numbered 01–04), short About + Contact w/ availability badge, footer.
+- **Two cases published** — Onfly (`onfly-design-system`) and Whirlpool
+  (`whirlpool-design-system`, "Seven brands, one system"). The case page is the **template the
+  remaining cases reuse**: `case-header`, `case-prose`, `case-metrics`, `case-figure`, `case-image`,
+  `case-violation`, `case-gallery`, `case-contents`, `case-footer-nav`, `case-token-tiers`.
+- **Case visuals are data-driven** — one file per case in `src/content/case-visuals/<slug>.tsx` +
+  a line in `index.ts`. A case with no entry renders as prose, which is a valid state.
+- Contrast verified WCAG AA in both themes.
+
+**OPEN, roughly in priority order:**
+1. **`/about` route does not exist** but is linked from `site-nav.tsx` and `contact-section.tsx` —
+   renders blank. Most visible defect.
+2. **Four Home cards 404**: Esfera, Design Audit, Atomic Colors, Spec Forge.
+3. **`/cases` list page is still the unstyled dev stub** — ignores `CaseCard`, nothing links to it.
+4. No catch-all route. Profile photo unoptimized (488KB).
+
+⚠️ **Case visual anchors fail silently.** Visuals attach to sentences in the Markdown via
+`splitByAnchors`; editing the prose drops the figure with no error. Verify anchors before committing.
+
+Images: `src/assets/cases/<slug>/`, converted with `node scripts/to-webp.mjs <dir>`.
 
 ## Repo conventions
 

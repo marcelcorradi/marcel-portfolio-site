@@ -1,6 +1,7 @@
 import type { CaseVisuals } from "./types"
 import { onflyVisuals } from "./onfly-design-system"
 import { whirlpoolVisuals } from "./whirlpool-design-system"
+import { esferaVisuals } from "./esfera-design-system"
 
 /**
  * Each case's visuals, by slug.
@@ -12,6 +13,7 @@ import { whirlpoolVisuals } from "./whirlpool-design-system"
 const caseVisuals: Record<string, CaseVisuals> = {
   "onfly-design-system": onflyVisuals,
   "whirlpool-design-system": whirlpoolVisuals,
+  "esfera-design-system": esferaVisuals,
 }
 
 export function getCaseVisuals(slug: string | undefined): CaseVisuals {

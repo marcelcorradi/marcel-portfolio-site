@@ -28,8 +28,8 @@ const designSystems: CaseCardData[] = [
     logo: EsferaLogo,
     logoClassName: "h-6",
     description:
-      "A new design system built from component design to adoption, in a highly regulated loyalty and e-commerce context. 59 components, 443 variants, 224 tokens.",
-    tags: ["Design System", "E-commerce", "Regulated"],
+      "A design system extracted from real flows: pilot journeys redesigned, approved with stakeholders, then turned into tokens and components. 59 components, 443 variants, 224 tokens.",
+    tags: ["Design System", "Design Tokens", "E-commerce", "Loyalty"],
     slug: "esfera-design-system",
   },
 ]

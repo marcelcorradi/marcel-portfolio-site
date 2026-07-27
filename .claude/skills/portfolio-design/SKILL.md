@@ -63,6 +63,16 @@ Resolve the tension between "distinctive look" and "reads like a clean article" 
 
 When you build something custom (i.e. beyond what shadcn provides) that shows up more than once — a case card, a stat/metric block, a section header, a tag row — **extract it into a reusable component** instead of copy-pasting markup. This is exactly the design-systems discipline Marcel practices professionally, and the site should model it: one source of truth per pattern, styled with tokens. Put shadcn primitives in `src/components/ui/` (managed by the CLI) and custom composed components in `src/components/` so the two don't get confused. Don't over-abstract — componentize when a pattern actually repeats or is clearly about to, not speculatively.
 
+### Case images: export from Figma in Light Mode
+
+Case figures come out of Figma, and the section backgrounds there are **bound to a design token
+that flips with the file's mode** — export in Dark Mode and a dark surround is baked into the
+pixels, which no CSS can undo and which draws a square corner through a rounded scroll frame.
+Switch the file to Light Mode before exporting, then convert with `node scripts/to-webp.mjs
+src/assets/cases/<slug>`. Before debugging any figure that has a stubborn hard edge, check the
+file's corner pixel. Full workflow, the failure modes, and when to crop flush vs. keep a margin:
+[references/case-images.md](references/case-images.md).
+
 ### Icons: Lucide is already installed
 
 The shadcn setup installed **Lucide** (`lucide-react`) as the icon library (see `components.json`). Use it for all icons — don't add another icon dependency. Import per-icon (`import { ArrowRight } from "lucide-react"`) so the bundle stays lean.

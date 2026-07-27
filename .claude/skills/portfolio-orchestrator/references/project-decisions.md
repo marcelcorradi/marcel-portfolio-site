@@ -64,10 +64,12 @@ indigo tokens in `src/index.css`. Routing via react-router v7. Cases load from
 - **Home** — built and content-approved section by section. Nav (floating glass pill / mobile Sheet),
   hero "spec ring" (annotated avatar over a dot-grid vignette), featured work (two groups, 6 cards),
   "What I do" (numbered 01–04), short About + Contact w/ availability badge, footer.
-- **Two cases published** — Onfly (`onfly-design-system`) and Whirlpool
-  (`whirlpool-design-system`, "Seven brands, one system"). The case page is the **template the
-  remaining cases reuse**: `case-header`, `case-prose`, `case-metrics`, `case-figure`, `case-image`,
-  `case-violation`, `case-gallery`, `case-contents`, `case-footer-nav`, `case-token-tiers`.
+- **Three cases published** — Onfly (`onfly-design-system`), Whirlpool
+  (`whirlpool-design-system`, "Seven brands, one system") and Esfera (`esfera-design-system`).
+  The case page is the **template the remaining cases reuse**: `case-header`, `case-prose`,
+  `case-metrics`, `case-figure`, `case-image`, `case-violation`, `case-gallery`, `case-contents`,
+  `case-footer-nav`, `case-token-tiers`. Esfera is the only case using scrolling figures, so the
+  scroll path is effectively Esfera-only; the non-scroll path is shared by all three.
 - **Case visuals are data-driven** — one file per case in `src/content/case-visuals/<slug>.tsx` +
   a line in `index.ts`. A case with no entry renders as prose, which is a valid state.
 - Contrast verified WCAG AA in both themes.
@@ -75,7 +77,7 @@ indigo tokens in `src/index.css`. Routing via react-router v7. Cases load from
 **OPEN, roughly in priority order:**
 1. **`/about` route does not exist** but is linked from `site-nav.tsx` and `contact-section.tsx` —
    renders blank. Most visible defect.
-2. **Four Home cards 404**: Esfera, Design Audit, Atomic Colors, Spec Forge.
+2. **Three Home cards 404**: Design Audit, Atomic Colors, Spec Forge (the authorial AI cases).
 3. **`/cases` list page is still the unstyled dev stub** — ignores `CaseCard`, nothing links to it.
 4. No catch-all route. Profile photo unoptimized (488KB).
 
@@ -83,6 +85,11 @@ indigo tokens in `src/index.css`. Routing via react-router v7. Cases load from
 `splitByAnchors`; editing the prose drops the figure with no error. Verify anchors before committing.
 
 Images: `src/assets/cases/<slug>/`, converted with `node scripts/to-webp.mjs <dir>`.
+
+⚠️ **Export Figma figures in Light Mode.** Section fills are bound to `Layout/Body`, which
+resolves dark in Dark Mode and bakes a dark surround into the pixels — unfixable in CSS, and it
+draws a square corner through rounded scroll frames. `to-webp.mjs` crops that margin on import.
+Full workflow in `portfolio-design`'s [references/case-images.md](../../portfolio-design/references/case-images.md).
 
 ## Repo conventions
 

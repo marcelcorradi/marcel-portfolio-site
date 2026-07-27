@@ -67,14 +67,22 @@ export const caseProse: Components = {
     </strong>
   ),
 
-  a: ({ children, ...props }) => (
-    <a
-      className="text-primary underline underline-offset-4 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-      {...props}
-    >
-      {children}
-    </a>
-  ),
+  // Links off the site open in a new tab: a case is a read, and sending someone
+  // to a live product should not cost them their place in it. Same-page anchors
+  // and internal routes stay in the tab, where a new one would be a nuisance.
+  a: ({ children, href, ...props }) => {
+    const external = /^https?:\/\//.test(href ?? "")
+    return (
+      <a
+        href={href}
+        className="text-primary underline underline-offset-4 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        {...(external && { target: "_blank", rel: "noopener noreferrer" })}
+        {...props}
+      >
+        {children}
+      </a>
+    )
+  },
 
   // Token names (spacing.stack.md, onf-ds-button) carry real weight in these
   // cases, so inline code is styled to read as a value, not as decoration.

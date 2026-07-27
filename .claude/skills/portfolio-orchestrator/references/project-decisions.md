@@ -64,8 +64,9 @@ indigo tokens in `src/index.css`. Routing via react-router v7. Cases load from
 - **Home** — built and content-approved section by section. Nav (floating glass pill / mobile Sheet),
   hero "spec ring" (annotated avatar over a dot-grid vignette), featured work (two groups, 6 cards),
   "What I do" (numbered 01–04), short About + Contact w/ availability badge, footer.
-- **Three cases published** — Onfly (`onfly-design-system`), Whirlpool
-  (`whirlpool-design-system`, "Seven brands, one system") and Esfera (`esfera-design-system`).
+- **Four cases published** — Onfly (`onfly-design-system`), Whirlpool
+  (`whirlpool-design-system`, "Seven brands, one system"), Esfera (`esfera-design-system`)
+  and Atomic Colors (`atomic-colors`, the first `product-ai` case).
   The case page is the **template the remaining cases reuse**: `case-header`, `case-prose`,
   `case-metrics`, `case-figure`, `case-image`, `case-violation`, `case-gallery`, `case-contents`,
   `case-footer-nav`, `case-token-tiers`. Esfera is the only case using scrolling figures, so the
@@ -77,14 +78,20 @@ indigo tokens in `src/index.css`. Routing via react-router v7. Cases load from
 **OPEN, roughly in priority order:**
 1. **`/about` route does not exist** but is linked from `site-nav.tsx` and `contact-section.tsx` —
    renders blank. Most visible defect.
-2. **Three Home cards 404**: Design Audit, Atomic Colors, Spec Forge (the authorial AI cases).
+2. **Two Home cards 404**: Design Audit and Spec Forge (Atomic Colors shipped 2026-07-27).
 3. **`/cases` list page is still the unstyled dev stub** — ignores `CaseCard`, nothing links to it.
 4. No catch-all route. Profile photo unoptimized (488KB).
 
 ⚠️ **Case visual anchors fail silently.** Visuals attach to sentences in the Markdown via
 `splitByAnchors`; editing the prose drops the figure with no error. Verify anchors before committing.
 
-Images: `src/assets/cases/<slug>/`, converted with `node scripts/to-webp.mjs <dir>`.
+Images: `src/assets/cases/<slug>/`, converted with `node scripts/to-webp.mjs <dir>`. Only
+PNGs are converted; the .webp is what gets committed and the original is deleted.
+
+⚠️ **Do not run `to-webp.mjs` on browser screenshots of a dark UI.** Its crop scans inward for
+pixels brighter than a threshold, to strip Figma's dark canvas, and a dark-mode interface sits
+below that threshold everywhere: it cropped an Atomic Colors capture from 1269x945 to 398x492.
+Convert those with sharp directly, no crop.
 
 ⚠️ **Export Figma figures in Light Mode.** Section fills are bound to `Layout/Body`, which
 resolves dark in Dark Mode and bakes a dark surround into the pixels — unfixable in CSS, and it

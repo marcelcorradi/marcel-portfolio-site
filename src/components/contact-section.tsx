@@ -2,7 +2,7 @@ import { Link } from "react-router"
 import { ArrowRight, Mail } from "lucide-react"
 
 const EMAIL = "marcelcorradi@hotmail.com"
-const LINKEDIN = "https://www.linkedin.com/in/marcelc-84b26931/"
+const LINKEDIN = "https://www.linkedin.com/in/marcel-c-84b26931/"
 
 // Lucide dropped brand icons, so LinkedIn is an inline SVG.
 function LinkedInIcon({ className }: { className?: string }) {

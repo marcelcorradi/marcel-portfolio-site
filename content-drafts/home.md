@@ -79,10 +79,10 @@ CTA: `More about me →`
 
 **Contact:**
 Let's talk.
-`Email (marcelcorradi@hotmail.com)` · `LinkedIn (linkedin.com/in/marcelc-84b26931)`
+`Email (marcelcorradi@hotmail.com)` · `LinkedIn (linkedin.com/in/marcel-c-84b26931)`
 
 - Email: marcelcorradi@hotmail.com
-- LinkedIn: linkedin.com/in/marcelc-84b26931
+- LinkedIn: linkedin.com/in/marcel-c-84b26931
 - GitHub: intentionally omitted (design/DS profile, not a code showcase)
 
 ---

@@ -64,9 +64,11 @@ indigo tokens in `src/index.css`. Routing via react-router v7. Cases load from
 - **Home** — built and content-approved section by section. Nav (floating glass pill / mobile Sheet),
   hero "spec ring" (annotated avatar over a dot-grid vignette), featured work (two groups, 6 cards),
   "What I do" (numbered 01–04), short About + Contact w/ availability badge, footer.
-- **Four cases published** — Onfly (`onfly-design-system`), Whirlpool
-  (`whirlpool-design-system`, "Seven brands, one system"), Esfera (`esfera-design-system`)
-  and Atomic Colors (`atomic-colors`, the first `product-ai` case).
+- **Five cases published** — Onfly (`onfly-design-system`), Whirlpool
+  (`whirlpool-design-system`, "Seven brands, one system"), Esfera (`esfera-design-system`),
+  Atomic Colors (`atomic-colors`) and Spec Forge (`spec-forge`). The last two are
+  `product-ai`: three sections, plain language, no metrics row, ending on a CTA button
+  to the live product. Design Audit is the last one missing.
   The case page is the **template the remaining cases reuse**: `case-header`, `case-prose`,
   `case-metrics`, `case-figure`, `case-image`, `case-violation`, `case-gallery`, `case-contents`,
   `case-footer-nav`, `case-token-tiers`. Esfera is the only case using scrolling figures, so the
@@ -78,12 +80,13 @@ indigo tokens in `src/index.css`. Routing via react-router v7. Cases load from
 **OPEN, roughly in priority order:**
 1. **`/about` route does not exist** but is linked from `site-nav.tsx` and `contact-section.tsx` —
    renders blank. Most visible defect.
-2. **Two Home cards 404**: Design Audit and Spec Forge (Atomic Colors shipped 2026-07-27).
+2. **One Home card 404**: Design Audit. Atomic Colors and Spec Forge shipped 2026-07-27.
 3. **`/cases` list page is still the unstyled dev stub** — ignores `CaseCard`, nothing links to it.
 4. No catch-all route. Profile photo unoptimized (488KB).
 
 ⚠️ **Case visual anchors fail silently.** Visuals attach to sentences in the Markdown via
-`splitByAnchors`; editing the prose drops the figure with no error. Verify anchors before committing.
+`splitByAnchors`; editing the prose drops the figure with no error and the build still passes.
+Run `node scripts/check-anchors.mjs` before committing (no argument checks every case).
 
 Images: `src/assets/cases/<slug>/`, converted with `node scripts/to-webp.mjs <dir>`. Only
 PNGs are converted; the .webp is what gets committed and the original is deleted.

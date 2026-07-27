@@ -9,7 +9,7 @@ The full CV lives on **Google Drive, file id `1wfUAZC-ZB-JZD-tPdH9HV5dEBhKqtDeH`
 ## Identity
 
 - **Marcel Corradi** — Product Designer | UX/UI | Design Systems.
-- Itaúna, MG, Brazil. LinkedIn: linkedin.com/in/marcelc-84b26931. English: B2 (Upper Intermediate).
+- Itaúna, MG, Brazil. LinkedIn: linkedin.com/in/marcel-c-84b26931. English: B2 (Upper Intermediate).
 - **13+ years in tech**, 5+ as Product Designer, 4+ specialized in Design Systems.
 - **B.Sc. in Computer Science**, University of Itaúna (2009–2013).
 

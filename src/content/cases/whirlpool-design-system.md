@@ -2,7 +2,7 @@
 title: "Seven brands, one system"
 summary: "Whirlpool's design libraries were alive and in daily use, so the foundation had to be installed underneath them without asking anyone to stop. This is how a global token architecture went live in its second month, on web and on mobile, and made a brand a configuration rather than a fork."
 date: "2026-07-26"
-cover: ""
+cover: "whirlpool/web-button-whirlpool-default-brand.webp"
 type: "design-system"
 tags: ["Design Systems", "Design Tokens", "Governance", "Multi-brand", "Multi-platform", "Enterprise"]
 role: "Senior Product Designer, Design System"

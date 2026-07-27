@@ -4,6 +4,7 @@ import { whirlpoolVisuals } from "./whirlpool-design-system"
 import { esferaVisuals } from "./esfera-design-system"
 import { atomicColorsVisuals } from "./atomic-colors"
 import { specForgeVisuals } from "./spec-forge"
+import { designAuditVisuals } from "./design-audit"
 
 /**
  * Each case's visuals, by slug.
@@ -18,6 +19,7 @@ const caseVisuals: Record<string, CaseVisuals> = {
   "esfera-design-system": esferaVisuals,
   "atomic-colors": atomicColorsVisuals,
   "spec-forge": specForgeVisuals,
+  "design-audit": designAuditVisuals,
 }
 
 export function getCaseVisuals(slug: string | undefined): CaseVisuals {

@@ -2,6 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <!-- GitHub Pages serves this file with a 200, so a crawler that does not
+         run the redirect below would index an empty page. Google honours this
+         tag on a 200 response, which is the only 404 signal a static host has.
+         "follow" still lets it crawl on to the real pages. -->
+    <meta name="robots" content="noindex, follow" />
     <title>Marcel Corradi</title>
     <script type="text/javascript">
       // SPA fallback for GitHub Pages (rafgraph/spa-github-pages technique).

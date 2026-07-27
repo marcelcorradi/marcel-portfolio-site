@@ -1,5 +1,4 @@
-import { Link } from "react-router"
-import { ArrowRight, Mail } from "lucide-react"
+import { Mail } from "lucide-react"
 
 const EMAIL = "marcelcorradi@hotmail.com"
 const LINKEDIN = "https://www.linkedin.com/in/marcel-c-84b26931/"
@@ -20,31 +19,30 @@ function LinkedInIcon({ className }: { className?: string }) {
 
 export function ContactSection() {
   return (
-    <section
-      id="contact"
-      className="mx-auto max-w-5xl scroll-mt-24 px-6 pt-12 pb-20 sm:pt-20"
-    >
-      {/* About (short) */}
-      <h2 className="text-2xl font-semibold tracking-tight text-foreground">
-        About
-      </h2>
-      <div className="mt-6 max-w-2xl">
-        <p className="text-lg leading-relaxed text-muted-foreground">
-          I'm Marcel, a Product Designer specialized in Design Systems, with 13+
-          years in tech and a Computer Science degree. I build the technical
-          foundation that lets design and engineering move fast together.
-        </p>
-        <Link
-          to="/about"
-          className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary transition-colors hover:opacity-80"
-        >
-          More about me
-          <ArrowRight className="size-4" />
-        </Link>
-      </div>
+    <div className="mx-auto max-w-5xl px-6 pt-12 pb-20 sm:pt-20">
+      {/* About and Contact are two sections in one block: they share a column and
+          read as one closing move, but each owns its own id so the nav can land
+          on the right one. They were a single #contact section before, which put
+          the Contact link at the top of the About copy. */}
+      <section id="about" className="scroll-mt-24">
+        <h2 className="text-2xl font-semibold tracking-tight text-foreground">
+          About
+        </h2>
+        <div className="mt-6 max-w-2xl">
+          <p className="text-lg leading-relaxed text-muted-foreground">
+            I'm Marcel, a Product Designer specialized in Design Systems, with
+            13+ years in tech and a Computer Science degree. I build the
+            technical foundation that lets design and engineering move fast
+            together.
+          </p>
+        </div>
+      </section>
 
       {/* Contact — the close */}
-      <div className="mt-14 border-t border-border pt-14">
+      <section
+        id="contact"
+        className="mt-14 scroll-mt-24 border-t border-border pt-14"
+      >
         <div className="flex flex-wrap items-center gap-3">
           <h2 className="text-2xl font-semibold tracking-tight text-foreground">
             Contact
@@ -83,7 +81,7 @@ export function ContactSection() {
             LinkedIn
           </a>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   )
 }

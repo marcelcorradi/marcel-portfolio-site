@@ -2,7 +2,7 @@
 title: "The design system I had to sell first"
 summary: "Esfera had component libraries but no design system, and no one had asked for one. So it was earned in stages: months of studies to make the case internally, then pilot journeys redesigned and approved, then tokens and components extracted from what shipped."
 date: "2026-07-27"
-cover: ""
+cover: "esfera-design-system/tokens-semantic-colors-dark.webp"
 type: "design-system"
 tags: ["Design Systems", "Design Tokens", "E-commerce", "Loyalty"]
 role: "Product Designer, Design System"

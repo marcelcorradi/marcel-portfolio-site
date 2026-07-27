@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card"
+import { cn } from "@/lib/utils"
 
 export interface Metric {
   value: string
@@ -13,8 +14,13 @@ export interface Metric {
  * have the same shape: a few hard numbers that carry the argument.
  */
 export function CaseMetrics({ metrics }: { metrics: Metric[] }) {
+  // Two columns pair up an even count. Exactly three would strand a half-width
+  // card on its own row, so those go side by side instead. Everything else
+  // stays on two, which keeps enough width for the labels.
+  const columns = metrics.length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2"
+
   return (
-    <div className="my-12 grid gap-3 sm:grid-cols-2">
+    <div className={cn("my-12 grid gap-3", columns)}>
       {metrics.map((metric) => (
         <Card key={metric.label} size="sm">
           <CardContent>

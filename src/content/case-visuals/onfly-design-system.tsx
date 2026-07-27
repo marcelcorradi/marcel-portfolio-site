@@ -61,11 +61,16 @@ export const onflyVisuals: CaseVisuals = {
   logo: OnflyLogo,
   logoClassName: "h-6",
 
+  // The three numbers that describe the system itself. The agent's conformance
+  // result (44% without the skill, 98% with it) used to sit here as a fourth
+  // card and read as a before/after of the design system, because a row of
+  // counts sets that expectation and an arrow reinforces it. It is a controlled
+  // comparison of two conditions, so it belongs in the prose that explains the
+  // method, next to the paragraph describing how it was measured.
   metrics: [
     { value: "611", label: "Design tokens", note: "primitive, semantic, component" },
     { value: "143", label: "Components", note: "Figma library rebuilt from scratch" },
     { value: "~40", label: "Developers", note: "plus 5 designers" },
-    { value: "44% → 98%", label: "Design system conformance", note: "AI-generated screens" },
   ],
 
   inserts: [

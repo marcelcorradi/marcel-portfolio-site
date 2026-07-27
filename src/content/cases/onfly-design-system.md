@@ -2,7 +2,7 @@
 title: "A design system that keeps itself in sync"
 summary: "Onfly's design system was not missing when I arrived. It was orphaned. This is how a framework nobody owned and a Figma library nobody trusted became one system, adopted by 5 designers and around 40 developers."
 date: "2026-07-01"
-cover: ""
+cover: "onfly/tokens-1.webp"
 type: "design-system"
 tags: ["Design Systems", "Design Tokens", "Design Ops", "Accessibility", "AI", "B2B"]
 role: "Senior Product Designer, Design System"

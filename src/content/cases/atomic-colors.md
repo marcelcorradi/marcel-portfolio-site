@@ -2,7 +2,7 @@
 title: "Colour decisions, written as an algorithm"
 summary: "Every design system needs semantic colours, and they are usually picked by eye. Atomic Colors builds them from a single brand colour and checks them for colour blindness before you ever see them. It runs as a paid product at atomicolors.com."
 date: "2026-07-27"
-cover: ""
+cover: "atomic-works/semantic-suggestions.webp"
 type: "product-ai"
 tags: ["Product", "Design Tokens", "Accessibility", "AI"]
 role: "Conceived, designed and built it, on my own"
@@ -33,7 +33,7 @@ Export is five formats: CSS, SCSS, JavaScript, JSON, and a JSON built to match F
 
 ## Shipping it
 
-It is live at [atomicolors.com](https://atomicolors.com) as a paid product.
+It is live at atomicolors.com as a paid product.
 
 The colour engine was the interesting problem. Everything after it was the part that decides whether something is a project or a product: a backend to verify subscriptions, an email login that sends its own one time codes, a payment integration, and every screen written twice so it works in English and Portuguese. None of that is design work, and all of it had to exist before the first person could pay for it.
 

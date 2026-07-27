@@ -23,7 +23,11 @@ Living record of the portfolio project's locked decisions. Keep this updated whe
 - **Home** — landing page. Personality lives here (the "signature"). Hook headline + who Marcel is + featured work + contact. Think "movie trailer". **All cases are surfaced here** — decided there is no separate page just for cases.
 - **Case list (`/cases`)** — route exists but is an unstyled dev stub and nothing links to it. Not part of the intended navigation.
 - **Individual case page** — article/reading layout. Single column, clean typography, max readability.
-- **About page (`/about`)** — dedicated full About (added 2026-07-24). Home carries a short inviting About; the long story (trajectory, brands, differentiator, personal touch) lives here. Needs a new route.
+- **About — a Home section, not a route (revised 2026-07-27).** The dedicated `/about`
+  page decided on 2026-07-24 was never built, and Marcel chose not to build it for now: the
+  six published cases carry the differentiator better than a page about himself, so a full
+  About is reinforcement rather than foundation. The Home's short About now owns `#about`
+  and the nav points there. Reopen this if that copy starts feeling thin.
 
 ## Two types of case study
 
@@ -64,11 +68,14 @@ indigo tokens in `src/index.css`. Routing via react-router v7. Cases load from
 - **Home** — built and content-approved section by section. Nav (floating glass pill / mobile Sheet),
   hero "spec ring" (annotated avatar over a dot-grid vignette), featured work (two groups, 6 cards),
   "What I do" (numbered 01–04), short About + Contact w/ availability badge, footer.
-- **Five cases published** — Onfly (`onfly-design-system`), Whirlpool
+- **All six cases published** — Onfly (`onfly-design-system`), Whirlpool
   (`whirlpool-design-system`, "Seven brands, one system"), Esfera (`esfera-design-system`),
-  Atomic Colors (`atomic-colors`) and Spec Forge (`spec-forge`). The last two are
-  `product-ai`: three sections, plain language, no metrics row, ending on a CTA button
-  to the live product. Design Audit is the last one missing.
+  Atomic Colors (`atomic-colors`), Spec Forge (`spec-forge`) and Design Audit
+  (`design-audit`, "A design system, read back out of a website", shipped 2026-07-27).
+  The last three are `product-ai`: three sections, plain language, no metrics row, ending
+  on a CTA button to the live product. **Every Home card now resolves; no 404s left.**
+  Design Audit's origin is stated in the Onfly case (he built it to survive that audit),
+  so the two cases cross-reference and must stay consistent.
   The case page is the **template the remaining cases reuse**: `case-header`, `case-prose`,
   `case-metrics`, `case-figure`, `case-image`, `case-violation`, `case-gallery`, `case-contents`,
   `case-footer-nav`, `case-token-tiers`. Esfera is the only case using scrolling figures, so the
@@ -78,11 +85,19 @@ indigo tokens in `src/index.css`. Routing via react-router v7. Cases load from
 - Contrast verified WCAG AA in both themes.
 
 **OPEN, roughly in priority order:**
-1. **`/about` route does not exist** but is linked from `site-nav.tsx` and `contact-section.tsx` —
-   renders blank. Most visible defect.
-2. **One Home card 404**: Design Audit. Atomic Colors and Spec Forge shipped 2026-07-27.
-3. **`/cases` list page is still the unstyled dev stub** — ignores `CaseCard`, nothing links to it.
-4. No catch-all route. Profile photo unoptimized (488KB).
+1. Profile photo unoptimized (488KB).
+2. **No `robots.txt` and no `sitemap.xml`**, and no per-route `<title>`/description: every
+   page inherits the ones in `index.html`. Matters now that Marcel is submitting the site
+   to Google Search Console.
+
+**Settled, do not reopen without a reason:**
+- **`/cases` stays an unstyled stub (2026-07-27).** Marcel decided a dedicated cases page
+  is not needed: all six cases are surfaced on the Home. Nothing links to it, and the
+  "Case not found" state now points at `/#work` instead.
+- **Catch-all route added (2026-07-27).** `src/pages/NotFound.tsx` on `path: "*"`, declared
+  last in `main.tsx`. It sets a `noindex, follow` robots meta on mount, and `public/404.html`
+  carries the same tag statically, because GitHub Pages serves both with a 200 and Google
+  would otherwise treat them as soft 404s and could index them.
 
 ⚠️ **Case visual anchors fail silently.** Visuals attach to sentences in the Markdown via
 `splitByAnchors`; editing the prose drops the figure with no error and the build still passes.

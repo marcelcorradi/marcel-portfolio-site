@@ -1,0 +1,12 @@
+{
+  "name": "Marcel Corradi — Product Designer · Design Systems",
+  "short_name": "Marcel Corradi",
+  "icons": [
+    { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ],
+  "theme_color": "#0a0a0a",
+  "background_color": "#0a0a0a",
+  "display": "browser",
+  "start_url": "/"
+}

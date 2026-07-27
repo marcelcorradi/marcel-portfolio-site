@@ -3,11 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SVG first: it carries a prefers-color-scheme rule, so browsers that
+         theme their tab strip get the right indigo. The PNG is the fallback for
+         anything that will not take an SVG icon. -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#ffffff"
+    />
+    <!-- Both match --background in src/index.css, converted from oklch. -->
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#0a0a0a"
+    />
     <title>Marcel Corradi — Product Designer · Design Systems</title>
     <meta
       name="description"
       content="Product Designer specialized in Design Systems, with a Computer Science background. Selected work and case studies."
     />
+    <link rel="canonical" href="https://marcelcorradi.com/" />
+
+    <!-- Static Open Graph defaults. usePageMeta overwrites these per route for
+         crawlers that render JS (Google does); social scrapers generally do
+         not, so these are what LinkedIn, Slack and WhatsApp will show for any
+         shared link. Keep them accurate and generic. -->
+    <meta property="og:site_name" content="Marcel Corradi" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://marcelcorradi.com/" />
+    <meta
+      property="og:title"
+      content="Marcel Corradi — Product Designer · Design Systems"
+    />
+    <meta
+      property="og:description"
+      content="Product Designer specialized in Design Systems, with a Computer Science degree. Design systems for Onfly, Whirlpool and Esfera, plus three products built end to end."
+    />
+    <meta name="twitter:card" content="summary" />
     <script type="text/javascript">
       // Restores the deep link that 404.html encoded as a query, so the SPA
       // router sees the real path. Pairs with public/404.html.

@@ -10,6 +10,7 @@ import { caseProse } from "@/components/case-prose"
 import { getCaseBySlug, getCaseSections } from "@/lib/cases"
 import { getCaseVisuals } from "@/content/case-visuals"
 import { CaseFooterNav } from "@/components/case-footer-nav"
+import { usePageMeta, resolveCoverUrl } from "@/lib/use-page-meta"
 
 /**
  * Split a body into segments at each anchor sentence, so components can sit
@@ -40,6 +41,18 @@ export default function CasePage() {
   const { slug } = useParams<{ slug: string }>()
   const study = slug ? getCaseBySlug(slug) : undefined
 
+  // Called before the not-found return: hooks cannot sit behind a branch. An
+  // unknown slug gets the site defaults plus noindex, so a bad case URL is
+  // never indexed as if it were a real page.
+  usePageMeta({
+    title: study && `${study.title} — Marcel Corradi`,
+    description: study?.summary,
+    image: resolveCoverUrl(study?.cover),
+    path: study && `/cases/${study.slug}`,
+    type: "article",
+    noIndex: !study,
+  })
+
   if (!study) {
     return (
       <>
@@ -48,9 +61,11 @@ export default function CasePage() {
           <h1 className="text-2xl font-semibold text-foreground">
             Case not found
           </h1>
+          {/* Sends people to the work on the Home, not to /cases: that route is
+              an unstyled stub nothing links to. */}
           <p className="mt-4">
-            <Link to="/cases" className="text-primary hover:underline">
-              Back to cases
+            <Link to="/#work" className="text-primary hover:underline">
+              See the work
             </Link>
           </p>
         </main>

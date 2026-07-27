@@ -62,7 +62,7 @@ export const specForgeVisuals: CaseVisuals = {
     },
     {
       // The plugin is public and installable, so the case ends on the way in.
-      anchor: "It is on the [Figma Community](https://www.figma.com/community/plugin/1616922079963177675/spec-forge).",
+      anchor: "It is on the Figma Community.",
       node: (
         <div className="mt-10">
           <Button asChild size="lg">

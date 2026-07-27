@@ -2,7 +2,7 @@
 title: "A spec the AI can build from"
 summary: "Hand a coding agent a Figma link and it sees a picture. Spec Forge extracts the component itself: every layer, every property, every variant, and the design system's own token names. Published on the Figma Community."
 date: "2026-07-27"
-cover: ""
+cover: "spec-forge/cover.webp"
 type: "product-ai"
 tags: ["Plugin", "Design Tokens", "AI", "Design Systems"]
 role: "Conceived, designed and built it, on my own"
@@ -41,4 +41,4 @@ What I did next is the part I would repeat. Instead of asking an AI to build it,
 
 Those rules are worth reading twice. They are the same discipline I enforce in a design system, applied to the thing writing the code. The plugin exists because agents discard the semantic layer and hardcode values. It would have been strange to build it by letting one do exactly that.
 
-The whole thing went from console script to published plugin in a day. It is on the [Figma Community](https://www.figma.com/community/plugin/1616922079963177675/spec-forge).
+The whole thing went from console script to published plugin in a day. It is on the Figma Community.

@@ -1,8 +1,15 @@
 import { Link } from "react-router"
 import { getAllCases } from "@/lib/cases"
+import { usePageMeta } from "@/lib/use-page-meta"
 
 export default function CasesList() {
   const cases = getAllCases()
+
+  // Deliberately noindex: this is an unstyled dev stub nothing links to, kept
+  // because /cases/:slug lives under it. It is not part of the navigation, and
+  // it should never be what a search result shows. robots.txt disallows it too.
+  usePageMeta({ noIndex: true, path: "/cases" })
+
   return (
     <main className="mx-auto max-w-3xl px-6 py-16">
       <p className="text-sm">

@@ -30,7 +30,7 @@ export function HeroSpec() {
             Marcel Corradi
           </h1>
           <p className="mt-3 text-xl text-foreground/80">
-            Product Designer specializing in Design Systems.
+            Product Designer specializing in Design Systems
           </p>
           <p className="mt-5 max-w-md text-muted-foreground">
             I own design systems end to end, from design tokens and component

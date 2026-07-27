@@ -12,14 +12,14 @@ import {
 } from "@/components/ui/sheet"
 import { cn } from "@/lib/utils"
 
-// Work and Contact are sections of the Home, About is its own route. All of
-// them navigate through the router: a plain <a href="/#work"> would trigger a
-// full page load, and the browser would drop the hash before React had
-// rendered the section to scroll to. ScrollToTop does the scrolling.
+// Work, About and Contact are all sections of the Home. They navigate through
+// the router: a plain <a href="/#work"> would trigger a full page load, and the
+// browser would drop the hash before React had rendered the section to scroll
+// to. ScrollToTop does the scrolling.
 const navItems = [
   { label: "Home", to: "/", type: "route" as const, end: true },
   { label: "Work", to: "/#work", type: "hash" as const, hash: "#work" },
-  { label: "About", to: "/about", type: "route" as const },
+  { label: "About", to: "/#about", type: "hash" as const, hash: "#about" },
   { label: "Contact", to: "/#contact", type: "hash" as const, hash: "#contact" },
 ]
 

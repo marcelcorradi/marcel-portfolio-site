@@ -50,7 +50,12 @@ export function CaseCard({
         ))}
       </div>
 
-      <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors group-hover:text-primary">
+      {/* sm:mt-auto drops the link alone to the bottom edge, so "View case" sits
+          on one line across a row of cards with descriptions of different
+          lengths. The tags stay attached to the description above them. Only
+          from sm up, where cards share a row and the misalignment shows; stacked
+          on mobile it would strand the link at the bottom of a tall card. */}
+      <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors group-hover:text-primary sm:mt-auto sm:pt-5">
         View case
         <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
       </span>

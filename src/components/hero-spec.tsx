@@ -1,4 +1,6 @@
+import { Link } from "react-router"
 import { ProfileAvatar } from "@/components/profile-avatar"
+import { scrollToSection } from "@/lib/scroll-to-section"
 
 /**
  * Hero — "spec ring" over a section-wide dot grid.
@@ -7,6 +9,11 @@ import { ProfileAvatar } from "@/components/profile-avatar"
  * out at the edges. Text left, photo right.
  */
 export function HeroSpec() {
+  // The hero only ever renders on Home, so the target is always present and
+  // these can scroll directly instead of routing and waiting for an effect.
+  const scrollToWork = scrollToSection("#work")
+  const scrollToContact = scrollToSection("#contact")
+
   return (
     <section className="relative overflow-hidden">
       {/* Dot grid across the whole hero, with a soft circular vignette fade:
@@ -30,19 +37,23 @@ export function HeroSpec() {
             architecture to governance. I also build the tools that ship them,
             with code and AI.
           </p>
+          {/* Routed rather than plain anchors, so the hero buttons behave like
+              the nav: no full page load, and the same smooth scroll. */}
           <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href="#work"
+            <Link
+              to="/#work"
+              onClick={scrollToWork}
               className="rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               See work
-            </a>
-            <a
-              href="#contact"
+            </Link>
+            <Link
+              to="/#contact"
+              onClick={scrollToContact}
               className="rounded-full border border-border bg-background/60 px-5 py-2.5 text-sm font-medium text-foreground backdrop-blur-sm transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               Get in touch
-            </a>
+            </Link>
           </div>
         </div>
 

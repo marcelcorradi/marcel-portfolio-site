@@ -1,6 +1,7 @@
-import { useState } from "react"
-import { NavLink } from "react-router"
+import { useState, type MouseEvent } from "react"
+import { Link, NavLink, useLocation } from "react-router"
 import { Menu, X } from "lucide-react"
+import { scrollToSection } from "@/lib/scroll-to-section"
 import { ThemeToggle } from "@/components/theme-toggle"
 import {
   Sheet,
@@ -11,17 +12,45 @@ import {
 } from "@/components/ui/sheet"
 import { cn } from "@/lib/utils"
 
-// Everything lives on the Home, so Work and Contact are in-page anchors.
-// About is the one separate route (NavLink gets the active state).
+// Work and Contact are sections of the Home, About is its own route. All of
+// them navigate through the router: a plain <a href="/#work"> would trigger a
+// full page load, and the browser would drop the hash before React had
+// rendered the section to scroll to. ScrollToTop does the scrolling.
 const navItems = [
-  { label: "Work", href: "/#work", type: "anchor" as const },
+  { label: "Home", to: "/", type: "route" as const, end: true },
+  { label: "Work", to: "/#work", type: "hash" as const, hash: "#work" },
   { label: "About", to: "/about", type: "route" as const },
-  { label: "Contact", href: "/#contact", type: "anchor" as const },
+  { label: "Contact", to: "/#contact", type: "hash" as const, hash: "#contact" },
 ]
 
 const pillLinkBase =
   "rounded-full px-3.5 py-1.5 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
 const pillLinkInactive = "text-muted-foreground hover:text-foreground"
+
+/**
+ * Re-clicking the section you are already on doesn't change the location, so
+ * the router never re-renders and ScrollToTop never fires. Scroll here in that
+ * case; otherwise let the Link navigate and ScrollToTop finish the job.
+ */
+function useHashClick(hash: string) {
+  const location = useLocation()
+  const scroll = scrollToSection(hash)
+
+  return (event: MouseEvent) => {
+    if (location.pathname !== "/" || location.hash !== hash) return
+    scroll(event)
+  }
+}
+
+/** A Home section link: routes when away from Home, scrolls when already there. */
+function DesktopHashLink({ to, hash, label }: { to: string; hash: string; label: string }) {
+  const onClick = useHashClick(hash)
+  return (
+    <Link to={to} onClick={onClick} className={cn(pillLinkBase, pillLinkInactive)}>
+      {label}
+    </Link>
+  )
+}
 
 /** Desktop nav links (rendered inside the unified pill). */
 function DesktopLinks() {
@@ -32,6 +61,7 @@ function DesktopLinks() {
           <NavLink
             key={item.label}
             to={item.to}
+            end={item.end}
             className={({ isActive }) =>
               cn(
                 pillLinkBase,
@@ -42,9 +72,12 @@ function DesktopLinks() {
             {item.label}
           </NavLink>
         ) : (
-          <a key={item.label} href={item.href} className={cn(pillLinkBase, pillLinkInactive)}>
-            {item.label}
-          </a>
+          <DesktopHashLink
+            key={item.label}
+            to={item.to}
+            hash={item.hash}
+            label={item.label}
+          />
         )
       )}
     </div>
@@ -53,6 +86,33 @@ function DesktopLinks() {
 
 const mobileLinkBase =
   "flex items-center gap-3 rounded-lg px-3 py-3 text-base transition-colors"
+
+/** The mobile counterpart: same routing, and it closes the sheet. */
+function MobileHashLink({
+  to,
+  hash,
+  label,
+  onNavigate,
+}: {
+  to: string
+  hash: string
+  label: string
+  onNavigate: () => void
+}) {
+  const onHashClick = useHashClick(hash)
+  return (
+    <Link
+      to={to}
+      onClick={(event) => {
+        onHashClick(event)
+        onNavigate()
+      }}
+      className={cn(mobileLinkBase, "text-foreground hover:bg-accent")}
+    >
+      {label}
+    </Link>
+  )
+}
 
 /** Mobile: hamburger that opens a Sheet with the links. */
 function MobileMenu() {
@@ -89,6 +149,7 @@ function MobileMenu() {
               <NavLink
                 key={item.label}
                 to={item.to}
+                end={item.end}
                 onClick={close}
                 className={({ isActive }) =>
                   cn(
@@ -102,14 +163,13 @@ function MobileMenu() {
                 {item.label}
               </NavLink>
             ) : (
-              <a
+              <MobileHashLink
                 key={item.label}
-                href={item.href}
-                onClick={close}
-                className={cn(mobileLinkBase, "text-foreground hover:bg-accent")}
-              >
-                {item.label}
-              </a>
+                to={item.to}
+                hash={item.hash}
+                label={item.label}
+                onNavigate={close}
+              />
             )
           )}
         </nav>

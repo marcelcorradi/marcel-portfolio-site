@@ -19,9 +19,10 @@ interface CaseImageProps {
   eager?: boolean
   onLoad?: () => void
   /**
-   * Frame the image with a border and a light backing. Needed for exports that
-   * sit on transparent or white backgrounds, so they do not bleed into a dark
-   * page. Screenshots that already carry their own frame should leave it off.
+   * Frame the image with a border. For exports on a transparent background,
+   * which would otherwise bleed into the page. No backing colour: these are
+   * Figma exports that already carry their own white, and painting more of it
+   * behind them only makes the frame visible as a pale edge in dark mode.
    */
   framed?: boolean
   /**
@@ -29,13 +30,24 @@ interface CaseImageProps {
    * The parent scrolls the overflow. 1.6 shows the image at 160% of the column,
    * which is enough to read a dense matrix without turning the frame into a
    * magnified corner.
-   *
-   * Below `sm` the image always fits. A 3000px matrix shows about a tenth of
-   * itself on a phone, so panning means dragging through nine screens to find
-   * the point, and a horizontal drag there competes with the browser's own back
-   * gesture. Tapping opens it full size, where pinch-zoom already works.
    */
   overflowScale?: number
+  /**
+   * The same, for phone widths. Left unset the image simply fits, which is
+   * right for most figures: a wide export panned on a phone means dragging
+   * through several screens, and a horizontal drag there competes with the
+   * browser's own back gesture.
+   *
+   * Set it when fitting makes the figure unreadable, as a long matrix squeezed
+   * into 343px becomes. The frame crops rather than scrolls, which is the
+   * trade: enough of the image to be recognised, and a tap to see the rest.
+   */
+  mobileScale?: number
+  /**
+   * Set by a parent that already draws a bordered, rounded frame around this
+   * image, so the two do not each round their own corners.
+   */
+  scrolled?: boolean
 }
 
 /**
@@ -58,6 +70,8 @@ export function CaseImage({
   onLoad,
   framed = false,
   overflowScale,
+  mobileScale,
+  scrolled = false,
 }: CaseImageProps) {
   return (
     <Dialog>
@@ -67,14 +81,24 @@ export function CaseImage({
         // to be the multiple of the scroll frame. Below sm it stays w-full and
         // the image simply fits.
         style={
-          overflowScale
+          overflowScale || mobileScale
             ? ({
-                "--overflow-scale": `${overflowScale * 100}%`,
+                "--overflow-scale": overflowScale
+                  ? `${overflowScale * 100}%`
+                  : undefined,
+                "--mobile-scale": mobileScale
+                  ? `${mobileScale * 100}%`
+                  : undefined,
               } as CSSProperties)
             : undefined
         }
         className={cn(
-          "group relative block w-full cursor-zoom-in overflow-hidden rounded-xl",
+          // Rounded even inside a scroll frame: this element carries the width
+          // and the overflow-hidden, so square corners here clip the image's
+          // own rounding straight back off.
+          "group relative block cursor-zoom-in overflow-hidden rounded-xl",
+          framed && !scrolled && "border border-border",
+          mobileScale ? "w-(--mobile-scale) max-w-none" : "w-full",
           overflowScale && "sm:w-(--overflow-scale) sm:max-w-none",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         )}
@@ -86,8 +110,11 @@ export function CaseImage({
           loading={eager ? "eager" : "lazy"}
           onLoad={onLoad}
           className={cn(
-            "w-full",
-            framed && "rounded-xl border border-border bg-white",
+            // Always rounded. These are Figma exports on white, and the corners
+            // that stay in view are the ones that show: an image scrolled
+            // sideways still has its top corners on screen, so leaving them
+            // square draws a white rectangle inside the rounded frame.
+            "block w-full rounded-xl",
             className
           )}
         />

@@ -60,30 +60,33 @@ export function CaseImageSwitch({
         ))}
       </div>
 
-      <div
-        className={cn(
-          // One height for every scroll frame, whichever axis it scrolls on.
-          // Capped on phones too, and lower: fitted to a 375px width these
-          // documentation exports run over a screen tall, and a figure that has
-          // to be scrolled past is worse than one that is cropped.
-          scroll &&
-            "max-h-[20rem] overflow-y-auto rounded-xl border border-border sm:max-h-[32rem] sm:overscroll-contain",
-          // Sideways scrolling starts at sm; on a phone the image fits.
-          scroll && scroll !== "y" && "sm:overflow-x-auto"
-        )}
-      >
-        {/* Keyed so the browser swaps the image instead of repainting the old
-            one while the new file decodes.
-            Sideways scrolling runs the image wider than the column; a tall
-            document fits the width, since there the scroll carries the reader
-            down through it. */}
-        <CaseImage
-          key={active.src}
-          src={active.src}
-          alt={active.alt}
-          title={active.caption}
-          overflowScale={!scroll || scroll === "y" ? undefined : 1.6}
-        />
+      {/* Two elements on purpose when scrolling: the outer one owns the rounded
+          border and clips, the inner one scrolls. A scroll container cannot
+          reliably clip its own scrolled content to a radius, which is why the
+          image's square white corners kept showing through the arc. */}
+      <div className={cn(scroll && "isolate overflow-hidden rounded-xl border border-border")}>
+        <div
+          className={cn(
+            // One height for every scroll frame, whichever axis it scrolls on.
+            // Capped on phones too, and lower: fitted to a 375px width these
+            // documentation exports run over a screen tall, and a figure that
+            // has to be scrolled past is worse than one that is cropped.
+            scroll && "max-h-[20rem] overflow-y-auto rounded-xl sm:max-h-[32rem] sm:overscroll-contain",
+            // Sideways scrolling starts at sm; on a phone the image fits.
+            scroll && scroll !== "y" && "sm:overflow-x-auto"
+          )}
+        >
+          {/* Keyed so the browser swaps the image instead of repainting the old
+              one while the new file decodes. */}
+          <CaseImage
+            key={active.src}
+            src={active.src}
+            alt={active.alt}
+            title={active.caption}
+            overflowScale={!scroll || scroll === "y" ? undefined : 1.6}
+            scrolled={Boolean(scroll)}
+          />
+        </div>
       </div>
 
       <figcaption className="mt-3 text-sm leading-relaxed text-muted-foreground">

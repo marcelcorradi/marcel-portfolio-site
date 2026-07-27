@@ -33,6 +33,13 @@ export interface GalleryItem {
    * at any width that fits), a nearly square one needs less.
    */
   scale?: number
+  /**
+   * The same for phones, where the frame crops instead of scrolling. Set it
+   * only when fitting makes the figure unreadable: a 2800px matrix fitted to a
+   * phone is a 44px strip, where showing part of it larger at least reads as a
+   * matrix. Tapping opens the whole thing.
+   */
+  mobileScale?: number
 }
 
 /**
@@ -158,35 +165,40 @@ export function CaseGallery({
                 }}
               >
                 {item.scroll ? (
-                  // A scrolling frame. Sideways scrolling renders at natural
-                  // size, so the browser never resamples a dense matrix down;
-                  // vertical-only fits the width instead, since a tall document
-                  // at natural size would show a magnified corner.
-                  <div
-                    className={cn(
-                      // One height for every scroll frame, whichever axis it
-                      // scrolls on, so the figures keep a common rhythm. Capped
-                      // on phones too, and lower: a tall export fitted to 375px
-                      // runs over a screen, and a figure that has to be scrolled
-                      // past is worse than one that is cropped.
-                      "max-h-[20rem] overflow-y-auto rounded-xl border border-border sm:max-h-[32rem] sm:overscroll-contain",
-                      // Sideways scrolling starts at sm; below it the image
-                      // fits, so a drag never competes with the back gesture.
-                      item.scroll !== "y" && "sm:overflow-x-auto"
-                    )}
-                  >
-                    {/* Sideways scrolling runs wider than the column so a dense
-                        matrix stays readable; a tall image fits the width. */}
-                    <CaseImage
-                      src={item.src}
-                      alt={item.alt}
-                      title={item.title}
-                      eager={index === 0}
-                      onLoad={() => index === current && measure(index)}
-                      overflowScale={
-                        item.scroll === "y" ? undefined : (item.scale ?? 1.6)
-                      }
-                    />
+                  // Two elements on purpose: the outer one owns the rounded
+                  // border and clips, the inner one scrolls. A scroll container
+                  // cannot reliably clip its own scrolled content to a radius,
+                  // which is why the image's square white corners kept showing
+                  // through the arc.
+                  <div className="isolate overflow-hidden rounded-xl border border-border">
+                    <div
+                      className={cn(
+                        // One height for every scroll frame, whichever axis it
+                        // scrolls on, so the figures keep a common rhythm.
+                        // Capped on phones too, and lower: a tall export fitted
+                        // to 375px runs over a screen, and a figure that has to
+                        // be scrolled past is worse than one that is cropped.
+                        "max-h-[20rem] overflow-y-auto rounded-xl sm:max-h-[32rem] sm:overscroll-contain",
+                        // Sideways scrolling starts at sm; below it an oversized
+                        // image is cropped, so a drag never competes with the
+                        // back gesture.
+                        "overflow-x-hidden",
+                        item.scroll !== "y" && "sm:overflow-x-auto"
+                      )}
+                    >
+                      <CaseImage
+                        src={item.src}
+                        alt={item.alt}
+                        title={item.title}
+                        eager={index === 0}
+                        onLoad={() => index === current && measure(index)}
+                        overflowScale={
+                          item.scroll === "y" ? undefined : (item.scale ?? 1.6)
+                        }
+                        mobileScale={item.mobileScale}
+                        scrolled
+                      />
+                    </div>
                   </div>
                 ) : (
                   /* Most specific wins: the slide's own cap, then the variant's,

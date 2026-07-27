@@ -71,7 +71,7 @@ Thirty-two of them sit on a page each, documented, in the group marked stable. T
 
 Fourteen of the 51 component sets are prefixed with an underscore. Those are internal parts, not meant to be used directly, and they exist because the composite components needed them. Order Summary is one public set assembled over three private accordion sets. Progress Steps is one public set over a private desktop step and a private mobile step. The consumer picks Order Summary; the pieces it is made of stay out of the way.
 
-The variant counts follow the same logic. Button carries 72 variants, Icon Button 60, Checkbox 32, Switch 30. Button resolves hierarchy against size against state, and every one of its states includes focus, which is the state most libraries leave until an accessibility review asks for it.
+The variant counts follow the same logic. Button carries 72 variants, Icon Button 60, Checkbox 32, Switch 30. Button resolves hierarchy against size against state, and every one of its states includes focus, which is the state most libraries leave until an accessibility review asks for it. The form controls resolve their own dimensions the same way: a text field against its error state, a checkbox against checked and indeterminate at once.
 
 Three design principles are written into the foundations file: consistency, concision and respect. Alongside them is a changelog with a version table. Both were there before I finished, which matters more than their content: the system had a place to record what changed and a stated position on how it should behave.
 

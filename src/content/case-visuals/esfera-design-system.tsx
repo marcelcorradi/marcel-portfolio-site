@@ -7,7 +7,7 @@ import colorsLightImg from "@/assets/cases/esfera-design-system/tokens-semantic-
 import colorsDarkImg from "@/assets/cases/esfera-design-system/tokens-semantic-colors-dark.webp"
 import typographyImg from "@/assets/cases/esfera-design-system/tokens-typography-guidelines.webp"
 import buttonImg from "@/assets/cases/esfera-design-system/component-button-variants.webp"
-import iconButtonImg from "@/assets/cases/esfera-design-system/component-icon-button-variants.webp"
+import textFieldImg from "@/assets/cases/esfera-design-system/component-text-field.webp"
 import checkboxImg from "@/assets/cases/esfera-design-system/component-checkbox.webp"
 import switchImg from "@/assets/cases/esfera-design-system/component-switch.webp"
 import orderSummaryImg from "@/assets/cases/esfera-design-system/component-order-summary.webp"
@@ -237,29 +237,33 @@ export const esferaVisuals: CaseVisuals = {
               // roughly its own pixel size and scrolls sideways.
               scroll: "x",
               scale: 4,
+              // Fitted to a phone this matrix is a 44px strip. Cropped at 3x it
+              // reads as a matrix again, and the tap shows the rest.
+              mobileScale: 3,
             },
             {
-              src: iconButtonImg,
-              title: "Icon Button, 60 variants.",
+              src: textFieldImg,
+              title: "Text Field.",
               caption:
-                "The same state matrix without the label, so an icon-only control never loses a state the text button has.",
-              alt: "The Esfera Icon Button component set, 60 variants",
-              className: "mx-auto max-w-xs",
+                "Error off against error on, across default, hover, filled, focus, read only and disabled. The label, the supporting text and the error message are part of the component, so a form never has to assemble them by hand.",
+              alt: "The Esfera Text Field component set: error off and error on, across default, hover, filled, focus, read only and disabled states",
+              className: "mx-auto max-w-lg",
             },
             {
               src: checkboxImg,
               title: "Checkbox, 32 variants.",
               caption:
-                "One public set over a private item set, so the group and the individual control stay in step.",
-              alt: "The Esfera Checkbox component set",
-              className: "mx-auto max-w-md",
+                "Three dimensions at once: checked, indeterminate, and error, against five states. Each combination is drawn rather than left for a developer to infer.",
+              alt: "The Esfera Checkbox component set: checked and indeterminate against error off and on, across default, hover, focus, pressed and disabled",
+              className: "mx-auto max-w-lg",
             },
             {
               src: switchImg,
               title: "Switch, 30 variants.",
-              caption: "Same composition: a public Switch built over a private Switch Item.",
-              alt: "The Esfera Switch component set",
-              className: "mx-auto max-w-xs",
+              caption:
+                "Checked against full width, across the same five states, with the focus ring present in both layouts.",
+              alt: "The Esfera Switch component set: checked false and true against full width false and true, across five states",
+              className: "mx-auto max-w-md",
             },
           ]}
         />

@@ -35,7 +35,7 @@ export const atomicColorsVisuals: CaseVisuals = {
       node: (
         <CaseFigure
           src={semanticImg}
-          alt="The Semantic Colors panel. Six generated colours, each with three colour blindness scores and a verdict. Discovery reads fail; the rest read accessible or borderline."
+          alt="The Semantic Colors panel: success, warning, error, discovery, info and neutral generated from a blue reference, each carrying three colour blindness scores and a verdict. Discovery reads fail, info reads borderline, the rest read accessible."
           caption="Every semantic colour carries three scores, one per type of colour blindness, and is judged on the worst of them. Discovery failed against the palette here, which is the check doing its job."
           framed
         />

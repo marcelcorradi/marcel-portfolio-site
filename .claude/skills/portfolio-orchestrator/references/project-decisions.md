@@ -55,7 +55,12 @@ default `marcelcorradi.github.io/marcel-portfolio-site/` path). Repo
 `marcelcorradi/marcel-portfolio-site` is public; GitHub Pages Source = GitHub Actions, custom domain
 set via `public/CNAME`. Because the site is now at a domain root, Vite `base` = `/`; React Router
 `basename` = `import.meta.env.BASE_URL`. Every push to `main` auto-deploys via
-`.github/workflows/deploy.yml`. SPA deep links handled by `public/404.html`.
+`.github/workflows/deploy.yml`. Real routes (every case + `/design-audit/privacy`) answer HTTP 200
+through per-route copies of `index.html` that `scripts/build-route-shells.mjs` writes after `vite build`
+(GitHub Pages serves `foo.html` for `/foo`); cases are read from `src/content/cases/*.md`, so a new case
+needs nothing extra. Anything else falls through to `public/404.html`, which serves with a 404 status
+and redirects into the SPA (a real 404 is correct there). Before this (until 2026-09-24) every case URL
+answered 404, so Google likely hadn't indexed them.
 
 ## Build status (updated 2026-07-27)
 
@@ -95,9 +100,7 @@ extension's privacy policy (`src/pages/DesignAuditPrivacy.tsx`, text in
 `src/content/legal/design-audit-privacy.md`, rendered with `caseProse`). The Chrome Web Store
 listing links to this URL, so **never rename or remove the route**. Bump `LAST_UPDATED` in the page
 when the text changes. It is not in the sitemap on purpose: it's a legal page, not portfolio work.
-It must answer with a real HTTP 200 (store review can't rely on the 404.html redirect, which GitHub
-Pages serves with a 404 status), so `scripts/build-route-shells.mjs` copies the built `index.html`
-to `dist/design-audit/privacy.html` after `vite build`. The case URLs still go through 404.html.
+It must answer with a real HTTP 200 so store review can reach it (see Deploy: route shells).
 The extension went 100% free in 2026-09 (no PRO, no backend); the Design Audit case still
 describes the paid plan and login in its "Building it" section and must be updated when
 that version ships.

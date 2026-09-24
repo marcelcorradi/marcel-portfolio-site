@@ -95,6 +95,9 @@ extension's privacy policy (`src/pages/DesignAuditPrivacy.tsx`, text in
 `src/content/legal/design-audit-privacy.md`, rendered with `caseProse`). The Chrome Web Store
 listing links to this URL, so **never rename or remove the route**. Bump `LAST_UPDATED` in the page
 when the text changes. It is not in the sitemap on purpose: it's a legal page, not portfolio work.
+It must answer with a real HTTP 200 (store review can't rely on the 404.html redirect, which GitHub
+Pages serves with a 404 status), so `scripts/build-route-shells.mjs` copies the built `index.html`
+to `dist/design-audit/privacy.html` after `vite build`. The case URLs still go through 404.html.
 The extension went 100% free in 2026-09 (no PRO, no backend); the Design Audit case still
 describes the paid plan and login in its "Building it" section and must be updated when
 that version ships.

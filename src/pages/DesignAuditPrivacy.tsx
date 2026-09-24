@@ -9,7 +9,7 @@ import { usePageMeta } from "@/lib/use-page-meta"
 import policy from "@/content/legal/design-audit-privacy.md?raw"
 
 /** Bump when the policy text changes; the Chrome Web Store listing links here. */
-const LAST_UPDATED = "September 2026"
+const LAST_UPDATED = "September 24, 2026"
 
 /**
  * Privacy policy for the Design Audit Chrome extension.

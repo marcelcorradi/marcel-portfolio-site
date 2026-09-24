@@ -4,9 +4,12 @@ Design Audit is a Chrome extension that analyzes the design of the websites you 
 
 ## Data collected
 
-- **Design data**: colors, fonts, icons, measurements and accessibility findings from the sites you audit. It is stored only on your device, in `chrome.storage.local`, and used to display results and generate reports.
+- **Design data**: colors, fonts, icons, measurements and accessibility findings from the sites you audit.
+- **Audited pages**: the address (URL) of each page analyzed while the side panel is open, and when it was analyzed, so results can be combined across pages and the report can list the pages it covers.
 
-The extension does **not** collect browsing history, passwords, form contents or any personal information from the sites you visit. It only reads design values (CSS) from pages. There are no accounts and no login.
+Both are stored only on your device, in `chrome.storage.local`, and used only to display results and generate reports. Nothing is recorded while the side panel is closed.
+
+The extension does **not** collect passwords, form contents or any personal information from the sites you visit. It reads design values (CSS) and page structure, not what you type. There are no accounts and no login.
 
 ## Data storage
 

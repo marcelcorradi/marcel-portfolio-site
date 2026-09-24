@@ -7,6 +7,7 @@ import Home from "./pages/Home"
 import CasesList from "./pages/CasesList"
 import CasePage from "./pages/CasePage"
 import NotFound from "./pages/NotFound"
+import DesignAuditPrivacy from "./pages/DesignAuditPrivacy"
 import { ScrollToTop } from "./components/scroll-to-top"
 
 /** Wraps every route so navigation always lands at the top of the page. */
@@ -27,6 +28,8 @@ const router = createBrowserRouter(
         { path: "/", element: <Home /> },
         { path: "/cases", element: <CasesList /> },
         { path: "/cases/:slug", element: <CasePage /> },
+        // Linked from the Chrome Web Store listing: the path must stay stable.
+        { path: "/design-audit/privacy", element: <DesignAuditPrivacy /> },
         // Anything else: a typo, a stale link, or a deep link to a case that
         // no longer exists. Must stay last.
         { path: "*", element: <NotFound /> },

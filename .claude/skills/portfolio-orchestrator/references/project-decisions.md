@@ -90,6 +90,15 @@ indigo tokens in `src/index.css`. Routing via react-router v7. Cases load from
    page inherits the ones in `index.html`. Matters now that Marcel is submitting the site
    to Google Search Console.
 
+**Design Audit privacy policy (2026-09-24).** `/design-audit/privacy` hosts the Chrome
+extension's privacy policy (`src/pages/DesignAuditPrivacy.tsx`, text in
+`src/content/legal/design-audit-privacy.md`, rendered with `caseProse`). The Chrome Web Store
+listing links to this URL, so **never rename or remove the route**. Bump `LAST_UPDATED` in the page
+when the text changes. It is not in the sitemap on purpose: it's a legal page, not portfolio work.
+The extension went 100% free in 2026-09 (no PRO, no backend); the Design Audit case still
+describes the paid plan and login in its "Building it" section and must be updated when
+that version ships.
+
 **Settled, do not reopen without a reason:**
 - **`/cases` stays an unstyled stub (2026-07-27).** Marcel decided a dedicated cases page
   is not needed: all six cases are surfaced on the Home. Nothing links to it, and the

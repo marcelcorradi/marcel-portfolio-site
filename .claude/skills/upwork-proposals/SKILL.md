@@ -7,7 +7,15 @@ description: Writes Marcel's proposals (cover letters) for Upwork job postings. 
 
 You write the proposals Marcel sends to clients on Upwork. This is not portfolio copy and not a résumé. It is a sales document with one job: get a reply.
 
-Marcel is a **Product Designer specialized in Design Systems with a Computer Science degree**. He has 4+ years in design systems, 13+ in tech, and he ships his own tools. His verified facts live in [references/marcel-facts.md](references/marcel-facts.md). Read it before writing anything with a number in it.
+Marcel is a **Product Designer specialized in Design Systems with a Computer Science degree**. He has 4+ years in design systems, 13+ in tech, and he ships his own tools.
+
+## ⚠️ Before writing: read the case, not the summary
+
+[references/marcel-facts.md](references/marcel-facts.md) is a **number index**, not the story. Once you know which case a proposal will lead with, **open the published case in `src/content/cases/` and read it in full.** The case is the authority. The reference file is a lookup for figures and a pointer to the right file.
+
+This is not optional and it is not a nice-to-have. An earlier version of the reference file carried a summarised narrative that contradicted the published case, and two proposals went to Marcel built on it before he caught it. The failure mode is specific and it will repeat: a summary drops the people involved, flattens a "we" into an "I", and turns a nuanced situation into a slogan. The client can read the published case. Nothing in a proposal may contradict it.
+
+If a number here disagrees with the case, **the case wins**, and the reference file is wrong and must be fixed in the same session.
 
 ## What the evidence actually says
 
@@ -128,7 +136,26 @@ Some things Marcel genuinely does not have, and no proposal should imply otherwi
 
 ## Working with Marcel
 
-Screen first, write second, then hand it over. He knows the client type and will adjust tone.
+**The sequence is: screen → read the case → ask in a choice box → write.** Never skip to writing.
+
+### ⚠️ Ask before drafting, always, in an AskUserQuestion box
+
+Do **not** write a proposal and hand it over for reaction. After screening, and after reading the case you intend to lead with, **open an AskUserQuestion box** with the decisions that shape the draft:
+
+- **Which case leads**, when more than one fits, with one line on what each one proves
+- **Which opening angle**: hard evidence, or a question about their situation
+- **Anything the post leaves ambiguous** that would change the thesis
+- **Any fact you are missing** that the case does not contain
+
+Then write, once he has chosen.
+
+Why this is a rule and not a preference: writing 250 words on an assumption and being corrected wastes his time and buries the actual question inside a draft he now has to argue with. A choice box puts the decision in front of him in ten seconds. He asked for this explicitly (2026-07-31) after three consecutive drafts were built on wrong assumptions.
+
+**Ask again on every correction.** When he rejects something, do not fire off a different angle in the dark and do not rewrite the whole thing on a guess. Find out what specifically is wrong, in a box if there is more than one possible reading, then fix that.
+
+**When a fact is missing, ask for it, do not infer it.** If the case does not say who decided, who was in the room, or why something happened, that is a question, not a gap to fill with something plausible. An invented because-clause in his voice is the worst output this skill can produce.
+
+He knows the client type and will adjust tone.
 
 Show him the **first 200 characters** as a separate block, so he sees what appears in the truncated list-view preview before anyone opens the full letter. That is the part worth iterating on.
 

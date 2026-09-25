@@ -104,10 +104,13 @@ indigo tokens in `src/index.css`. Routing via react-router v7. Cases load from
 - Contrast verified WCAG AA in both themes.
 
 **OPEN, roughly in priority order:**
-1. Profile photo unoptimized (488KB).
-2. **No `robots.txt` and no `sitemap.xml`**, and no per-route `<title>`/description: every
-   page inherits the ones in `index.html`. Matters now that Marcel is submitting the site
-   to Google Search Console.
+1. **SEO (2026-09-25).** `robots.txt` and a generated `sitemap.xml` exist, and the profile
+   photo is already a 33KB webp. What's left: every route shell is a byte-for-byte copy of
+   `index.html`, so the raw HTML of each case carries the Home's title and a canonical
+   pointing at `/`. Per-route head exists only after JS runs (`use-page-meta.ts`). The
+   `portfolio-seo` skill owns this, and the audit is in `content-drafts/seo-audit.md`.
+   SEO target: people hiring a product/design-system designer, not people searching
+   Marcel's name.
 
 **Design Audit privacy policy (2026-09-24).** `/design-audit/privacy` hosts the Chrome
 extension's privacy policy (`src/pages/DesignAuditPrivacy.tsx`, text in
@@ -154,4 +157,4 @@ Full workflow in `portfolio-design`'s [references/case-images.md](../../portfoli
 ## Repo conventions
 
 - Skills live in `.claude/skills/<name>/SKILL.md`, tracked by `skills-lock.json`. (No `.agents/` — removed.)
-- Portfolio skills: `portfolio-orchestrator` (this project's parent), `portfolio-design`, `portfolio-content`.
+- Portfolio skills: `portfolio-orchestrator` (this project's parent), `portfolio-design`, `portfolio-content`, `portfolio-seo` (search visibility, 2026-09-25). `upwork-proposals` also lives here, outside the portfolio routing.

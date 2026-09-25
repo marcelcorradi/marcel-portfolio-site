@@ -17,7 +17,7 @@
       "source": "local",
       "sourceType": "local",
       "skillPath": ".claude/skills/portfolio-orchestrator/SKILL.md",
-      "computedHash": "fcaeea1fc6f361e7872cda77d57a710d0c4c180a667ab1fc8d2a617a3516c006"
+      "computedHash": "93ec7c3e28e8cd0d9bff59fe23a9e989deaa6f9ce64063f7aa0106b5caf58bb7"
     },
     "portfolio-design": {
       "source": "local",
@@ -30,6 +30,12 @@
       "sourceType": "local",
       "skillPath": ".claude/skills/portfolio-content/SKILL.md",
       "computedHash": "926dd0c75acf3e3065e7d387f17b01ece421014d5ad328bda3025d5cedfe1a30"
+    },
+    "portfolio-seo": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": ".claude/skills/portfolio-seo/SKILL.md",
+      "computedHash": "aa465495fc973e193dcf06671d7763198e74b6a4a8e7f466854df2e69fa87803"
     }
   }
 }

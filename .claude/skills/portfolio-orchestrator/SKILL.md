@@ -22,6 +22,7 @@ Read the request and decide which specialist skill handles it. Many real tasks n
 | Writing or refining a case study, home copy, about-me, taglines, project descriptions | **portfolio-content** |
 | Building/styling a page or component, layout, visual design, shadcn setup, tokens, colors | **portfolio-design** |
 | A full page from scratch (e.g. "build the home") | **portfolio-content** first (what it says), then **portfolio-design** (how it looks) |
+| Search visibility: ranking, indexing, Search Console, page titles/descriptions, share cards, schema, sitemap, robots, an SEO audit, **or adding any new route** | **portfolio-seo** (it proposes; titles and descriptions are then written by portfolio-content) |
 | Site setup, Vite/build config, GitHub Pages deploy | Handle directly per project-decisions.md (no specialist skill yet) |
 
 Invoke the specialist skill via the Skill tool. Give it the project context it needs (which page, which case, the relevant decisions) so it doesn't re-derive everything.

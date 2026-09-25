@@ -6,6 +6,7 @@ import { atomicColorsVisuals } from "./atomic-colors"
 import { specForgeVisuals } from "./spec-forge"
 import { designAuditVisuals } from "./design-audit"
 import { radarDoScoopVisuals } from "./radar-do-scoop"
+import { portfolioKitVisuals } from "./portfolio-kit"
 
 /**
  * Each case's visuals, by slug.
@@ -22,6 +23,7 @@ const caseVisuals: Record<string, CaseVisuals> = {
   "spec-forge": specForgeVisuals,
   "design-audit": designAuditVisuals,
   "radar-do-scoop": radarDoScoopVisuals,
+  "portfolio-kit": portfolioKitVisuals,
 }
 
 export function getCaseVisuals(slug: string | undefined): CaseVisuals {

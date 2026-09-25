@@ -1,13 +1,13 @@
 import { ArrowUpRight } from "lucide-react"
 import { CaseFigure } from "@/components/case-figure"
 import { Button } from "@/components/ui/button"
+import { ATOMIC_COLORS_URL } from "@/content/tools"
 import type { CaseVisuals } from "./types"
 // Imported rather than referenced by path, so Vite fingerprints them and the
 // build fails loudly on a typo instead of shipping a broken <img>.
 import semanticImg from "@/assets/cases/atomic-works/semantic-suggestions.webp"
 import scaleImg from "@/assets/cases/atomic-works/screen-logged.webp"
 
-const PRODUCT_URL = "https://atomicolors.com"
 
 /**
  * Atomic Colors.
@@ -57,7 +57,7 @@ export const atomicColorsVisuals: CaseVisuals = {
       node: (
         <div className="mt-10">
           <Button asChild size="lg">
-            <a href={PRODUCT_URL} target="_blank" rel="noopener noreferrer">
+            <a href={ATOMIC_COLORS_URL} target="_blank" rel="noopener noreferrer">
               Open Atomic Colors
               <ArrowUpRight data-icon="inline-end" />
             </a>

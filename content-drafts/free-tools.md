@@ -8,6 +8,9 @@ Shared source for the Design Audit, Atomic Colors and Portfolio Kit cases and th
 
 This is the reason for BOTH Design Audit and Atomic Colors. Do not substitute the market reasons from the Atomic Colors commit (zero subscribers, free competitors) unless Marcel asks for them.
 
+## Spec Forge
+- Free on the Figma Community (Marcel confirmed, 2026-09-25).
+
 ## Design Audit (v2.4.0, 2026-09-24, commit bb6b0c5)
 - Removed: PRO plan, login (email OTP), entitlement check, whole backend (Supabase auth + Edge Functions, Whop, Resend).
 - Now: every audit, the HTML report and all SVG exports free; no account, no page limit.

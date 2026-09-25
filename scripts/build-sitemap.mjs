@@ -33,6 +33,7 @@ const cases = files
 
 const urls = [
   { loc: `${SITE_URL}/`, priority: "1.0", lastmod: cases[0]?.date },
+  { loc: `${SITE_URL}/tools`, priority: "0.9", lastmod: cases[0]?.date },
   ...cases.map((c) => ({
     loc: `${SITE_URL}/cases/${c.slug}`,
     priority: "0.8",

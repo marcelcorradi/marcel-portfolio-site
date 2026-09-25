@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react"
 import { CaseFigure } from "@/components/case-figure"
 import { Button } from "@/components/ui/button"
+import { DESIGN_AUDIT_URL } from "@/content/tools"
 import type { CaseVisuals } from "./types"
 // Imported rather than referenced by path, so Vite fingerprints them and the
 // build fails loudly on a typo instead of shipping a broken <img>.
@@ -13,8 +14,6 @@ import iconsImg from "@/assets/cases/design-audit/print6.webp"
 import spacingImg from "@/assets/cases/design-audit/print7.webp"
 import a11yReportImg from "@/assets/cases/design-audit/print8.webp"
 
-const STORE_URL =
-  "https://chromewebstore.google.com/detail/design-audit/oihmfjoenjcpcaceidphihopgjkljaih"
 
 /**
  * Design Audit.
@@ -138,7 +137,7 @@ export const designAuditVisuals: CaseVisuals = {
       node: (
         <div className="mt-10">
           <Button asChild size="lg">
-            <a href={STORE_URL} target="_blank" rel="noopener noreferrer">
+            <a href={DESIGN_AUDIT_URL} target="_blank" rel="noopener noreferrer">
               Get Design Audit on the Chrome Web Store
               <ArrowUpRight data-icon="inline-end" />
             </a>

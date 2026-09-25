@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react"
 import { CaseFigure } from "@/components/case-figure"
 import { Button } from "@/components/ui/button"
+import { SPEC_FORGE_URL } from "@/content/tools"
 import type { CaseVisuals } from "./types"
 // Imported rather than referenced by path, so Vite fingerprints them and the
 // build fails loudly on a typo instead of shipping a broken <img>.
@@ -8,7 +9,6 @@ import coverImg from "@/assets/cases/spec-forge/cover.webp"
 import optionsImg from "@/assets/cases/spec-forge/print1.webp"
 import resultImg from "@/assets/cases/spec-forge/print2.webp"
 
-const PLUGIN_URL = "https://www.figma.com/community/plugin/1616922079963177675/spec-forge"
 
 /**
  * Spec Forge.
@@ -66,7 +66,7 @@ export const specForgeVisuals: CaseVisuals = {
       node: (
         <div className="mt-10">
           <Button asChild size="lg">
-            <a href={PLUGIN_URL} target="_blank" rel="noopener noreferrer">
+            <a href={SPEC_FORGE_URL} target="_blank" rel="noopener noreferrer">
               Open Spec Forge on Figma
               <ArrowUpRight data-icon="inline-end" />
             </a>

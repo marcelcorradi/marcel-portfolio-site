@@ -82,6 +82,17 @@ indigo tokens in `src/index.css`. Routing via react-router v7. Cases load from
   **Radar do Scoop** (`radar-do-scoop`, "Every discount, checked against its history", shipped
   2026-09-25) is the fourth product case: prose only for now (screenshots later), consumer angle,
   no revenue/affiliate/B2B numbers. Facts in `content-drafts/radar-do-scoop-case.md`.
+  **Portfolio Kit** (`portfolio-kit`, "This portfolio, as a kit", 2026-09-25) is the fifth: the
+  kit extracted from this site, now free under MIT (1.1.0), downloaded from GitHub Releases.
+  Facts in `content-drafts/portfolio-kit-case.md`. The Home's "Built with AI" row is 3 + 2 (kept).
+- **`/tools` ("My tools" in the nav, 2026-09-25).** A real route (`src/pages/Tools.tsx`) listing
+  the free design tools as spec rows (`tool-row.tsx`): Design Audit, Atomic Colors, Spec Forge,
+  Portfolio Kit, each with its primary action and "How I built it". Radar do Scoop is left out
+  on purpose (consumer site in Portuguese). Ends on a support block with the PayPal email and a
+  copy button. `src/content/tools.ts` is the single source of the tools' public URLs; the case
+  CTAs import from it. `/tools` has a route shell and is in the sitemap.
+- ⚠️ The shadcn CLI generated `import { cn } from "cn"` for `badge` and installed a random npm
+  package `cn`. Removed it and fixed the import to `@/lib/utils`. Check every `shadcn add`.
   Design Audit's origin is stated in the Onfly case (he built it to survive that audit),
   so the two cases cross-reference and must stay consistent.
   The case page is the **template the remaining cases reuse**: `case-header`, `case-prose`,

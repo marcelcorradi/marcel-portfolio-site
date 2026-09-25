@@ -24,8 +24,11 @@ const caseRoutes = readdirSync(join(root, "src/content/cases"))
   .filter((f) => f.endsWith(".md"))
   .map((f) => `cases/${f.replace(/\.md$/, "")}`)
 
+const pages = ["tools"]
+
 const ROUTES = [
   ...caseRoutes,
+  ...pages,
   // Linked from the Chrome Web Store listing; store review must reach it.
   "design-audit/privacy",
 ]
@@ -36,4 +39,6 @@ for (const route of ROUTES) {
   copyFileSync(join(dist, "index.html"), target)
 }
 
-console.log(`route shells: ${ROUTES.length} (${caseRoutes.length} cases + privacy)`)
+console.log(
+  `route shells: ${ROUTES.length} (${caseRoutes.length} cases + ${pages.join(", ")} + privacy)`,
+)

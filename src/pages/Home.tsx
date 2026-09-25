@@ -9,7 +9,7 @@ import { usePageMeta } from "@/lib/use-page-meta"
 export default function Home() {
   usePageMeta({
     description:
-      "Product Designer specialized in Design Systems, with a Computer Science degree. Design systems for Onfly, Whirlpool and Esfera, plus four products built end to end.",
+      "Product Designer specialized in Design Systems, with a Computer Science degree. Design systems for Onfly, Whirlpool and Esfera, plus five products built end to end.",
     path: "/",
   })
 

@@ -89,6 +89,14 @@ const builtWithAI: CaseCardData[] = [
     tags: ["Accessibility", "Web App", "E-commerce"],
     slug: "radar-do-scoop",
   },
+  {
+    name: "Portfolio Kit",
+    role: "GitHub",
+    description:
+      "The foundation and Claude Code skills this site was built with, turned into a free kit that interviews you and builds your portfolio with you.",
+    tags: ["Design Tokens", "Design-to-Code", "Starter Kit"],
+    slug: "portfolio-kit",
+  },
 ]
 
 function Group({ label, cases }: { label: string; cases: CaseCardData[] }) {

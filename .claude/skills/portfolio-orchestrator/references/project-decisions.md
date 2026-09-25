@@ -101,9 +101,15 @@ extension's privacy policy (`src/pages/DesignAuditPrivacy.tsx`, text in
 listing links to this URL, so **never rename or remove the route**. Bump `LAST_UPDATED` in the page
 when the text changes. It is not in the sitemap on purpose: it's a legal page, not portfolio work.
 It must answer with a real HTTP 200 so store review can reach it (see Deploy: route shells).
-The extension went 100% free in 2026-09 (no PRO, no backend); the Design Audit case still
-describes the paid plan and login in its "Building it" section and must be updated when
-that version ships.
+The extension went 100% free in 2026-09 (no PRO, no backend).
+
+**Free tools (updated 2026-09-25).** Design Audit (v2.4.0) and Atomic Colors are free; both
+cases now tell the paid layer as history, then say it was removed, with Marcel's reason (he
+would rather show value for free and accept donations). Design Audit's support is a copyable
+PayPal email; Atomic Colors has no support option yet, so its case must not mention one until
+it ships. **Atomic Colors is free but NOT open source**, and **Figma Make does nothing for it
+anymore** (Claude Code + its own repo, deployed on Cloudflare). Facts and Marcel's own words:
+`content-drafts/free-tools.md`.
 
 **Settled, do not reopen without a reason:**
 - **`/cases` stays an unstyled stub (2026-07-27).** Marcel decided a dedicated cases page

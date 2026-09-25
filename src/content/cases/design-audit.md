@@ -1,7 +1,7 @@
 ---
 title: "A design system, read back out of a website"
 summary: "Auditing a product by hand takes days and is out of date the moment you finish. Design Audit reads the interface instead: colours, type, icons, spacing and a WCAG pass, collected while you browse. It is live on the Chrome Web Store."
-date: "2026-07-27"
+date: "2026-09-25"
 cover: "design-audit/print3.webp"
 type: "product-ai"
 tags: ["Product", "Accessibility", "AI", "Published"]
@@ -43,8 +43,10 @@ The extension's UI runs on a token architecture: primitives feeding semantic tok
 
 It is vanilla JavaScript. No framework, no build step, no bundler, no module system beyond the browser's own. That was a decision, not a shortcut. An extension is judged on what it does to the page it is inspecting, and every dependency is another thing running next to the site I am trying to read accurately. It also meant the thing I shipped is the thing I wrote, which made nine months of picking it back up considerably easier.
 
-Turning it into something people could pay for was its own build. There is an email login that sends and verifies its own one-time codes, and an entitlement check that has to answer before the panel decides what to show, because the audits that extract a site's visual language are open to everyone and the accessibility report is the part that is paid. None of that is design work. All of it had to exist before the first person could subscribe, and it is the difference between a project I would have shown a friend and a product with strangers in it.
+Turning it into something people could pay for was its own build. I wrote an email login that sent and verified its own one-time codes, and an entitlement check that had to answer before the panel decided what to show, because the accessibility report was the paid part. None of that is design work, and all of it had to exist before the first person could subscribe.
 
-The last version exists for a reason that has nothing to do with either. The Chrome Web Store rejects extensions that load code from a CDN, so shipping meant pulling a component library out of a script tag and vendoring it into the package.
+Then I took it all out. I changed how I put my tools into the world: I would rather show what they are worth by giving them away, and let anyone who wants to support them do it with a donation. That model fits the way I want to live. Version 2.4 removed the plan, the login and the whole backend. Every audit, the report and every export are open, with no account and no page limit, and the extension no longer makes a single network call. Where the checkout used to be, there is a Support me link that shows my PayPal email and a button to copy it.
+
+One version exists for a reason that has nothing to do with any of this. The Chrome Web Store rejects extensions that load code from a CDN, so shipping meant pulling a component library out of a script tag and vendoring it into the package.
 
 It is live on the Chrome Web Store.

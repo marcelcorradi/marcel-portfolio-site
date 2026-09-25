@@ -1,14 +1,14 @@
 ---
 title: "Colour decisions, written as an algorithm"
-summary: "Every design system needs semantic colours, and they are usually picked by eye. Atomic Colors builds them from a single brand colour and checks them for colour blindness before you ever see them. It runs as a paid product at atomicolors.com."
-date: "2026-07-27"
+summary: "Every design system needs semantic colours, and they are usually picked by eye. Atomic Colors builds them from a single brand colour and checks them for colour blindness before you ever see them. It is free at atomicolors.com."
+date: "2026-09-25"
 cover: "atomic-works/semantic-suggestions.webp"
 type: "product-ai"
 tags: ["Product", "Design Tokens", "Accessibility", "AI"]
 role: "Conceived, designed and built it, on my own"
-timeframe: "2025"
-company: "Atomic Works (self-published)"
-outcome: "A paid product that turns one colour into a full palette, checks it for colour blindness, and exports it in five formats"
+timeframe: "2025 to 2026"
+company: "Self-published"
+outcome: "A free web app that turns one colour into a full palette, checks it for colour blindness, and exports it in five formats"
 ---
 
 ## In short
@@ -19,7 +19,7 @@ Atomic Colors does it from one colour. You give it your brand colour and it buil
 
 The part that does not exist anywhere else is the check underneath. Before it hands you the palette, it simulates how every colour looks to someone who is colour blind, and makes sure the semantics are still distinguishable from each other. If two of them are not, it fixes that before you ever see it.
 
-I built it in Figma Make, and it still runs there. It sells a subscription, sends its own login codes, and works in English and Portuguese.
+I built it on my own, first in Figma Make and then in Claude Code. It works in English and Portuguese, and it is free to use, with no account to create.
 
 ## What it actually does
 
@@ -33,8 +33,10 @@ Export is five formats: CSS, SCSS, JavaScript, JSON, and a JSON built to match F
 
 ## Shipping it
 
-It is live at atomicolors.com as a paid product.
+The colour engine was the interesting problem. Everything after it was the part that decides whether something is a project or a product: a backend to verify subscriptions, an email login that sent its own one-time codes, a payment integration, and every screen written twice so it works in English and Portuguese. None of that is design work, and all of it had to exist before the first person could pay for it.
 
-The colour engine was the interesting problem. Everything after it was the part that decides whether something is a project or a product: a backend to verify subscriptions, an email login that sends its own one time codes, a payment integration, and every screen written twice so it works in English and Portuguese. None of that is design work, and all of it had to exist before the first person could pay for it.
+Then I took the paid part out. I changed how I put my tools into the world, and I would rather show what they are worth by giving them away. The subscription, the login and the backend behind them are gone. Every colour, every suggestion and every export is open, with no account, and all of it runs in the browser.
 
-It all runs inside Figma Make, which is where I built it. That was never the plan for a product with a checkout, and it is the part I would not have predicted at the start.
+The same week, I moved it out of Figma Make, where I built it, and left nothing behind there. It now lives in Claude Code and its own repository, and every change deploys to Cloudflare by itself. Figma Make had been publishing the site on its own and never took changes back from the code, so moving out was the only way to own the whole thing. It is also what let me add pages that explain the method, and one page for each of the 137 named CSS colours showing what the engine does with it.
+
+It is live at atomicolors.com, free, with no account to create.

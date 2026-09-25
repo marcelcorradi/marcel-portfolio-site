@@ -6,8 +6,6 @@ import type { CaseVisuals } from "./types"
 // build fails loudly on a typo instead of shipping a broken <img>.
 import semanticImg from "@/assets/cases/atomic-works/semantic-suggestions.webp"
 import scaleImg from "@/assets/cases/atomic-works/screen-logged.webp"
-import loginImg from "@/assets/cases/atomic-works/login.webp"
-import codeImg from "@/assets/cases/atomic-works/login2.webp"
 
 const PRODUCT_URL = "https://atomicolors.com"
 
@@ -53,28 +51,9 @@ export const atomicColorsVisuals: CaseVisuals = {
       ),
     },
     {
-      anchor: "None of that is design work, and all of it had to exist before the first person could pay for it.",
-      node: (
-        <>
-          <CaseFigure
-            src={loginImg}
-            alt="The sign in dialog, asking for the email used on the Whop subscription."
-            caption="Access is tied to the subscription rather than to a password, so there is no account to create and nothing to reset."
-            framed
-          />
-          <CaseFigure
-            src={codeImg}
-            alt="The verification step, waiting on a six digit code sent by email, valid for ten minutes."
-            caption="The code is generated, sent and expired by a backend I had to write for this, which is the part of shipping that never shows up in the product."
-            framed
-          />
-        </>
-      ),
-    },
-    {
       // The only case still running, so it closes on a way in rather than on a
       // result. New tab: the reader is mid-portfolio and should keep their place.
-      anchor: "That was never the plan for a product with a checkout, and it is the part I would not have predicted at the start.",
+      anchor: "It is live at atomicolors.com, free, with no account to create.",
       node: (
         <div className="mt-10">
           <Button asChild size="lg">

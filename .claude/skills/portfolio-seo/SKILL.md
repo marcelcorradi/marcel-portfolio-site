@@ -20,7 +20,7 @@ Three families of search, in the order of how winnable they are for a personal s
 |---|---|---|---|
 | **Client + topic** | "Whirlpool design system", "multi-brand design system case study", "Esfera Santander design system" | Other designers' case pages (`nessgrixti.com/portfolio/wise-multi-brand`, `chris-peck.design/...`), agency case pages, Dribbble shots | **Winnable.** Personal case pages rank here when the client name and the topic are in the title. This is where the cases earn their traffic. |
 | **Tool names / tool jobs** | "design audit chrome extension", "semantic color palette generator color blindness", "figma plugin component spec for AI agents" | The store listing itself (Chrome Web Store, Figma Community), plus competing tools | **Winnable by the listing, not the case.** The listing is the page that ranks. The case supports it: links to it, gets linked from it, and ranks for the "how it was built" angle. |
-| **Hiring intent** | "hire design system designer", "freelance product designer prototypes", "design system consultant" | Marketplaces only: Toptal, Contra, Upwork, Arc, YunoJuno | **Not winnable by the site alone.** Be present on the marketplaces that rank (Upwork, Contra), with a profile that links back here. The site's job is to convert the visitor they send. |
+| **Hiring intent** | "hire design system designer", "freelance product designer prototypes", "design system consultant" | Marketplaces only: Toptal, Contra, Upwork, Arc, YunoJuno | **Not winnable by the site alone.** A marketplace profile that links back here is the way in. Marcel stopped using Upwork (2026-09-25), so ask which platform, if any, before recommending one. The site's job is to convert the visitor they send. |
 
 Snapshot taken 2026-09-25 with a US-only non-Google search tool, so read it as direction,
 not rank. Re-check before building strategy on it. Google Search Console is the source
@@ -32,8 +32,7 @@ Two consequences run through everything below:
   ("Seven brands, one system"), and that is right for a reader. But the `<title>` is
   what ranks and what shows in the result, so it has to name the client and the topic.
   Keep the two separate: an SEO title field per case, and the H1 untouched.
-- **Off-site presence is part of SEO here.** The marketplace profile (see the
-  `upwork-proposals` skill and `content-drafts/upwork-profile.md`), LinkedIn, GitHub,
+- **Off-site presence is part of SEO here.** LinkedIn, GitHub,
   Medium, Dribbble, the Chrome Web Store and the Figma Community listings. Each should
   link to the site, and the site should name them in `sameAs`.
 

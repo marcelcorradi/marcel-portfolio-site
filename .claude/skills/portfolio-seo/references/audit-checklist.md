@@ -94,14 +94,14 @@ parses in the Rich Results Test, and describes only what's visible.
 
 Not on the site, but part of the same job:
 
-- Profiles that link to marcelcorradi.com: LinkedIn, GitHub, Medium, Upwork, Contra, Dribbble.
+- Profiles that link to marcelcorradi.com: LinkedIn, GitHub, Medium, Dribbble. (Not Upwork: he stopped using it.)
   GitHub is checkable from here (no `gh` CLI on this machine, the public API works):
   `curl -s https://api.github.com/users/marcelcorradi | grep '"blog"'` and
   `curl -s https://api.github.com/repos/marcelcorradi/<repo> | grep '"homepage"'`.
   On 2026-09-25 all three were empty.
 - Listings that link back: Chrome Web Store (Design Audit), Figma Community (Spec Forge),
   GitHub (Portfolio Kit), atomicolors.com, radardoscoop.com.
-- Marketplace presence where hiring searches land (Contra has `hire/design-systems-designers`).
+- Marketplace presence where hiring searches land (Contra has `hire/design-systems-designers`). Ask before recommending a platform.
 
 ## Report format
 

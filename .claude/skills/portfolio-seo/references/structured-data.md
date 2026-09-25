@@ -25,7 +25,7 @@ WebSite, into each page's static HTML.
 
 `sameAs` holds only URLs verified to be Marcel's. As of 2026-09-25 these are confirmed:
 LinkedIn and GitHub (both linked from the site), and Medium (`@marcelestevescorradi`, found
-in search). **Ask Marcel** for Upwork, Contra and Dribbble profile URLs before adding them.
+in search). **Ask Marcel** for any other profile URL (Dribbble, a marketplace) before adding it. He no longer uses Upwork.
 
 ```html
 <script type="application/ld+json">

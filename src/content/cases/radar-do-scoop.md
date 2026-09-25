@@ -8,6 +8,8 @@ role: "Conceived, designed and built it, on my own"
 timeframe: "2026"
 company: "Self-published"
 outcome: "A live site that tracks supplement prices every day, flags fake discounts, and compares products by price per 100 grams"
+seoTitle: "Radar do Scoop, a supplement price tracker"
+seoDescription: "A live site that checks supplement prices every day, keeps their history, flags fake discounts and compares products by price per 100 grams. How I built it."
 ---
 
 ## In short

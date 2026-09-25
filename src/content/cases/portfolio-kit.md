@@ -8,6 +8,8 @@ role: "Conceived, designed and built it, on my own"
 timeframe: "2026"
 company: "Free on GitHub"
 outcome: "A free, open-source kit: a production portfolio foundation plus the Claude Code skills that design and write it with you"
+seoTitle: "Portfolio Kit, a free portfolio built with Claude Code"
+seoDescription: "The foundation this portfolio runs on, with me taken out: a blank, working site plus the Claude Code skills that design and write it with you. Free under MIT."
 ---
 
 ## In short

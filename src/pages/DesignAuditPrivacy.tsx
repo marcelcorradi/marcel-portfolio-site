@@ -21,7 +21,7 @@ const LAST_UPDATED = "September 24, 2026"
  */
 export default function DesignAuditPrivacy() {
   usePageMeta({
-    title: "Design Audit privacy policy — Marcel Corradi",
+    title: "Design Audit privacy policy",
     description:
       "Privacy policy for the Design Audit Chrome extension: all analysis runs locally, and no data leaves your device.",
     path: "/design-audit/privacy",

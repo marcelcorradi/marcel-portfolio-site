@@ -1,11 +1,19 @@
-import { useEffect } from "react"
+import { createContext, useContext, useEffect } from "react"
 
 /** Canonical origin. Absolute URLs are required by Open Graph. */
 export const SITE_URL = "https://marcelcorradi.com"
+export const SITE_NAME = "Marcel Corradi"
 
-const DEFAULT_TITLE = "Marcel Corradi — Product Designer · Design Systems"
+/**
+ * Titles end in "· Marcel Corradi". A middle dot, never a dash: dashes joining
+ * text are banned in anything the site ships, and the prerender fails the build
+ * if one appears in a title.
+ */
+const DEFAULT_TITLE = `Product Designer for Design Systems · ${SITE_NAME}`
 const DEFAULT_DESCRIPTION =
-  "Product Designer specialized in Design Systems, with a Computer Science background. Selected work and case studies."
+  "Product Designer specialized in Design Systems, with a Computer Science degree. Design systems for Onfly, Whirlpool and Esfera, plus five products built end to end."
+/** 1200×630 raster card. Unfurlers ignore SVG, so this is never the favicon. */
+export const DEFAULT_IMAGE = `${SITE_URL}/og-default.png`
 
 /**
  * Case cover images, resolved through the same glob Vite fingerprints, so a
@@ -27,6 +35,7 @@ export function resolveCoverUrl(cover: string | undefined): string | undefined {
 }
 
 export interface PageMeta {
+  /** The page's own title, without the site suffix. Omit for the Home. */
   title?: string
   description?: string
   /** Absolute URL, already resolved via resolveCoverUrl. */
@@ -37,7 +46,45 @@ export interface PageMeta {
   type?: "website" | "article"
   /** Keep the page out of search results. */
   noIndex?: boolean
+  /**
+   * JSON-LD nodes this page adds to the site-wide Person and WebSite (see
+   * src/lib/structured-data.ts). Written into the static HTML by the
+   * prerender, so crawlers that don't run JavaScript still read them.
+   */
+  schema?: object[]
 }
+
+/** Every tag value a page needs, computed once for the browser and the build. */
+export interface ResolvedMeta {
+  title: string
+  description: string
+  url: string
+  image: string
+  type: "website" | "article"
+  noIndex: boolean
+  schema: object[]
+}
+
+export function resolveMeta(meta: PageMeta): ResolvedMeta {
+  return {
+    title: meta.title ? `${meta.title} · ${SITE_NAME}` : DEFAULT_TITLE,
+    description: meta.description ?? DEFAULT_DESCRIPTION,
+    url: SITE_URL + (meta.path ?? "/"),
+    image: meta.image ?? DEFAULT_IMAGE,
+    type: meta.type ?? "website",
+    noIndex: meta.noIndex ?? false,
+    schema: meta.schema ?? [],
+  }
+}
+
+/**
+ * Filled during the build's server render (src/entry-server.tsx), where
+ * effects never run. That is how the prerender reads each page's meta from the
+ * page itself instead of from a second copy. Null in the browser.
+ */
+export const MetaCollectorContext = createContext<{
+  meta?: ResolvedMeta
+} | null>(null)
 
 /** Create the tag if missing, set its content, and report whether we made it. */
 function setTag(
@@ -88,46 +135,39 @@ function setCanonical(href: string): () => void {
 /**
  * Per-route document head: title, description, canonical and Open Graph.
  *
- * This is a client-side SPA on static hosting, so the HTML that leaves the
- * server always carries index.html's defaults. Google renders JS and picks up
- * what this sets; most social scrapers (LinkedIn, Slack, WhatsApp) do not, and
- * will read the defaults instead. That is the accepted trade for not
- * pre-rendering a seven-page site: search results get the real titles, and a
- * shared link still shows a correct, if generic, card.
+ * The build prerenders every route (scripts/prerender.mjs), so the HTML that
+ * leaves the server already carries these values for the page it serves. This
+ * hook keeps them right during client-side navigation, when the static head
+ * still belongs to the page the visitor landed on.
  *
  * Every change is reverted on unmount so a client-side navigation cannot leave
  * one page's title or noindex behind on the next.
  */
-export function usePageMeta({
-  title,
-  description,
-  image,
-  path,
-  type = "website",
-  noIndex = false,
-}: PageMeta) {
-  useEffect(() => {
-    const fullTitle = title ?? DEFAULT_TITLE
-    const desc = description ?? DEFAULT_DESCRIPTION
-    const url = SITE_URL + (path ?? "/")
-    const ogImage = image ?? `${SITE_URL}/favicon.svg`
+export function usePageMeta(meta: PageMeta) {
+  const resolved = resolveMeta(meta)
+  const collector = useContext(MetaCollectorContext)
+  // Server render only: hand the values to the prerender.
+  if (collector) collector.meta = resolved
 
+  const { title, description, url, image, type, noIndex } = resolved
+
+  useEffect(() => {
     const previousTitle = document.title
-    document.title = fullTitle
+    document.title = title
 
     const cleanups = [
-      setTag("name", "description", desc),
+      setTag("name", "description", description),
       setCanonical(url),
-      setTag("property", "og:title", fullTitle),
-      setTag("property", "og:description", desc),
+      setTag("property", "og:title", title),
+      setTag("property", "og:description", description),
       setTag("property", "og:url", url),
       setTag("property", "og:type", type),
-      setTag("property", "og:site_name", "Marcel Corradi"),
-      setTag("property", "og:image", ogImage),
-      setTag("name", "twitter:card", image ? "summary_large_image" : "summary"),
-      setTag("name", "twitter:title", fullTitle),
-      setTag("name", "twitter:description", desc),
-      setTag("name", "twitter:image", ogImage),
+      setTag("property", "og:site_name", SITE_NAME),
+      setTag("property", "og:image", image),
+      setTag("name", "twitter:card", "summary_large_image"),
+      setTag("name", "twitter:title", title),
+      setTag("name", "twitter:description", description),
+      setTag("name", "twitter:image", image),
     ]
 
     if (noIndex) cleanups.push(setTag("name", "robots", "noindex, follow"))
@@ -136,5 +176,5 @@ export function usePageMeta({
       document.title = previousTitle
       for (const undo of cleanups) undo()
     }
-  }, [title, description, image, path, type, noIndex])
+  }, [title, description, url, image, type, noIndex])
 }

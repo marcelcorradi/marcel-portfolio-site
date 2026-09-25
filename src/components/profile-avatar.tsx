@@ -9,7 +9,8 @@ import photo from "@/assets/profile-photo.webp"
  * Stored at 560px for a 224px slot, which covers a 2.5x display. WebP with
  * alpha, because the photo is cut out and a flat format would square it off;
  * as a 800px PNG it was 476KB, the heaviest asset on the site and sitting in
- * the hero. Eager, not lazy: it is above the fold.
+ * the hero. Eager, not lazy, and fetched first: it is above the fold and it is
+ * the Home's largest paint (Lighthouse flagged it as the LCP image).
  */
 export function ProfileAvatar({ className }: { className?: string }) {
   return (
@@ -19,6 +20,7 @@ export function ProfileAvatar({ className }: { className?: string }) {
       width={560}
       height={560}
       decoding="async"
+      fetchPriority="high"
       className={cn(
         "size-full rounded-full object-cover select-none",
         className

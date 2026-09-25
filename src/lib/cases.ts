@@ -17,6 +17,14 @@ export interface CaseFrontmatter {
    * `summary`, which is the narrative line the cards and the feed use.
    */
   outcome?: string
+  /**
+   * The search result's title, without the site suffix. The H1 stays the
+   * narrative `title`; this one names the client and the topic, because that
+   * is what people search. See the portfolio-seo skill's query-map.
+   */
+  seoTitle?: string
+  /** The search snippet, 140 to 160 characters. Falls back to `summary`. */
+  seoDescription?: string
 }
 
 export interface CaseStudy extends CaseFrontmatter {

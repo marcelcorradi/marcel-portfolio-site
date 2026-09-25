@@ -13,31 +13,32 @@ Only terms the published page supports. Each term below was checked in the case 
 
 ## Current state (2026-09-25)
 
-The rendered titles come from `usePageMeta`: `<frontmatter title> — Marcel Corradi` for cases.
-The raw HTML of every route carries the Home's title and canonical (SKILL.md, trap 1).
+The proposals below shipped on 2026-09-25 (Marcel asked for every SEO fix), some tightened
+to fit ~60 characters. Cases carry them as `seoTitle` / `seoDescription` in the frontmatter,
+the other pages in their `usePageMeta` call. The live values are in the code, so check there
+before editing this table. Marcel can still revise any of them.
 
 ## Map
 
-| URL | Target family → queries | Intent | Current rendered `<title>` | Proposed `<title>` | Status |
+| URL | Target family → queries | Intent | `<title>` before 2026-09-25 | `<title>` now | Status |
 |---|---|---|---|---|---|
-| `/` | Role: "product designer design systems", "design system designer" | Evaluate a candidate | Marcel Corradi — Product Designer · Design Systems | Product Designer for Design Systems · Marcel Corradi | proposal |
-| `/tools` | Tools: "free design system tools", the four tool names | Find a tool | My tools — Marcel Corradi | Free design system tools · Marcel Corradi | proposal |
-| `/cases/whirlpool-design-system` | Client + topic: "Whirlpool design system", "multi-brand design system case study", "multi-brand design tokens" | Learn / evaluate | Seven brands, one system — Marcel Corradi | Whirlpool multi-brand design system case study · Marcel Corradi | proposal |
-| `/cases/onfly-design-system` | Client + topic: "Onfly design system", "B2B design system case study", "design tokens sync" | Learn / evaluate | A design system that keeps itself in sync — Marcel Corradi | Onfly design system, B2B corporate travel · Marcel Corradi | proposal |
-| `/cases/esfera-design-system` | Client + topic: "Esfera Santander design system", "loyalty program design system" | Learn / evaluate | The design system I had to sell first — Marcel Corradi | Esfera (Santander) loyalty design system case study · Marcel Corradi | proposal |
-| `/cases/design-audit` | Tool: "design audit chrome extension", "extract design tokens from website" | Find a tool / how it was built | A design system, read back out of a website — Marcel Corradi | Design Audit, a Chrome extension that audits a UI · Marcel Corradi | proposal |
-| `/cases/atomic-colors` | Tool: "Atomic Colors", "semantic color palette generator", "color blind safe palette" | Find a tool | Colour decisions, written as an algorithm — Marcel Corradi | Atomic Colors, a semantic color palette generator · Marcel Corradi | proposal |
-| `/cases/spec-forge` | Tool: "Spec Forge figma plugin", "figma component spec for AI agents" | Find a tool | A spec the AI can build from — Marcel Corradi | Spec Forge, a Figma plugin for AI-ready component specs · Marcel Corradi | proposal |
-| `/cases/portfolio-kit` | Tool: "portfolio kit claude code", "designer portfolio template" | Find a tool | This portfolio, as a kit — Marcel Corradi | Portfolio Kit, a free designer portfolio for Claude Code · Marcel Corradi | proposal |
-| `/cases/radar-do-scoop` | None of the three families (a consumer product in Portuguese) | Evaluate range | Every discount, checked against its history — Marcel Corradi | Radar do Scoop, a supplement price tracker case study · Marcel Corradi | proposal, low priority |
-| `/design-audit/privacy` | Not a target (legal page, out of the sitemap) | Store review | Design Audit privacy policy — Marcel Corradi | Design Audit privacy policy · Marcel Corradi | proposal (dash fix only) |
+| `/` | Role: "product designer design systems", "design system designer" | Evaluate a candidate | Marcel Corradi — Product Designer · Design Systems | Product Designer for Design Systems · Marcel Corradi | live |
+| `/tools` | Tools: "free design system tools", the four tool names | Find a tool | My tools — Marcel Corradi | Free design system tools · Marcel Corradi | live |
+| `/cases/whirlpool-design-system` | Client + topic: "Whirlpool design system", "multi-brand design system case study", "multi-brand design tokens" | Learn / evaluate | Seven brands, one system — Marcel Corradi | Whirlpool multi-brand design system case study · Marcel Corradi | live |
+| `/cases/onfly-design-system` | Client + topic: "Onfly design system", "B2B design system case study", "design tokens sync" | Learn / evaluate | A design system that keeps itself in sync — Marcel Corradi | Onfly design system case study, B2B travel · Marcel Corradi | live |
+| `/cases/esfera-design-system` | Client + topic: "Esfera Santander design system", "loyalty program design system" | Learn / evaluate | The design system I had to sell first — Marcel Corradi | Esfera (Santander) loyalty design system · Marcel Corradi | live |
+| `/cases/design-audit` | Tool: "design audit chrome extension", "extract design tokens from website" | Find a tool / how it was built | A design system, read back out of a website — Marcel Corradi | Design Audit, a Chrome extension that audits a UI · Marcel Corradi | live |
+| `/cases/atomic-colors` | Tool: "Atomic Colors", "semantic color palette generator", "color blind safe palette" | Find a tool | Colour decisions, written as an algorithm — Marcel Corradi | Atomic Colors, a semantic colour palette generator · Marcel Corradi | live |
+| `/cases/spec-forge` | Tool: "Spec Forge figma plugin", "figma component spec for AI agents" | Find a tool | A spec the AI can build from — Marcel Corradi | Spec Forge, a Figma plugin for AI-ready specs · Marcel Corradi | live |
+| `/cases/portfolio-kit` | Tool: "portfolio kit claude code", "designer portfolio template" | Find a tool | This portfolio, as a kit — Marcel Corradi | Portfolio Kit, a free portfolio built with Claude Code · Marcel Corradi | live |
+| `/cases/radar-do-scoop` | None of the three families (a consumer product in Portuguese) | Evaluate range | Every discount, checked against its history — Marcel Corradi | Radar do Scoop, a supplement price tracker · Marcel Corradi | live |
+| `/design-audit/privacy` | Not a target (legal page, out of the sitemap) | Store review | Design Audit privacy policy — Marcel Corradi | Design Audit privacy policy · Marcel Corradi | live |
 
-Several proposals run past 60 characters. Google truncates by pixel width (~600 px), so the
-suffix is what gets cut, and the query terms up front survive. `portfolio-content` should
-tighten them anyway.
+Google truncates by pixel width (~600 px), so on the longer titles the suffix is what gets
+cut, and the query terms up front survive.
 
-Spelling: the Atomic Colors case uses British "Colour" in its H1. Search volume is on
-"color". The title can use "color" while the prose keeps its spelling, if Marcel agrees.
+Spelling: the site writes British "colour", and the titles follow it. Google treats
+colour/color as the same query. Switch to "color" only if Marcel asks.
 
 ## Descriptions
 

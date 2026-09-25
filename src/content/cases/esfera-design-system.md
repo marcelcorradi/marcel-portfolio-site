@@ -9,6 +9,8 @@ role: "Product Designer, Design System"
 timeframe: "Jun 2024 to May 2025"
 company: "Esfera (Santander)"
 outcome: "224 tokens, 59 components and 443 variants, delivered in Figma and in code"
+seoTitle: "Esfera (Santander) loyalty design system"
+seoDescription: "A design system for Esfera, Santander's loyalty program, that no one had asked for: earned with pilot journeys, then 224 tokens, 59 components and 443 variants."
 ---
 
 ## In short

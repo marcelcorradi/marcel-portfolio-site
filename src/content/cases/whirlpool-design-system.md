@@ -9,6 +9,8 @@ role: "Senior Product Designer, Design System"
 timeframe: "May 2025 to Sep 2025"
 company: "Whirlpool"
 outcome: "1,139 tokens across 7 brands on web and 4 on mobile, live from the second month"
+seoTitle: "Whirlpool multi-brand design system case study"
+seoDescription: "How a global token architecture went live under Whirlpool's working design libraries in its second month: 1,139 tokens across 7 brands on web and 4 on mobile."
 ---
 
 ## In short

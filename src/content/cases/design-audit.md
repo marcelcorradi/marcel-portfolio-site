@@ -9,6 +9,8 @@ role: "Conceived, designed and built it, on my own"
 timeframe: "2025 to 2026"
 company: "Published on the Chrome Web Store"
 outcome: "A published Chrome extension that extracts a site's entire visual language while you browse it, and audits it against WCAG"
+seoTitle: "Design Audit, a Chrome extension that audits a UI"
+seoDescription: "A free Chrome extension that extracts a site's colours, type, icons and spacing while you browse, and audits pages against WCAG. How I designed and built it."
 ---
 
 ## In short

@@ -9,6 +9,8 @@ role: "Conceived, designed and built it, on my own"
 timeframe: "2025"
 company: "Published on the Figma Community"
 outcome: "A published Figma plugin that turns a selected component into a complete, structured spec for a coding agent"
+seoTitle: "Spec Forge, a Figma plugin for AI-ready specs"
+seoDescription: "A Figma plugin that turns a selected component into a complete spec for a coding agent: every layer, property, variant and the design system's own token names."
 ---
 
 ## In short

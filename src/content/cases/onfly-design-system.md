@@ -9,6 +9,8 @@ role: "Senior Product Designer, Design System"
 timeframe: "Sep 2025 to Jul 2026"
 company: "Onfly"
 outcome: "611 tokens and 143 components, adopted by 5 designers and around 40 developers"
+seoTitle: "Onfly design system case study, B2B travel"
+seoDescription: "How Onfly's orphaned framework and Figma library became one design system: 611 tokens and 143 components, adopted by 5 designers and around 40 developers."
 ---
 
 ## In short

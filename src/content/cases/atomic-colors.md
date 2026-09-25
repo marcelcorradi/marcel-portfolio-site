@@ -9,6 +9,8 @@ role: "Conceived, designed and built it, on my own"
 timeframe: "2025 to 2026"
 company: "Self-published"
 outcome: "A free web app that turns one colour into a full palette, checks it for colour blindness, and exports it in five formats"
+seoTitle: "Atomic Colors, a semantic colour palette generator"
+seoDescription: "A free web app that turns one brand colour into a full palette, checks it for colour blindness and exports it in five formats. How I designed and built it."
 ---
 
 ## In short

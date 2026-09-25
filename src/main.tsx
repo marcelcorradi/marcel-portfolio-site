@@ -1,47 +1,32 @@
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
-import { createBrowserRouter, Outlet } from "react-router"
+import { createBrowserRouter, matchRoutes } from "react-router"
 import { RouterProvider } from "react-router/dom"
 import "./index.css"
-import Home from "./pages/Home"
-import CasesList from "./pages/CasesList"
-import CasePage from "./pages/CasePage"
-import NotFound from "./pages/NotFound"
-import DesignAuditPrivacy from "./pages/DesignAuditPrivacy"
-import Tools from "./pages/Tools"
-import { ScrollToTop } from "./components/scroll-to-top"
+import { routes } from "./routes"
 
-/** Wraps every route so navigation always lands at the top of the page. */
-function Root() {
-  return (
-    <>
-      <ScrollToTop />
-      <Outlet />
-    </>
-  )
-}
+// The landing route's lazy chunk loads before the router exists. Otherwise the
+// first render commits an empty tree while the chunk downloads, and that
+// commit wipes the prerendered page: a blank flash on every first visit.
+// (React Router's documented pattern for server-rendered lazy routes.)
+const landing = matchRoutes(routes, window.location)?.filter((m) => m.route.lazy)
+await Promise.all(
+  (landing ?? []).map(async ({ route }) => {
+    const resolved = await (route.lazy as () => Promise<object>)()
+    Object.assign(route, resolved, { lazy: undefined })
+  }),
+)
 
 const router = createBrowserRouter(
-  [
-    {
-      element: <Root />,
-      children: [
-        { path: "/", element: <Home /> },
-        { path: "/cases", element: <CasesList /> },
-        { path: "/cases/:slug", element: <CasePage /> },
-        { path: "/tools", element: <Tools /> },
-        // Linked from the Chrome Web Store listing: the path must stay stable.
-        { path: "/design-audit/privacy", element: <DesignAuditPrivacy /> },
-        // Anything else: a typo, a stale link, or a deep link to a case that
-        // no longer exists. Must stay last.
-        { path: "*", element: <NotFound /> },
-      ],
-    },
-  ],
+  routes,
   // Keep in sync with Vite's `base` so links work on GitHub Pages.
   { basename: import.meta.env.BASE_URL },
 )
 
+// #root arrives filled with the page the build prerendered (scripts/prerender.mjs).
+// createRoot, not hydrateRoot: React replaces that markup with its own render
+// of the same page, so a difference between the two (the stored theme, a
+// measured logo width) can never raise a hydration error.
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <RouterProvider router={router} />

@@ -11,6 +11,7 @@ import { getCaseBySlug, getCaseSections } from "@/lib/cases"
 import { getCaseVisuals } from "@/content/case-visuals"
 import { CaseFooterNav } from "@/components/case-footer-nav"
 import { usePageMeta, resolveCoverUrl } from "@/lib/use-page-meta"
+import { caseSchema } from "@/lib/structured-data"
 
 /**
  * Split a body into segments at each anchor sentence, so components can sit
@@ -44,13 +45,15 @@ export default function CasePage() {
   // Called before the not-found return: hooks cannot sit behind a branch. An
   // unknown slug gets the site defaults plus noindex, so a bad case URL is
   // never indexed as if it were a real page.
+  const image = resolveCoverUrl(study?.cover)
   usePageMeta({
-    title: study && `${study.title} — Marcel Corradi`,
-    description: study?.summary,
-    image: resolveCoverUrl(study?.cover),
+    title: study ? (study.seoTitle ?? study.title) : "Case not found",
+    description: study && (study.seoDescription ?? study.summary),
+    image,
     path: study && `/cases/${study.slug}`,
     type: "article",
     noIndex: !study,
+    schema: study && caseSchema(study, image),
   })
 
   if (!study) {

@@ -7,6 +7,26 @@ posição. O lado do Google só o Search Console mostra.
 **Alvo**: quem está contratando product designer ou especialista em design system. Três
 famílias de busca: cargo/serviço, cliente + tema, nome das ferramentas.
 
+## Status (2026-09-25, mesmo dia)
+
+| Item | Status |
+|---|---|
+| C1 HTML por rota | **Feito.** Cada página é pré-renderizada no build, com os componentes reais: conteúdo dentro de `#root`, e título, descrição, canonical, OG e JSON-LD próprios. O build falha se um canonical não for da própria página |
+| A1 Títulos com o termo buscado | **Feito.** `seoTitle` e `seoDescription` no frontmatter dos 8 cases, e títulos novos em Home e Tools. Revise quando quiser |
+| A2 Travessão nos títulos | **Feito.** Separador `·`, e o build falha se aparecer um travessão |
+| A3 Dados estruturados | **Feito.** Person + WebSite em todas as páginas, Article nos cases (com o cliente em `about`), SoftwareApplication nas ferramentas |
+| A4 Imagem de compartilhamento | **Feito.** Card padrão `public/og-default.png`, e as capas dos cases convertidas em JPG 1200×630 no build |
+| A5 GitHub | **Seu.** Campo Website do perfil e dos repos `marcel-portfolio-site` e `portfolio-kit` |
+| A6 Marketplaces | **Seu.** Perfil no Contra/Upwork com link pro site |
+| M1 Listas duplicadas | **Feito.** Uma lista só (`listRoutes()` em `src/entry-server.tsx`) gera páginas, sitemap e `llms.txt` |
+| M2 Imagens grandes | **Aberto, de propósito.** A resolução cheia serve à ampliação no clique e às matrizes a 160%. `srcset` custa variantes das 81 imagens pra ganhar num indicador que já passa |
+| M3 JS num chunk só | **Feito.** Páginas fora da Home viraram chunks. Principal: 707 KB → 195 KB |
+| M4 Case de protótipos / M5 "Work with me" | **Decisão sua** |
+| M6 Descrições | **Feito**, junto com A1 |
+| M7 Prioridade da foto do hero | **Feito** (`fetchPriority="high"`) |
+| M8 Comentário errado | **Resolvido.** O script foi substituído |
+| M9 `llms.txt` | **Feito**, gerado no build |
+
 ## Resumo
 
 - O site é rápido e tecnicamente limpo depois que o JavaScript roda. **O problema é o que

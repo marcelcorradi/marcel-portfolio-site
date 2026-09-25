@@ -55,10 +55,13 @@ default `marcelcorradi.github.io/marcel-portfolio-site/` path). Repo
 `marcelcorradi/marcel-portfolio-site` is public; GitHub Pages Source = GitHub Actions, custom domain
 set via `public/CNAME`. Because the site is now at a domain root, Vite `base` = `/`; React Router
 `basename` = `import.meta.env.BASE_URL`. Every push to `main` auto-deploys via
-`.github/workflows/deploy.yml`. Real routes (every case + `/design-audit/privacy`) answer HTTP 200
-through per-route copies of `index.html` that `scripts/build-route-shells.mjs` writes after `vite build`
-(GitHub Pages serves `foo.html` for `/foo`); cases are read from `src/content/cases/*.md`, so a new case
-needs nothing extra. Anything else falls through to `public/404.html`, which serves with a 404 status
+`.github/workflows/deploy.yml`. **Every page is prerendered at build time (2026-09-25):** a
+server build of `src/entry-server.tsx` renders each route with the real components, and
+`scripts/prerender.mjs` writes `dist/<route>.html` with the page's content and its own head
+(title, description, canonical, Open Graph, JSON-LD), plus `sitemap.xml` and `llms.txt`. GitHub
+Pages serves `foo.html` for `/foo`, so that is also what makes each route answer 200. The one
+list of pages is `listRoutes()` in `entry-server.tsx`; cases add themselves from
+`src/content/cases/*.md`. Details and traps: the `portfolio-seo` skill. Anything else falls through to `public/404.html`, which serves with a 404 status
 and redirects into the SPA (a real 404 is correct there). Before this (until 2026-09-24) every case URL
 answered 404, so Google likely hadn't indexed them.
 
@@ -90,7 +93,7 @@ indigo tokens in `src/index.css`. Routing via react-router v7. Cases load from
   Portfolio Kit, each with its primary action and "How I built it". Radar do Scoop is left out
   on purpose (consumer site in Portuguese). Ends on a support block with the PayPal email and a
   copy button. `src/content/tools.ts` is the single source of the tools' public URLs; the case
-  CTAs import from it. `/tools` has a route shell and is in the sitemap.
+  CTAs import from it. `/tools` is prerendered and in the sitemap.
 - ⚠️ The shadcn CLI generated `import { cn } from "cn"` for `badge` and installed a random npm
   package `cn`. Removed it and fixed the import to `@/lib/utils`. Check every `shadcn add`.
   Design Audit's origin is stated in the Onfly case (he built it to survive that audit),
@@ -104,20 +107,20 @@ indigo tokens in `src/index.css`. Routing via react-router v7. Cases load from
 - Contrast verified WCAG AA in both themes.
 
 **OPEN, roughly in priority order:**
-1. **SEO (2026-09-25).** `robots.txt` and a generated `sitemap.xml` exist, and the profile
-   photo is already a 33KB webp. What's left: every route shell is a byte-for-byte copy of
-   `index.html`, so the raw HTML of each case carries the Home's title and a canonical
-   pointing at `/`. Per-route head exists only after JS runs (`use-page-meta.ts`). The
-   `portfolio-seo` skill owns this, and the audit is in `content-drafts/seo-audit.md`.
-   SEO target: people hiring a product/design-system designer, not people searching
-   Marcel's name.
+1. **SEO (2026-09-25).** Owned by the `portfolio-seo` skill; the audit and its status are
+   in `content-drafts/seo-audit.md`. SEO target: people hiring a product/design-system
+   designer, not people searching Marcel's name. Done: prerender, per-page titles and
+   descriptions (`seoTitle`/`seoDescription` in case frontmatter), JSON-LD, share card
+   (`public/og-default.png`), code splitting. Still open: responsive image sizes on the
+   cases, and the off-site items only Marcel can do (GitHub website field, marketplace
+   profiles, Search Console).
 
 **Design Audit privacy policy (2026-09-24).** `/design-audit/privacy` hosts the Chrome
 extension's privacy policy (`src/pages/DesignAuditPrivacy.tsx`, text in
 `src/content/legal/design-audit-privacy.md`, rendered with `caseProse`). The Chrome Web Store
 listing links to this URL, so **never rename or remove the route**. Bump `LAST_UPDATED` in the page
 when the text changes. It is not in the sitemap on purpose: it's a legal page, not portfolio work.
-It must answer with a real HTTP 200 so store review can reach it (see Deploy: route shells).
+It must answer with a real HTTP 200 so store review can reach it (see Deploy: prerender).
 The extension went 100% free in 2026-09 (no PRO, no backend).
 
 **Free tools (updated 2026-09-25).** Design Audit (v2.4.0) and Atomic Colors are free; both

@@ -7,11 +7,8 @@ import { SiteFooter } from "@/components/site-footer"
 import { usePageMeta } from "@/lib/use-page-meta"
 
 export default function Home() {
-  usePageMeta({
-    description:
-      "Product Designer specialized in Design Systems, with a Computer Science degree. Design systems for Onfly, Whirlpool and Esfera, plus five products built end to end.",
-    path: "/",
-  })
+  // Title and description are the site defaults in use-page-meta.ts.
+  usePageMeta({ path: "/" })
 
   return (
     <>

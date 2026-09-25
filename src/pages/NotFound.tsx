@@ -20,7 +20,7 @@ import { usePageMeta } from "@/lib/use-page-meta"
  */
 export default function NotFound() {
   usePageMeta({
-    title: "Page not found — Marcel Corradi",
+    title: "Page not found",
     noIndex: true,
   })
 

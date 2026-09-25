@@ -1,0 +1,68 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!--
+  Source of public/og-default.png, the 1200x630 card link previews show for
+  any page without a cover (LinkedIn, Slack, WhatsApp, X). It repeats the
+  hero's signature: the dot grid, the ringed photo, the diameter spec and the
+  --primary token chip, with the dark theme's tokens.
+
+  Regenerate after changing it (Chrome, from the repo root):
+    chrome --headless=new --hide-scrollbars --force-device-scale-factor=1       --window-size=1200,630 --screenshot=public/og-default.png scripts/og-card.html
+  Link previews cache for days: check the result in LinkedIn Post Inspector.
+-->
+<style>
+@font-face { font-family: Geist; src: url(../node_modules/@fontsource-variable/geist/files/geist-latin-wght-normal.woff2) format("woff2"); font-weight: 100 900; }
+:root {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --border: oklch(1 0 0 / 12%);
+  --primary: oklch(0.673 0.170 277);
+  --card: oklch(0.205 0 0);
+}
+* { margin: 0; box-sizing: border-box; }
+html, body { width: 1200px; height: 630px; overflow: hidden; }
+body {
+  background: var(--background); color: var(--foreground);
+  font-family: Geist, sans-serif; position: relative;
+}
+/* the hero's dot grid, fading out from the photo side */
+.grid {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(oklch(1 0 0 / 22%) 1.5px, transparent 1.4px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 60% 85% at 78% 50%, black 20%, transparent 75%);
+}
+.wrap { position: relative; display: grid; grid-template-columns: 1fr 320px; align-items: center;
+  gap: 40px; height: 100%; padding: 0 88px; }
+.eyebrow { font: 500 22px ui-monospace, Consolas, monospace; color: var(--primary); letter-spacing: 0.02em; }
+h1 { margin-top: 22px; font-size: 92px; font-weight: 600; line-height: 1; letter-spacing: -0.035em; }
+.role { margin-top: 22px; font-size: 38px; white-space: nowrap; font-weight: 500; letter-spacing: -0.015em; color: oklch(0.985 0 0 / 82%); }
+.clients { margin-top: 30px; font-size: 27px; color: var(--muted-foreground); line-height: 1.4; }
+.photo { position: relative; justify-self: end; }
+.spec { position: absolute; top: -46px; left: 50%; transform: translateX(-50%); display: flex; align-items: center;
+  gap: 12px; font: 20px ui-monospace, Consolas, monospace; color: var(--muted-foreground); white-space: nowrap; }
+.spec i { display: block; height: 1px; width: 40px; background: oklch(1 0 0 / 22%); }
+.ring { border-radius: 50%; padding: 10px; background: oklch(0.145 0 0 / 40%); box-shadow: 0 0 0 1.5px var(--border); }
+.ring img { display: block; width: 290px; height: 290px; border-radius: 50%; object-fit: cover; }
+.token { position: absolute; bottom: 0; right: -18px; display: flex; align-items: center; gap: 10px;
+  padding: 9px 18px; border-radius: 999px; background: var(--card); border: 1.5px solid var(--border);
+  font: 21px ui-monospace, Consolas, monospace; color: var(--muted-foreground); }
+.token b { width: 16px; height: 16px; border-radius: 50%; background: var(--primary); }
+</style></head>
+<body>
+  <div class="grid"></div>
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">marcelcorradi.com</p>
+      <h1>Marcel Corradi</h1>
+      <p class="role">Product Designer for Design Systems</p>
+      <p class="clients">Design systems for Onfly, Whirlpool<br>and Esfera. Tools built with code and AI.</p>
+    </div>
+    <div class="photo">
+      <div class="spec"><i></i><span>⌀ 290px</span><i></i></div>
+      <div class="ring"><img src="../src/assets/profile-photo.webp" alt=""></div>
+      <div class="token"><b></b><span>--primary</span></div>
+    </div>
+  </div>
+</body></html>

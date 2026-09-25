@@ -6,6 +6,7 @@ import { ToolRow } from "@/components/tool-row"
 import { Button } from "@/components/ui/button"
 import { usePageMeta } from "@/lib/use-page-meta"
 import { SUPPORT_EMAIL, tools } from "@/content/tools"
+import { toolsSchema } from "@/lib/structured-data"
 
 /**
  * /tools, "My tools" in the nav.
@@ -16,10 +17,11 @@ import { SUPPORT_EMAIL, tools } from "@/content/tools"
  */
 export default function Tools() {
   usePageMeta({
-    title: "My tools — Marcel Corradi",
+    title: "Free design system tools",
     description:
-      "Free tools by Marcel Corradi for design systems work: Design Audit, Atomic Colors, Spec Forge and Portfolio Kit.",
+      "Free tools for design systems work: a Chrome extension that audits a UI against WCAG, a semantic colour palette generator, a Figma spec plugin and a portfolio kit.",
     path: "/tools",
+    schema: toolsSchema(),
   })
 
   return (

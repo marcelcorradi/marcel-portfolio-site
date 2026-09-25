@@ -4,6 +4,10 @@ Structured data tells search engines and AI systems *what* a page is: a person, 
 a piece of software. It doesn't rank a page by itself. It removes ambiguity: without it,
 "Onfly design system" is one of four unrelated Onflys to a search engine.
 
+Implemented in `src/lib/structured-data.ts` (2026-09-25). Pages pass their nodes to
+`usePageMeta({ schema })`, and the prerender writes them, with the site-wide Person and
+WebSite, into each page's static HTML.
+
 ## Rules
 
 1. **Describe only what is visible on the page.** Don't add a type or a claim just to earn

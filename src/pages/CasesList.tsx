@@ -7,7 +7,8 @@ export default function CasesList() {
 
   // Deliberately noindex: this is an unstyled dev stub nothing links to, kept
   // because /cases/:slug lives under it. It is not part of the navigation, and
-  // it should never be what a search result shows. robots.txt disallows it too.
+  // it should never be what a search result shows. robots.txt deliberately
+  // allows it: a disallowed URL is never crawled, so this noindex would go unread.
   usePageMeta({ noIndex: true, path: "/cases" })
 
   return (

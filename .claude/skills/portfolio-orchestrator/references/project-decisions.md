@@ -79,6 +79,9 @@ indigo tokens in `src/index.css`. Routing via react-router v7. Cases load from
   (`design-audit`, "A design system, read back out of a website", shipped 2026-07-27).
   The last three are `product-ai`: three sections, plain language, no metrics row, ending
   on a CTA button to the live product. **Every Home card now resolves; no 404s left.**
+  **Radar do Scoop** (`radar-do-scoop`, "Every discount, checked against its history", shipped
+  2026-09-25) is the fourth product case: prose only for now (screenshots later), consumer angle,
+  no revenue/affiliate/B2B numbers. Facts in `content-drafts/radar-do-scoop-case.md`.
   Design Audit's origin is stated in the Onfly case (he built it to survive that audit),
   so the two cases cross-reference and must stay consistent.
   The case page is the **template the remaining cases reuse**: `case-header`, `case-prose`,

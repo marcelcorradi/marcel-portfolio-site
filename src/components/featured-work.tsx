@@ -81,6 +81,14 @@ const builtWithAI: CaseCardData[] = [
     tags: ["Design Tokens", "Design-to-Code", "Figma Plugin"],
     slug: "spec-forge",
   },
+  {
+    name: "Radar do Scoop",
+    role: "radardoscoop.com",
+    description:
+      "A Brazilian site that checks supplement prices every day and tells a real discount from a fake one. Bot, site and data pipeline, built end to end.",
+    tags: ["Accessibility", "Web App", "E-commerce"],
+    slug: "radar-do-scoop",
+  },
 ]
 
 function Group({ label, cases }: { label: string; cases: CaseCardData[] }) {
